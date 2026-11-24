@@ -1,0 +1,91 @@
+// Dev-only layout for the component showcase. Real screen layouts arrive in M2–M6.
+@use '../src/styles/tokens' as *;
+
+.d-stage {
+  position: relative;
+  margin-bottom: u(24);
+
+  > * {
+    position: absolute;
+  }
+
+  > .c-hud {
+    position: static;
+  }
+}
+
+.d-panel {
+  top: u(108);
+  left: u(60);
+  width: u(1160);
+  height: u(542);
+}
+
+.d-tabs-journal {
+  top: u(110);
+  left: u(250);
+}
+
+.d-list {
+  top: u(222);
+  left: u(168);
+}
+
+.d-detail-quest {
+  top: u(157);
+  left: u(654);
+}
+
+.d-footer {
+  inset: u(650) u(60) auto;
+  height: u(70);
+  border-top: 1px solid var(--c-border);
+}
+
+.d-hints {
+  right: u(80);
+  bottom: u(26);
+}
+
+.d-tabs-inventory {
+  top: u(110);
+  left: u(140);
+}
+
+.d-grid {
+  top: u(222);
+  left: u(122);
+}
+
+.d-pager-prev {
+  top: u(360);
+  left: u(70);
+}
+
+.d-pager-next {
+  top: u(360);
+  left: u(612);
+}
+
+.d-detail-item {
+  top: u(450);
+  left: u(676);
+}
+
+.d-viewer {
+  top: u(140);
+  right: u(90);
+  width: u(300);
+  height: u(300);
+  border: 1px dashed var(--c-border);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.d-buttons {
+  top: u(190);
+  left: u(148);
+  display: flex;
+  flex-direction: column;
+  gap: u(16);
+}

@@ -1,0 +1,37 @@
+@use '../tokens' as *;
+
+// Selected item: four white corner brackets with a warm glow and a gentle pulse.
+// Applied on ::before so ::after stays free for frames.
+@mixin brackets($inset: u(-5), $length: u(12), $thickness: u(2.5)) {
+  $line: linear-gradient(var(--c-border-strong) 0 0);
+
+  content: '';
+  position: absolute;
+  inset: $inset;
+  pointer-events: none;
+  background:
+    $line 0 0 / #{$length} #{$thickness},
+    $line 0 0 / #{$thickness} #{$length},
+    $line 100% 0 / #{$length} #{$thickness},
+    $line 100% 0 / #{$thickness} #{$length},
+    $line 0 100% / #{$length} #{$thickness},
+    $line 0 100% / #{$thickness} #{$length},
+    $line 100% 100% / #{$length} #{$thickness},
+    $line 100% 100% / #{$thickness} #{$length};
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 u(3) rgb(255 236 190 / 90%));
+  animation: c-bracket-pulse var(--t-pulse) infinite alternate;
+}
+
+@mixin selected-surface {
+  border-color: var(--c-border-strong);
+  box-shadow:
+    0 0 u(12) rgb(255 240 200 / 40%),
+    inset 0 0 u(8) rgb(255 240 200 / 22%);
+}
+
+@keyframes c-bracket-pulse {
+  to {
+    opacity: 0.55;
+  }
+}

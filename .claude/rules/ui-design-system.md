@@ -10,10 +10,11 @@ or timing — do not copy an icon or texture.
 ## Stage scaling (desktop ≥ 1200 px)
 
 - Designs are specified on a **1280 × 720** stage.
-- `.stage { font-size: min(1.25vw, 2.2222vh); }` → 16 px at 1280 × 720.
-- Inside the stage, size everything with the SCSS helper `u($px)` (= `$px / 16 * 1em`).
-  Never use `px` or `rem` inside the stage, except 1 px hairlines.
-- Tablet and mobile use normal `rem` sizes (see `responsive.md`).
+- `--u` is one stage pixel: `min(100vw / 1280, 100vh / 720)` on desktop, `1px` elsewhere.
+- Size everything with the SCSS helper `u($px)` (= `calc($px * var(--u))`). It never
+  compounds with parent font sizes. Never use raw `px`, `em` or `rem` for layout, except 1 px
+  hairlines.
+- Below 1200 px `--u` is `1px`, so the same values work; `responsive.md` adapts layouts.
 
 ## Tokens
 
@@ -30,7 +31,9 @@ compile-time things (breakpoints, `u()`). Values: `docs/PROJECT_BRIEF.md` §6. K
 - Motion: `--t-fast 120ms` (cursor, slight overshoot) · `--t-base 180ms` ·
   `--t-section 280ms` · `--t-sheet 240ms` · `--t-intro 600ms` · `--t-pulse 1200ms`
 
-## Components (one SCSS partial + one JS module each)
+## Components (SCSS partial in `src/styles/components/`; JS module in `src/components/` when it builds DOM)
+
+Live showcase (dev only, not built): `npm run dev` → `/the-legend-of-portfolio/dev/design-system.html`.
 
 | Component | Key traits |
 |---|---|

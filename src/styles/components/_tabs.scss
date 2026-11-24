@@ -1,0 +1,75 @@
+@use '../tokens' as *;
+
+.c-tabs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: u(12);
+  width: fit-content;
+  padding: u(30) u(8) u(12);
+  border-bottom: 1px solid var(--c-border);
+
+  &__list {
+    display: flex;
+    gap: u(14);
+  }
+
+  &__key {
+    opacity: 0.8;
+  }
+
+  &__tab {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: u(46);
+    height: u(46);
+    padding: 0;
+    color: var(--c-text-muted);
+    background: none;
+    border: 0;
+    opacity: 0.75;
+    transition:
+      color var(--t-base),
+      opacity var(--t-base);
+
+    &.is-active {
+      color: var(--c-text);
+      opacity: 1;
+      filter: drop-shadow(0 0 u(5) rgb(255 255 255 / 35%));
+    }
+
+    // Diamond marker sitting on the underline below the active tab.
+    &.is-active::after {
+      content: '';
+      position: absolute;
+      bottom: u(-17.5);
+      left: 50%;
+      width: u(9);
+      height: u(9);
+      background: var(--c-text);
+      translate: -50% 0;
+      rotate: 45deg;
+    }
+  }
+
+  &__tab > .c-icon {
+    font-size: u(36);
+  }
+
+  &__name {
+    position: absolute;
+    bottom: calc(100% + u(6));
+    left: 50%;
+    font-size: u(15);
+    white-space: nowrap;
+    translate: -50% 0;
+  }
+
+  &__tab:not(.is-active) &__name {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+}

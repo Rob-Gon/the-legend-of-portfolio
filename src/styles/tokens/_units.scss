@@ -1,8 +1,8 @@
-@use 'sass:math';
-
-// Stage units: designs are specified on a 1280 × 720 stage where 1em = 16px.
+// Stage units: designs are specified on a 1280 × 720 stage. `--u` is one stage pixel
+// (1px outside the desktop stage). Using a custom property instead of `em` means sizes never
+// compound when a container changes its font-size.
 @function u($px) {
-  @return math.div($px, 16) * 1em;
+  @return calc(#{$px} * var(--u));
 }
 
 $bp-tablet: 768px;

@@ -40,6 +40,11 @@ npm run dev          # Vite dev server
 | `npm run lint`     | ESLint + Stylelint + Prettier check                                                                            |
 | `npm run format`   | Auto-format and auto-fix                                                                                       |
 
+## Design system
+
+Component showcase (development only): run `npm run dev` and open
+`http://localhost:5173/the-legend-of-portfolio/dev/design-system.html`.
+
 ## Editing content
 
 All text and data live in `public/data/{es,en}/*.json` — no code changes needed. See

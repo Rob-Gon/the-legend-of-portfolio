@@ -1,1 +1,7 @@
-// Component partials are forwarded from here, starting in M1.
+@forward 'base';
+@forward 'list';
+@forward 'grid';
+@forward 'tabs';
+@forward 'detail';
+@forward 'hints';
+@forward 'hud';

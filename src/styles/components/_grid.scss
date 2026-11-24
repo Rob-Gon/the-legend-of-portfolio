@@ -1,0 +1,90 @@
+@use '../tokens' as *;
+@use 'selection' as *;
+
+.c-grid {
+  display: flex;
+  flex-direction: column;
+  gap: u(16);
+
+  &__row {
+    display: flex;
+    gap: u(16);
+  }
+}
+
+.c-cell {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: u(82);
+  height: u(82);
+  background: var(--c-row);
+  border: 1px solid var(--c-border);
+  cursor: pointer;
+  transition:
+    border-color var(--t-base),
+    box-shadow var(--t-base);
+
+  &__icon {
+    width: u(50);
+    height: u(50);
+    object-fit: contain;
+  }
+
+  &__badge {
+    position: absolute;
+    right: u(3);
+    bottom: u(3);
+    min-width: u(24);
+    padding: 0 u(4);
+    font-size: u(15);
+    font-style: normal;
+    font-weight: var(--fw-bold);
+    line-height: u(20);
+    text-align: center;
+    background: rgb(0 0 0 / 85%);
+  }
+
+  &--featured {
+    background: var(--c-equipped);
+    border-color: rgb(140 200 255 / 60%);
+  }
+
+  &.is-selected,
+  &:focus-visible {
+    @include selected-surface;
+
+    &::before {
+      @include brackets(u(-6), u(14));
+    }
+  }
+}
+
+@media (hover: hover) {
+  .c-cell:hover {
+    border-color: rgb(226 222 211 / 60%);
+  }
+}
+
+// Large tan arrows beside the grid to change page.
+.c-pager {
+  display: grid;
+  place-items: center;
+  width: u(40);
+  height: u(80);
+  padding: 0;
+  font-size: u(56);
+  color: var(--c-border-strong);
+  background: none;
+  border: 0;
+  filter: drop-shadow(0 0 u(4) rgb(0 0 0 / 70%));
+
+  &--next .c-icon {
+    scale: -1 1;
+  }
+
+  &:disabled {
+    visibility: hidden;
+  }
+}

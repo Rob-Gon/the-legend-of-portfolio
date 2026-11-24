@@ -1,0 +1,107 @@
+@use '../tokens' as *;
+@use 'selection' as *;
+
+.c-icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+}
+
+// Keycap (keyboard) and round glyph (gamepad). `data-input` on <html> picks which one shows.
+.c-key {
+  display: inline-grid;
+  place-items: center;
+  min-width: u(22);
+  height: u(22);
+  padding: 0 u(5);
+  border-radius: u(4);
+  font-size: u(12);
+  font-style: normal;
+  font-weight: var(--fw-bold);
+  font-family: var(--f-ui);
+  line-height: 1;
+  color: var(--c-ink);
+  background: var(--c-text);
+}
+
+.c-key--pad {
+  display: none;
+  width: u(24);
+  height: u(24);
+  padding: 0;
+  border-radius: 50%;
+}
+
+:root[data-input='gamepad'] {
+  .c-key--kb {
+    display: none;
+  }
+
+  .c-key--pad {
+    display: inline-grid;
+  }
+}
+
+.c-panel {
+  --cut: #{u(10)};
+
+  position: relative;
+  background: var(--c-panel);
+  clip-path: polygon(
+    var(--cut) 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut)),
+    0 var(--cut)
+  );
+
+  // Inner hairline frame; the corner cuts above leave the small notches of the reference.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: u(4);
+    border: 1px solid var(--c-border);
+    pointer-events: none;
+  }
+}
+
+.c-panel--plain {
+  --cut: 0;
+}
+
+.c-button {
+  position: relative;
+  width: u(220);
+  height: u(46);
+  font-size: u(19);
+  font-weight: var(--fw-bold);
+  font-style: italic;
+  background: var(--c-row);
+  border: 1px solid var(--c-border);
+  transition:
+    border-color var(--t-base),
+    box-shadow var(--t-base);
+
+  &.is-selected,
+  &:focus-visible {
+    @include selected-surface;
+
+    &::before {
+      @include brackets;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .c-button:hover {
+    border-color: rgb(226 222 211 / 60%);
+  }
+}
+
+.u-hl {
+  font-style: inherit;
+  color: var(--c-accent-red);
+}
