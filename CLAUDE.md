@@ -55,7 +55,8 @@ Details: `.claude/rules/architecture.md`.
 - **No TypeScript and no JSDoc type checking** (owner's decision), overriding the global
   "TypeScript in new code" preference.
 - Phased work: never start the next phase or milestone without the owner's OK
-  (see `docs/PROJECT_BRIEF.md` §8). Each milestone ends with green tests, a commit and a stop.
+  (see `docs/PROJECT_BRIEF.md` §8). Each milestone ends with green tests, a commit (only after the
+  owner's OK) and a stop. Commits carry no authorship trailers (no `Co-Authored-By`).
 - Every visible string comes from JSON (`ui.json` or content files). No hard-coded copy in JS
   or HTML, except the minimal fallback error shown when `ui.json` itself fails to load.
 - Chat with the owner in Spanish; code, comments, commits and docs in English. Content JSON is
