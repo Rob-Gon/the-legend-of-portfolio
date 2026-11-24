@@ -1,0 +1,17 @@
+@use '../tokens' as *;
+
+.l-stage {
+  min-height: 100dvh;
+  background: var(--c-backdrop);
+
+  // Desktop: a 16:9 stage that scales as a whole; children size themselves with u().
+  @include from($bp-desktop) {
+    position: relative;
+    width: min(100vw, calc(100vh * 16 / 9));
+    height: min(100vh, calc(100vw * 9 / 16));
+    min-height: 0;
+    margin: auto;
+    overflow: hidden;
+    font-size: min(1.25vw, 2.2222vh);
+  }
+}

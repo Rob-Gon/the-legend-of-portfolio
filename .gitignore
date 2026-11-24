@@ -1,0 +1,19 @@
+# Dependencies and build output
+node_modules/
+dist/
+
+# Test artefacts
+playwright-report/
+test-results/
+blob-report/
+coverage/
+
+# Private sources and game references: never committed (see .claude/rules/assets-ip.md)
+docs/sources/
+docs/references/
+
+# Local tooling
+.claude/settings.local.json
+*.log
+.DS_Store
+Thumbs.db

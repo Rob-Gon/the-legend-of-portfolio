@@ -1,0 +1,15 @@
+@use 'sass:math';
+
+// Stage units: designs are specified on a 1280 × 720 stage where 1em = 16px.
+@function u($px) {
+  @return math.div($px, 16) * 1em;
+}
+
+$bp-tablet: 768px;
+$bp-desktop: 1200px;
+
+@mixin from($bp) {
+  @media (width >= $bp) {
+    @content;
+  }
+}
