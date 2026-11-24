@@ -17,3 +17,8 @@ docs/references/
 *.log
 .DS_Store
 Thumbs.db
+
+# Environment files (the site needs none; guard against accidental secrets)
+.env
+.env.*
+!.env.example
