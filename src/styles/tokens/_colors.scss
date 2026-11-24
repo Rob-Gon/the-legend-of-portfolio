@@ -1,0 +1,24 @@
+:root {
+  --c-text: #e9e1d1;
+  --c-ink: #1b1a17;
+  --c-text-muted: #b8b1a3;
+  --c-text-done: #9a958b;
+  --c-border: rgb(226 222 211 / 35%);
+  --c-border-strong: #e2ded3;
+  --c-accent-yellow: #e2d146;
+  --c-accent-red: #f15050;
+  --c-accent-green: #6fd49c;
+  --c-accent-blue: #3cd3fc;
+  --c-equipped: linear-gradient(180deg, #1f8bff, #0b5fd0);
+  --c-panel: rgb(0 0 0 / 60%);
+  --c-row: rgb(0 0 0 / 78%);
+  --c-callout: rgb(10 40 70 / 78%);
+  --c-callout-line: #3b8ed8;
+  --c-heart: #e3343f;
+  --c-gem: #3fbf5a;
+  --c-backdrop:
+    radial-gradient(ellipse at 28% 18%, rgb(86 116 64 / 35%), transparent 60%),
+    radial-gradient(ellipse at 82% 85%, rgb(40 72 52 / 45%), transparent 55%),
+    linear-gradient(160deg, #1e2b1b, #0f160e);
+  --c-title-bg: linear-gradient(115deg, #b99a5b 0%, #7a5e3c 55%, #3a2c35 100%);
+}

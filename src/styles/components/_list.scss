@@ -1,0 +1,112 @@
+@use '../tokens' as *;
+@use 'selection' as *;
+
+.c-list {
+  display: flex;
+  flex-direction: column;
+  gap: u(14);
+  padding: 0;
+  list-style: none;
+}
+
+.c-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: u(10);
+  width: u(420);
+  height: u(56);
+  padding: 0 u(4) 0 u(12);
+  background: var(--c-row);
+  border: 1px solid var(--c-border);
+  cursor: pointer;
+  transition:
+    border-color var(--t-base),
+    box-shadow var(--t-base);
+
+  &__icon {
+    flex: none;
+    font-size: u(40);
+    line-height: 0;
+  }
+
+  &__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__title,
+  &__subtitle {
+    overflow: hidden;
+    font-weight: var(--fw-bold);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__title {
+    font-size: u(22);
+    line-height: 1.15;
+  }
+
+  &__subtitle {
+    font-size: u(13);
+    color: var(--c-accent-yellow);
+  }
+
+  // Small box on the right; a dot by default, a glowing ring when the quest is active.
+  &__status {
+    display: grid;
+    flex: none;
+    place-items: center;
+    align-self: stretch;
+    width: u(22);
+    margin: u(4) 0;
+    background: rgb(255 255 255 / 8%);
+
+    &::after {
+      content: '';
+      width: u(3);
+      height: u(3);
+      background: var(--c-text-muted);
+      border-radius: 50%;
+    }
+  }
+
+  &--active &__status::after {
+    width: u(12);
+    height: u(12);
+    background: radial-gradient(var(--c-accent-yellow) 32%, transparent 38%);
+    border: u(2) solid var(--c-accent-yellow);
+    box-shadow: 0 0 u(6) var(--c-accent-yellow);
+  }
+
+  &--done {
+    border-color: rgb(226 222 211 / 15%);
+  }
+
+  &--done &__title,
+  &--done &__subtitle {
+    color: var(--c-text-done);
+  }
+
+  &--done &__icon {
+    opacity: 0.45;
+  }
+
+  &.is-selected,
+  &:focus-visible {
+    @include selected-surface;
+
+    &::before {
+      @include brackets;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .c-row:hover {
+    border-color: rgb(226 222 211 / 60%);
+  }
+}
