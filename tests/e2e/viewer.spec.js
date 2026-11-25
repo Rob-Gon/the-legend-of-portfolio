@@ -13,7 +13,8 @@ test('desktop: the 3D viewer loads lazily in the Inventory and replaces the 2D p
   await expect(page.locator('canvas')).toHaveCount(0);
 
   await page.goto('./#/inventario/tecnologias/laravel');
-  await expect(page.locator('canvas.c-viewer__canvas')).toHaveCount(1);
+  // Lazy chunk + model download + shader compile in software WebGL: allow more than the default.
+  await expect(page.locator('canvas.c-viewer__canvas')).toHaveCount(1, { timeout: 15_000 });
   await expect(page.locator('.s-inventory.has-3d')).toHaveCount(1);
   await expect(page.locator('.s-inventory__preview')).toBeHidden();
 
