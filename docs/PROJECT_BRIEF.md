@@ -215,7 +215,8 @@ Common rules for every file:
   "role": "Desarrollador Full-Stack",
   "summary": [
     "Empecé muy joven haciendo páginas en WordPress y, de forma autodidacta, descubrí que el desarrollo web era mi vocación.",
-    "Hoy me muevo con más soltura en {{Laravel}} y {{React}}: desarrollo back end y front end, diseño de interfaces y resolución de incidencias."
+    "Hoy me muevo con más soltura en {{Laravel}} y {{React}}: desarrollo back end y front end, diseño de interfaces y resolución de incidencias.",
+    "Ahora estoy inmerso en proyectos de {{IA}}, {{automatización de procesos}} y {{desarrollo de videojuegos}}: flujos con n8n, back ends en PHP y Laravel conectados por APIs REST, interfaces en React y JavaScript, MongoDB y MySQL, Git y Docker."
   ],
   "keyItems": [
     { "id": "email", "icon": "letter", "name": "Email", "value": "<email from CV>", "href": "mailto:<email from CV>", "_source": "cv" },
@@ -250,13 +251,15 @@ Common rules for every file:
       "period": { "start": "2025-04", "end": "2026-11" },
       "summary": "Plataforma {{ERP}} empresarial del sector automoción con Laravel y JavaScript.",
       "details": [
-        "Ingestión automatizada de datos por {{SFTP}}.",
-        "Procesamiento con {{colas}} para facturación y contabilidad.",
+        "Ingestión automatizada de datos por {{SFTP}} y su procesamiento con {{MongoDB}}.",
+        "Facturación y contabilidad procesadas con {{colas}}.",
         "Integraciones con varias {{APIs externas}} y control de acceso granular.",
-        "Diseño y desarrollo de módulos completos en producción, con apoyo de Claude Code."
+        "Módulo de {{chat con WhatsApp}} desarrollado desde cero: mensajería en tiempo real con la API oficial de Meta, Laravel Reverb y Echo. Lo usan 100 operadores y ha gestionado más de 100.000 mensajes.",
+        "Mantenimiento de otras aplicaciones del grupo, como la gestión de grúas y el servicio de campa.",
+        "Flujo de trabajo con herramientas de IA como {{Claude Code}}."
       ],
-      "stack": ["laravel", "php", "javascript", "mysql", "mongodb", "sass", "claude-code"],
-      "_source": "user",
+      "stack": ["laravel", "php", "javascript", "mysql", "mongodb", "laravel-reverb", "rest-apis", "sass", "claude-code"],
+      "_source": "user+linkedin",
       "_review": true
     }
   ]
@@ -296,12 +299,29 @@ Common rules for every file:
       "confidential": true,
       "summary": "ERP empresarial del sector automoción: ingestión de datos, facturación y contabilidad.",
       "role": "Desarrollador full-stack en parte de la aplicación.",
-      "highlights": ["Ingestión automatizada por {{SFTP}}", "Colas para facturación y contabilidad", "Integraciones con APIs externas", "Control de acceso granular"],
-      "stack": ["laravel", "php", "javascript", "mysql"],
+      "highlights": ["Ingestión automatizada por {{SFTP}} y procesamiento con MongoDB", "Colas para facturación y contabilidad", "Integraciones con APIs externas", "Control de acceso granular"],
+      "stack": ["laravel", "php", "javascript", "mysql", "mongodb"],
       "image": { "src": "img/projects/automotive-erp", "alt": "Ilustración abstracta de un panel de ERP (proyecto confidencial)" },
       "links": { "demo": null, "repo": null },
       "_source": "user",
       "_review": true
+    },
+    {
+      "id": "erp-whatsapp-chat",
+      "title": "Chat de WhatsApp para el ERP",
+      "context": "Grupo ARI · Profesional",
+      "period": { "start": "2025-04", "end": "2026-11" },
+      "featured": true,
+      "confidential": true,
+      "summary": "Módulo de mensajería en tiempo real con WhatsApp, integrado en el ERP del grupo.",
+      "role": "Lo desarrollé desde cero.",
+      "highlights": ["API oficial de {{WhatsApp}} (Meta)", "Tiempo real con {{Laravel Reverb}} y Echo", "100 operadores en activo", "Más de 100.000 mensajes gestionados"],
+      "stack": ["laravel", "php", "javascript", "laravel-reverb", "rest-apis"],
+      "image": { "src": "img/projects/erp-whatsapp-chat", "alt": "Ilustración abstracta de una conversación de chat (proyecto confidencial)" },
+      "links": { "demo": null, "repo": null },
+      "_source": "linkedin",
+      "_review": true,
+      "_note": "Period is the whole job; confirm the module's real dates"
     }
   ]
 }
@@ -378,7 +398,7 @@ they never need manual updates.
 
 - **Hearts: fixed value `profile.hud.hearts = 3`.** The accessible label still states the
   computed experience ("2 years and 5 months of professional experience").
-- **Gems = number of projects** in Memories (computed from `projects.json`, currently 10).
+- **Gems = number of projects** in Memories (computed from `projects.json`, currently 11).
   Own faceted-gem icon, not the game's rupee silhouette.
 - **Availability badge** ("Disponible para trabajar") in the HUD and in Quick mode, driven by
   `profile.available`.
@@ -398,8 +418,8 @@ Exactly three tabs: **Weapons** (technologies) · **Armour** (soft skills) · **
 | 4 | TypeScript | 3 | Crealia IT |
 | 5 | React | 3 | Crealia IT, Advance |
 | 6 | MySQL (and SQL) | 4 | Grupo ARI, Crealia IT, CIFP |
-| 7 | MongoDB | 3 | Grupo ARI, Crealia IT |
-| 8 | REST APIs | 4 | Grupo ARI (CV) |
+| 7 | MongoDB | 3 | Grupo ARI (SFTP data processing), Crealia IT |
+| 8 | REST APIs | 4 | Grupo ARI (CV; Meta WhatsApp API, LinkedIn) |
 | 9 | Sass | 4 | Grupo ARI, Crealia IT, Advance |
 | 10 | HTML | 4 | Grupo ARI, CIFP, cert. |
 | 11 | CSS | 4 | Grupo ARI, CIFP, cert. |
@@ -409,10 +429,13 @@ Exactly three tabs: **Weapons** (technologies) · **Armour** (soft skills) · **
 | 15 | Material UI | 2 | Crealia IT |
 
 **Page "Secundarias":** Jest (2, Advance) · JSON (4) · XML (2) · XQuery (1, CIFP) ·
-Java (2, CIFP + 2 certs) · C# (2, CIFP + cert + LinkedIn assessment) · Python (2, cert).
+Java (2, CIFP + 2 certs) · C# (2, CIFP + cert + LinkedIn assessment) · Python (2, cert) ·
+Laravel Reverb + Echo / WebSockets (3, Grupo ARI WhatsApp chat module; LinkedIn).
 
 **Page "Herramientas":** Claude Code / AI · GitHub · GitLab · Postman · Jira & Atlassian ·
-Trello · DBeaver · Linux (Ubuntu, Debian) · Scrum & sprints.
+Trello · DBeaver · Linux (Ubuntu, Debian) · Scrum & sprints · n8n (2, current personal AI and
+automation projects; LinkedIn) · Docker (2, current personal projects; LinkedIn).
+Neither has a job in `usedIn`, so they show no computed years.
 
 **Page "Ofimática y diseño":** Photoshop · Premiere Pro · Lightroom · Excel · Word · PowerPoint.
 
@@ -422,12 +445,13 @@ Trello · DBeaver · Linux (Ubuntu, Debian) · Scrum & sprints.
 |---|---|
 | Communication | Working efficiently with colleagues and superiors (CV) |
 | Teamwork | Scrum sprints at Advance Digital Experts (skills list) |
-| Problem solving | Supporting and fixing Grupo ARI's existing applications (LinkedIn) |
+| Problem solving | Supporting and fixing Grupo ARI's other applications: tow-truck management and vehicle yard service (LinkedIn) |
 | Analytical thinking | Designing SFTP ingestion + queue processing for invoicing/accounting in the automotive ERP (user) |
 | Emotional intelligence | LinkedIn top skill; concrete example `_placeholder` |
 | Working under pressure | Production modules delivered at Grupo ARI and Crealia IT (CV) |
-| Commitment | 1 year 8 months building an ERP end to end (LinkedIn) |
+| Commitment | 1 year 8 months on the ERP; WhatsApp chat module built from scratch, now used by 100 operators (LinkedIn) |
 | Versatility | Laravel/JS at Grupo ARI, React/TypeScript at Crealia IT (LinkedIn) |
+| Determination | Self-taught path from first WordPress sites to the Higher VET Diploma and a full-stack job (LinkedIn) |
 
 **Key items (published):** email, LinkedIn, GitHub, location "Gran Canaria (Spain)",
 languages, availability, CV PDF. **Not published:** phone, age, driving licence.
@@ -440,11 +464,12 @@ resolution) go into the profile summary, not the grid.
 ### 5.4 Main quests
 
 **Active (goals, confirmed by you):**
-1. Find new projects related to AI and AI-driven automation.
+1. Find new projects related to AI and AI-driven automation. Includes process automation with n8n
+   and video game development (LinkedIn, Nov 2026; confirmed).
 2. Keep improving the skills I already have.
 
 **Completed (greyed):**
-1. Full-Stack Developer — Grupo ARI (automotive ERP), 2025-04 → 2026-11
+1. Full-Stack Developer — Grupo ARI (automotive ERP + WhatsApp chat module), 2025-04 → 2026-11
 2. Full-Stack Developer — Crealia IT (pharmacy + logistics web apps), 2024-10 → 2025-03
 3. Front-end Developer (internship) — Advance Digital Experts SL, 2024-03 → 2024-05
 4. Higher VET Diploma in Web Application Development — CIFP Villa de Agüimes, 2021 → 2024
@@ -464,15 +489,16 @@ Crealia IT apps are not published; their descriptions come only from the CV and 
 | # | Project | Type | Links |
 |---|---|---|---|
 | 1 | Automotive ERP | Grupo ARI, confidential | — |
-| 2 | Pharmacy web application | Crealia IT, maintenance (React + TypeScript, MongoDB/SQL/PHP) | — |
-| 3 | Logistics web application | Crealia IT, maintenance (same stack) | — |
-| 4 | The Legend Of Portfolio (this site) | Personal | demo + repo |
-| 5 | Proyecto-Web | Laravel + Blade + JS (2024); description from repo data only | repo |
-| 6 | Api-Rest | Laravel REST API | repo |
-| 7 | Modules-List | Laravel, role-based access | repo |
-| 8 | Contact-Form | JS + Bootstrap, validations | demo + repo |
-| 9 | To-Dos | Laravel, categories | repo |
-| 10 | CRUD-Projects | Laravel 8 CRUD | repo |
+| 2 | WhatsApp chat module for the ERP | Grupo ARI, confidential; Meta API + Laravel Reverb/Echo; 100 operators, 100,000+ messages (LinkedIn) | — |
+| 3 | Pharmacy web application | Crealia IT, maintenance (React + TypeScript, MongoDB/SQL/PHP) | — |
+| 4 | Logistics web application | Crealia IT, maintenance (same stack) | — |
+| 5 | The Legend Of Portfolio (this site) | Personal | demo + repo |
+| 6 | Proyecto-Web | Laravel + Blade + JS (2024); description from repo data only | repo |
+| 7 | Api-Rest | Laravel REST API | repo |
+| 8 | Modules-List | Laravel, role-based access | repo |
+| 9 | Contact-Form | JS + Bootstrap, validations | demo + repo |
+| 10 | To-Dos | Laravel, categories | repo |
+| 11 | CRUD-Projects | Laravel 8 CRUD | repo |
 
 ### 5.6 Side quests
 
@@ -636,10 +662,10 @@ run with `npx` instead of installed). Fonts as downloaded WOFF2 files (no packag
 | 7 | Levels | 1–5 scale; years computed from job dates |
 | 8 | HUD | 3 hearts (fixed); gems = number of projects |
 | 9 | Public repos | No README changes; Proyecto-Web described from repo data only |
-| 10 | Confidentiality | Never publish the ERP's product name or Crealia's client names; descriptions from CV/LinkedIn |
+| 10 | Confidentiality | Never publish the ERP's product name or Crealia's client names; descriptions from CV/LinkedIn. Only metrics the owner made public on LinkedIn (WhatsApp module: 100 operators, 100,000+ messages) |
 | 11 | Project images | Own illustrations |
 | 12 | Side quests | Music and photography/video confirmed |
-| 13 | Extra soft skills | Add working under pressure, commitment, versatility |
+| 13 | Extra soft skills | Add working under pressure, commitment, versatility; determination (LinkedIn, Nov 2026) |
 | 14 | Repo / deploy | `the-legend-of-portfolio` on GitHub Pages, `base: '/the-legend-of-portfolio/'` |
 | 15 | Initial language | Saved preference → else Spanish if `navigator.languages` has `es*` → else English |
 | 16 | Type checking | Plain JS, no type checking (C7 rejected) |
