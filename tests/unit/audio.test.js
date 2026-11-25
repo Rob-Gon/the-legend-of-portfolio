@@ -1,7 +1,13 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { FADE_IN_MS, FADE_OUT_MS, createAudio } from '../../src/audio/audio.js';
+import {
+  FADE_IN_MS,
+  FADE_OUT_MS,
+  TYPING,
+  createAudio,
+  typingPattern,
+} from '../../src/audio/audio.js';
 import { createPlaylist } from '../../src/audio/playlist.js';
 
 const tracks = ['intro', 'a', 'b', 'c'].map((id) => ({
@@ -66,6 +72,10 @@ function fakeHowler() {
     play() {
       this.calls.push('play');
       this.isPlaying = true;
+      return this.calls.length;
+    }
+    rate(value) {
+      this.calls.push(`rate:${value.toFixed(2)}`);
     }
     pause() {
       this.calls.push('pause');
@@ -115,7 +125,13 @@ function fakeHowler() {
 const manifest = {
   intro: 'intro',
   music: tracks,
-  sfx: { cursor: ['sfx/cursor.mp3'], guide: ['sfx/guide.mp3'] },
+  sfx: {
+    cursor: ['sfx/cursor.mp3'],
+    guide: ['sfx/guide.mp3'],
+    key1: ['sfx/key-1.mp3'],
+    key2: ['sfx/key-2.mp3'],
+    key3: ['sfx/key-3.mp3'],
+  },
 };
 const prefs = {
   volume: 1,
@@ -252,6 +268,23 @@ describe('audio player', () => {
     expect(guide.calls).toEqual(['stop', 'volume:0.7', 'play', 'stop', 'volume:0.7', 'play']);
   });
 
+  it('types a burst of key clicks at varied rates, and a new burst replaces the old one', () => {
+    setup();
+    const clicks = () =>
+      TYPING.keys
+        .flatMap((key) => effect(key.replace('key', 'key-')).calls)
+        .filter((call) => call.startsWith('rate:'));
+    player.sfx('typing');
+    vi.advanceTimersByTime(TYPING.durationMs / 2);
+    const firstHalf = clicks().length;
+    expect(firstHalf).toBeGreaterThan(3);
+    player.sfx('typing'); // restart: the rest of the first burst never plays
+    vi.advanceTimersByTime(TYPING.durationMs * 2);
+    const total = clicks().length - firstHalf;
+    expect(total).toBeLessThanOrEqual(Math.ceil(TYPING.durationMs / TYPING.gapMs[0]) + 1);
+    expect(new Set(clicks()).size).toBeGreaterThan(1); // not all at the same pitch
+  });
+
   it('throttles the cursor sound and ignores effects that failed to load', () => {
     setup();
     player.sfx('cursor');
@@ -264,6 +297,21 @@ describe('audio player', () => {
     player.sfx('guide');
     expect(effect('guide').calls).not.toContain('play');
     player.sfx('missing');
+  });
+});
+
+describe('typing pattern', () => {
+  it('spreads clicks over the burst at a human pace, within the rate range', () => {
+    const presses = typingPattern(1500);
+    expect(presses[0].at).toBe(0);
+    for (const [index, press] of presses.entries()) {
+      expect(press.at).toBeLessThan(1500);
+      expect(TYPING.keys).toContain(press.key);
+      expect(press.rate).toBeGreaterThanOrEqual(TYPING.rate[0]);
+      expect(press.rate).toBeLessThanOrEqual(TYPING.rate[1]);
+      if (index)
+        expect(press.at - presses[index - 1].at).toBeGreaterThanOrEqual(TYPING.gapMs[0] - 1);
+    }
   });
 });
 

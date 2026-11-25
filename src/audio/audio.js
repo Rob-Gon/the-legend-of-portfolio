@@ -7,6 +7,29 @@ export const FADE_OUT_MS = 1500;
 const MIN_GAP_MS = { cursor: 60, guide: 400 };
 const DEFAULT_GAP_MS = 80;
 
+// Typing burst (Key items): a few key clicks at a human pace, each at its own pitch and speed,
+// so three short Kenney clicks sound like many different keys.
+export const TYPING = {
+  durationMs: 1500,
+  gapMs: [70, 150],
+  rate: [0.85, 1.25],
+  keys: ['key1', 'key2', 'key3'],
+};
+
+/** Pure: the clicks of one typing burst — when (ms from the start), which key and its rate. */
+export function typingPattern(durationMs = TYPING.durationMs, random = Math.random) {
+  const between = (min, max) => min + random() * (max - min);
+  const presses = [];
+  for (let at = 0; at < durationMs; at += between(...TYPING.gapMs)) {
+    presses.push({
+      at: Math.round(at),
+      key: TYPING.keys[Math.floor(random() * TYPING.keys.length)],
+      rate: between(...TYPING.rate),
+    });
+  }
+  return presses;
+}
+
 /**
  * Howler wrapper. Everything it needs is injected (Howl, Howler, manifest, prefs), so it can be
  * tested without a browser. It never starts on its own: the caller creates it after a user
@@ -60,7 +83,23 @@ export function createAudio({
   let pausedByVisibility = false;
   const ending = new WeakSet();
 
+  let typingTimers = [];
+
+  /** Plays a typing burst; a new burst replaces the one still running. */
+  function typing() {
+    typingTimers.forEach(clearTimeout);
+    typingTimers = typingPattern().map(({ at, key, rate }) =>
+      setTimeout(() => {
+        const sound = effects[key];
+        if (!sound || broken.has(key)) return;
+        sound.volume(settings.sfxVolume);
+        sound.rate(rate, sound.play());
+      }, at),
+    );
+  }
+
   function sfx(name) {
+    if (name === 'typing') return typing();
     const sound = effects[name];
     if (!sound || broken.has(name)) return;
     const time = now();
@@ -164,6 +203,7 @@ export function createAudio({
     },
     destroy() {
       clearInterval(watcher);
+      typingTimers.forEach(clearTimeout);
       music?.unload();
       Object.values(effects).forEach((sound) => sound.unload());
     },
