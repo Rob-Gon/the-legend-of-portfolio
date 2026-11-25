@@ -22,8 +22,20 @@ const root = document.querySelector('#app');
 const CONTENT_FILES = ['profile', 'quests', 'sidequests', 'projects', 'tech', 'softskills'];
 const loadContent = (lang) => Promise.all(CONTENT_FILES.map((file) => load(lang, file)));
 let active = null;
-// Music bar: lives outside the screen host so it stays across screen changes.
-const musicHost = el('div', { class: 'l-music' });
+// Language shortcut + music bar: live outside the screen host so they stay across screens.
+const languageButton = el('button', {
+  class: 'c-music__button c-music__button--lang',
+  type: 'button',
+  dataset: { action: 'language' },
+});
+const musicBar = el('div', { class: 'l-music__bar' });
+const musicHost = el('div', { class: 'l-music' }, [languageButton, musicBar]);
+
+function syncLanguageButton() {
+  languageButton.textContent = t('meta.langCode');
+  languageButton.setAttribute('aria-label', t('a11y.switchLanguage'));
+  languageButton.title = t('a11y.switchLanguage');
+}
 
 const screenFor = (section) => (section === null ? title : section === 'guide' ? guide : hub);
 
@@ -31,7 +43,10 @@ const screenFor = (section) => (section === null ? title : section === 'guide' ?
 function show({ animate }) {
   active = screenFor(state.section);
   const host = el('div', { class: `l-screen${animate ? ' l-screen--enter' : ''}` });
+  // Re-inserting the bar blurs it: keep focus on the bar button the user was on.
+  const focused = musicHost.contains(document.activeElement) ? document.activeElement : null;
   root.replaceChildren(host, musicHost);
+  focused?.focus();
   active.mount(host);
 }
 
@@ -102,7 +117,10 @@ function onStateChange({ detail: { keys } }) {
     applyMotion(state.prefs.motion);
     refreshMotion();
   }
-  if (keys.includes('lang')) return show({ animate: false });
+  if (keys.includes('lang')) {
+    syncLanguageButton();
+    return show({ animate: false });
+  }
   if (keys.includes('section') && screenFor(state.section) !== active) {
     return show({ animate: true });
   }
@@ -122,8 +140,9 @@ if (ui.ok) {
   set({ prefs, lang });
   applyMotion(prefs.motion);
   startRouter();
+  syncLanguageButton();
   show({ animate: false });
-  startAudio(musicHost);
+  startAudio(musicBar);
   // Crossing the mobile breakpoint swaps layouts (grouped inventory, sheet): re-render.
   onLayoutChange(() => {
     closeSheet();

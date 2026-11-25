@@ -53,7 +53,17 @@
         "laravel-reverb",
         "rest-apis",
         "sass",
-        "claude-code"
+        "claude-code",
+        "html",
+        "css",
+        "git",
+        "vite",
+        "bootstrap",
+        "json",
+        "postman",
+        "jira",
+        "dbeaver",
+        "linux"
       ],
       "_source": "user+linkedin",
       "_review": true
@@ -75,7 +85,21 @@
         "Back-end: {{MongoDB}}, SQL y PHP.",
         "Módulos y componentes llevados a producción."
       ],
-      "stack": ["react", "typescript", "mongodb", "mysql", "php", "material-ui"],
+      "stack": [
+        "react",
+        "typescript",
+        "mongodb",
+        "mysql",
+        "php",
+        "material-ui",
+        "sass",
+        "html",
+        "css",
+        "git",
+        "gitlab",
+        "postman",
+        "linux"
+      ],
       "_source": "cv+user",
       "_review": true
     },
@@ -96,7 +120,7 @@
         "Componentes en distintos contextos, la mayoría en producción.",
         "Trabajo en sprints de {{Scrum}}."
       ],
-      "stack": ["react", "sass", "vite", "javascript", "jest"],
+      "stack": ["react", "sass", "vite", "javascript", "jest", "html", "css", "git", "scrum"],
       "_source": "cv+skills-list",
       "_review": true
     },
@@ -139,17 +163,6 @@
       "summary": "Certificados en PHP, JavaScript, HTML, CSS, Python, Java, Java avanzado y C#.",
       "stack": ["php", "javascript", "html", "css", "python", "java", "csharp"],
       "_source": "cv+linkedin",
-      "_review": true
-    },
-    {
-      "id": "linkedin-assessments",
-      "kind": "assessment",
-      "status": "completed",
-      "title": "Evaluaciones de aptitudes",
-      "org": "LinkedIn",
-      "summary": "Superadas las evaluaciones de C#, Git y desarrollo front-end.",
-      "stack": ["csharp", "git"],
-      "_source": "linkedin",
       "_review": true
     },
     {

@@ -114,7 +114,9 @@
     display: flex;
     gap: u(6);
     align-items: center;
-    max-width: 34%;
+
+    // Each neighbour gets half of what the centred music pill leaves, so they never touch it.
+    max-width: calc((100% - var(--music-pill)) / 2 - #{u(8)});
     min-height: var(--tap-min);
     padding: 0 u(10);
     font-size: u(15);
@@ -148,11 +150,27 @@
     width: var(--tap-min);
   }
 
-  // On hub screens the music bar sits in the middle of the section bar, compact.
-  .l-stage:has(.s-hub) .l-music {
-    bottom: calc(#{u(8)} + env(safe-area-inset-bottom));
-    left: 50%;
-    translate: -50% 0;
+  // On hub screens the music bar sits in the middle of the section bar, compact: three
+  // round buttons (language, play/pause, next). Its height (tap + 2 × 2 px + borders) is
+  // centred in the bar (tap + 2 × 8 px), hence the 5 px offset.
+  .l-stage:has(.s-hub) {
+    --music-pill: calc(3 * var(--tap-min) + 2 * #{u(8)} + 2 * #{u(6)} + 2px);
+
+    .l-music {
+      bottom: calc(#{u(5)} + env(safe-area-inset-bottom));
+      left: 50%;
+      padding: u(2) u(6);
+      translate: -50% 0;
+    }
+  }
+
+  // System: room under the HUD line and a full-width menu, aligned with the settings rows.
+  .s-system {
+    padding-top: u(16);
+  }
+
+  .s-system .c-menu {
+    width: 100%;
   }
 
   .l-stage:has(.s-hub) {

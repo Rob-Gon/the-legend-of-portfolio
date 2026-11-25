@@ -6,10 +6,18 @@
   bottom: calc(#{u(12)} + env(safe-area-inset-bottom));
   left: calc(#{u(12)} + env(safe-area-inset-left));
   z-index: 10;
+  display: flex;
+  gap: u(8);
+  align-items: center;
 
   @include from($bp-desktop) {
     position: absolute;
     bottom: u(18);
     left: u(60);
   }
+}
+
+// The bridge re-renders the music group inside this wrapper; it adds no box of its own.
+.l-music__bar {
+  display: contents;
 }

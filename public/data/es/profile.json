@@ -18,7 +18,8 @@
     },
     {
       "id": "linkedin",
-      "icon": "idcard",
+      "icon": "linkedin",
+      "color": "#0a66c2",
       "name": "LinkedIn",
       "value": ["roberto-gonzalez-web-dev"],
       "href": "https://www.linkedin.com/in/roberto-gonzalez-web-dev/",
