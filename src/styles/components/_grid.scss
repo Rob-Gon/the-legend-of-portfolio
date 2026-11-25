@@ -29,6 +29,7 @@
   &__icon {
     width: u(50);
     height: u(50);
+    color: var(--icon-color, currentcolor);
     object-fit: contain;
   }
 

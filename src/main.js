@@ -14,7 +14,7 @@ import * as hub from './screens/hub.js';
 const root = document.querySelector('#app');
 // Content preloaded with each language so screens render synchronously (no request waterfalls).
 // A file that fails stays unloaded and its screen shows the error state.
-const CONTENT_FILES = ['profile', 'quests', 'sidequests', 'projects'];
+const CONTENT_FILES = ['profile', 'quests', 'sidequests', 'projects', 'tech', 'softskills'];
 const loadContent = (lang) => Promise.all(CONTENT_FILES.map((file) => load(lang, file)));
 let active = null;
 

@@ -1,6 +1,10 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { createTranslator } from '../../src/core/i18n.js';
 import {
   currentMonth,
+  formatDuration,
   formatPeriod,
   monthsIn,
   totalExperience,
@@ -46,6 +50,25 @@ describe('formatPeriod', () => {
     ['es', { start: '2024-02', end: '2024-02' }, 'Feb 2024'],
   ])('%s %j → %s', (lang, period, text) => {
     expect(formatPeriod(period, lang, 'Actualidad')).toBe(text);
+  });
+});
+
+describe('formatDuration', () => {
+  const ui = (lang) => JSON.parse(readFileSync(resolve('public/data', lang, 'ui.json'), 'utf8'));
+  const es = createTranslator(ui('es'));
+  const en = createTranslator(ui('en'));
+
+  it.each([
+    [20, '1 año y 8 meses', '1 year and 8 months'],
+    [26, '2 años y 2 meses', '2 years and 2 months'],
+    [12, '1 año', '1 year'],
+    [24, '2 años', '2 years'],
+    [6, '6 meses', '6 months'],
+    [1, '1 mes', '1 month'],
+    [0, '0 meses', '0 months'],
+  ])('%i months', (months, spanish, english) => {
+    expect(formatDuration(months, es)).toBe(spanish);
+    expect(formatDuration(months, en)).toBe(english);
   });
 });
 

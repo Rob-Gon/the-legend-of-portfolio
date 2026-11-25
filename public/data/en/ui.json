@@ -73,7 +73,10 @@
     "role": "My role",
     "demo": "Demo",
     "repo": "Code",
-    "confidential": "Confidential project: no public links."
+    "confidential": "Confidential project: no public links.",
+    "levelOf": "Level {value} of 5",
+    "usedIn": "Used at",
+    "example": "Example"
   },
   "errors": {
     "data": "This section could not be loaded. Try reloading the page.",
@@ -148,5 +151,17 @@
   "journal": {
     "goal": "Current goal",
     "empty": "Nothing here yet."
+  },
+  "inventory": {
+    "page": "{name} · {current}/{total}",
+    "prevPage": "Previous page",
+    "nextPage": "Next page"
+  },
+  "duration": {
+    "year": "1 year",
+    "years": "{n} years",
+    "month": "1 month",
+    "months": "{n} months",
+    "and": "{a} and {b}"
   }
 }

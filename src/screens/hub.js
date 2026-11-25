@@ -10,12 +10,13 @@ import { set, state } from '../core/store.js';
 import { hints } from '../components/hints.js';
 import { hud } from '../components/hud.js';
 import { tabs } from '../components/tabs.js';
+import * as inventory from './inventory.js';
 import * as journal from './journal.js';
 import * as system from './system.js';
 
 const PANEL_ID = 'hub-panel';
-// Section content screens; Inventory arrives in M5.
-const PANELS = { journal, system };
+// Content screen for each section.
+const PANELS = { journal, inventory, system };
 
 let root = null;
 let shownIndex = -1;

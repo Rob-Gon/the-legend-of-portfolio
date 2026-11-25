@@ -1,15 +1,17 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import Ajv from 'ajv';
 import { describe, expect, it } from 'vitest';
 
-const FILES = ['profile', 'quests', 'sidequests', 'projects'];
+const FILES = ['profile', 'quests', 'sidequests', 'projects', 'tech', 'softskills'];
 const LANGS = ['es', 'en'];
 // Fields that are not translated and must be identical in every language.
 const NEUTRAL = {
   quests: ['kind', 'status', 'period', 'stack'],
   sidequests: ['links'],
   projects: ['period', 'featured', 'confidential', 'stack', 'links'],
+  tech: ['category', 'level', 'icon', 'color', 'usedIn', 'studiedIn'],
+  softskills: ['level', 'icon'],
 };
 
 const readJson = (...parts) => JSON.parse(readFileSync(resolve(...parts), 'utf8'));
@@ -25,9 +27,11 @@ describe.each(FILES)('%s.json', (file) => {
   });
 
   if (file === 'profile') {
-    it('keeps availability and hearts identical across languages', () => {
+    it('keeps availability, hearts and key item ids/icons identical across languages', () => {
       const [es, en] = LANGS.map((lang) => data(lang, file));
       expect([en.available, en.hud]).toEqual([es.available, es.hud]);
+      const neutral = (profile) => profile.keyItems.map(({ id, icon }) => ({ id, icon }));
+      expect(neutral(en)).toEqual(neutral(es));
     });
     return;
   }
@@ -45,6 +49,43 @@ describe.each(FILES)('%s.json', (file) => {
   it('has unique ids', () => {
     const ids = data('es', file).items.map((item) => item.id);
     expect(new Set(ids).size).toBe(ids.length);
+  });
+});
+
+describe('cross references', () => {
+  const quests = data('es', 'quests').items;
+  const techIds = data('es', 'tech').items.map((item) => item.id);
+  const icons = ['src/assets/icons', 'src/assets/tech'].flatMap((dir) =>
+    readdirSync(resolve(dir)).map((name) => name.replace('.svg', '')),
+  );
+
+  it('every stack id is a technology', () => {
+    const stacks = [...quests, ...data('es', 'projects').items].flatMap((item) => item.stack ?? []);
+    expect(stacks.filter((id) => !techIds.includes(id))).toEqual([]);
+  });
+
+  it('usedIn points to jobs with a period and studiedIn to existing quests', () => {
+    for (const tech of data('es', 'tech').items) {
+      for (const id of tech.usedIn) {
+        const job = quests.find((quest) => quest.id === id);
+        expect(job?.kind === 'job' && Boolean(job.period), `${tech.id} → ${id}`).toBe(true);
+      }
+      for (const id of tech.studiedIn) {
+        expect(
+          quests.some((quest) => quest.id === id),
+          `${tech.id} → ${id}`,
+        ).toBe(true);
+      }
+    }
+  });
+
+  it('every icon exists', () => {
+    const used = [
+      ...data('es', 'tech').items,
+      ...data('es', 'softskills').items,
+      ...data('es', 'profile').keyItems,
+    ].map((item) => item.icon);
+    expect(used.filter((name) => !icons.includes(name))).toEqual([]);
   });
 });
 
