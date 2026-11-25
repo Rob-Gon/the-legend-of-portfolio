@@ -5,9 +5,33 @@
 }
 
 .l-stage {
+  position: relative;
+  isolation: isolate;
   min-height: 100dvh;
   font-size: u(16);
   background: var(--c-backdrop);
+
+  // Like the game's pause menu: the world behind the menus, blurred and darkened. Fixed to the
+  // viewport, so it also fills the letterbox around the desktop stage; painted once (static).
+  &::before {
+    position: fixed;
+    inset: -48px;
+    z-index: -1;
+    content: '';
+    background:
+      linear-gradient(var(--c-backdrop-veil), var(--c-backdrop-veil)),
+      url('../../assets/scenery/landscape.svg') center / cover;
+    filter: blur(14px) saturate(0.8);
+  }
+
+  // Title screen: the same world, sharp and bright, pinned to the stage so the avatar
+  // always stands on the cliff.
+  &:has(.s-title)::before {
+    position: absolute;
+    inset: 0;
+    background: url('../../assets/scenery/landscape.svg') center / cover;
+    filter: none;
+  }
 
   // Desktop: a 16:9 stage that scales as a whole; children size themselves with u().
   @include from($bp-desktop) {
@@ -20,4 +44,20 @@
     margin: auto;
     overflow: hidden;
   }
+}
+
+// Backdrop alternatives for the hub (the title keeps its scenery).
+:root[data-backdrop='black'] .l-stage:not(:has(.s-title)),
+:root[data-backdrop='green'] .l-stage:not(:has(.s-title)) {
+  &::before {
+    display: none;
+  }
+}
+
+:root[data-backdrop='black'] .l-stage {
+  background: var(--c-backdrop-black);
+}
+
+:root[data-backdrop='green'] .l-stage {
+  background: var(--c-backdrop-green);
 }

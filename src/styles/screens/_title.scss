@@ -1,10 +1,74 @@
+@use 'sass:list';
 @use '../tokens' as *;
 
+// Where the floating lights drift over the valley: [left %, top %, delay s].
+$motes: (
+  (12, 58, 0),
+  (22, 70, 2.4),
+  (31, 52, 5.1),
+  (40, 76, 1.2),
+  (48, 62, 6.3),
+  (57, 81, 3.6),
+  (8, 82, 4.4),
+  (66, 68, 7.5),
+  (27, 88, 8.2),
+  (52, 46, 2.9)
+);
+
 .s-title {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
   padding: u(32) u(16) u(16);
+
+  // Keeps the text readable over the bright sky.
+  &::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: '';
+    background: linear-gradient(
+      180deg,
+      var(--c-title-scrim) 0%,
+      transparent 45%,
+      transparent 60%,
+      var(--c-title-scrim) 100%
+    );
+  }
+
+  &__motes {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  &__mote {
+    position: absolute;
+    width: u(6);
+    height: u(6);
+    background: var(--c-mote);
+    border-radius: 50%;
+    box-shadow: 0 0 u(10) u(3) rgb(255 246 200 / 55%);
+    opacity: 0.6;
+    animation: s-title-mote var(--t-drift) infinite;
+
+    @for $i from 1 through list.length($motes) {
+      $mote: list.nth($motes, $i);
+
+      &:nth-child(#{$i}) {
+        top: list.nth($mote, 2) * 1%;
+        left: list.nth($mote, 1) * 1%;
+        animation-delay: list.nth($mote, 3) * -1s;
+      }
+    }
+  }
+
+  &__avatar {
+    display: none;
+  }
 
   &__center {
     display: flex;
@@ -24,7 +88,9 @@
     font-style: normal;
     font-weight: 600;
     line-height: 1.1;
-    text-shadow: 0 0 u(18) rgb(233 225 209 / 25%);
+    text-shadow:
+      0 u(2) u(4) var(--c-title-glow),
+      0 0 u(24) var(--c-title-glow);
   }
 
   &__name {
@@ -40,7 +106,8 @@
     max-width: u(720);
     font-size: u(18);
     hyphens: none;
-    color: var(--c-text-muted);
+    color: var(--c-text);
+    text-shadow: 0 u(1) u(6) var(--c-title-glow);
   }
 
   // Leaves room below for the music bar, which sits bottom-left on every screen.
@@ -52,20 +119,81 @@
 
   &__disclaimer {
     font-size: u(14);
-    color: var(--c-text-muted);
+    color: var(--c-text);
+    text-shadow: 0 u(1) u(4) var(--c-title-glow);
   }
 
+  // Desktop: the game's arrangement — title top-right, menu lower right, over the open view.
   @include from($bp-desktop) {
     height: 100%;
     min-height: 0;
     padding: u(40) u(60) u(24);
 
+    &::before {
+      background:
+        linear-gradient(270deg, var(--c-title-scrim) 0%, transparent 48%),
+        linear-gradient(0deg, var(--c-title-scrim) 0%, transparent 22%);
+    }
+
+    &__avatar {
+      position: absolute;
+      top: u(262);
+      left: u(694);
+      z-index: -1;
+      display: block;
+      width: u(98);
+      filter: drop-shadow(0 u(6) u(6) rgb(0 0 0 / 35%));
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &__center {
+      align-items: flex-end;
+      justify-content: flex-start;
+      gap: u(18);
+      text-align: right;
+    }
+
     &__name {
-      font-size: u(64);
+      font-size: u(60);
     }
 
     &__sub {
-      font-size: u(36);
+      font-size: u(34);
     }
+
+    &__tagline {
+      max-width: u(460);
+      font-size: u(17);
+    }
+
+    .c-menu {
+      margin-top: auto;
+      margin-bottom: u(8);
+    }
+
+    &__footer {
+      padding-bottom: 0;
+      text-align: right;
+    }
+  }
+}
+
+@keyframes s-title-mote {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+
+  35% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(#{u(40)}, #{u(-110)}) scale(1);
   }
 }

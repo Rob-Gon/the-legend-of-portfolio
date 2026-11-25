@@ -31,6 +31,15 @@ compile-time things (breakpoints, `u()`). Values: `docs/PROJECT_BRIEF.md` §6. K
 - Motion: `--t-fast 120ms` (cursor, slight overshoot) · `--t-base 180ms` ·
   `--t-section 280ms` · `--t-sheet 240ms` · `--t-intro 600ms` · `--t-pulse 1200ms`
 
+## Backdrop and title scenery
+
+- Own SVG scenery (`src/assets/scenery/landscape.svg`): a generic valley seen from a grassy
+  cliff. The title shows it sharp (pinned to the 16:9 stage) with a text scrim, floating light
+  motes (`--t-drift`, off with reduced motion) and the avatar seen from behind on the cliff.
+- Hub and Guide: the same scenery, blurred and darkened by `--c-backdrop-veil`, like the game's
+  pause menu over the world. Alternatives for comparison: `<html data-backdrop="black">` or
+  `"green"` (the original M1 gradient).
+
 ## Components (SCSS partial in `src/styles/components/`; JS module in `src/components/` when it builds DOM)
 
 Live showcase (dev only, not built): `npm run dev` → `/the-legend-of-roberto/dev/design-system.html`.

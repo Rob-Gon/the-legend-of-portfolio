@@ -7,6 +7,7 @@
   --t-pulse: 1200ms ease-in-out;
   --t-float: 2400ms ease-in-out;
   --t-flap: 160ms ease-in-out;
+  --t-drift: 9s ease-in-out;
 }
 
 // OS preference applies unless the System toggle forces full motion; the toggle can also force it on.
@@ -20,6 +21,7 @@
     --t-pulse: 0ms linear;
     --t-float: 0ms linear;
     --t-flap: 0ms linear;
+    --t-drift: 0ms linear;
   }
 }
 
@@ -32,4 +34,5 @@
   --t-pulse: 0ms linear;
   --t-float: 0ms linear;
   --t-flap: 0ms linear;
+  --t-drift: 0ms linear;
 }

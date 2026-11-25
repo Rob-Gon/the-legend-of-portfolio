@@ -16,7 +16,7 @@
 
   .l-music {
     padding: u(4) u(10) u(4) u(4);
-    background: rgb(10 14 9 / 92%);
+    background: var(--c-bar);
     border: 1px solid var(--c-border);
     border-radius: 999px;
   }
@@ -106,7 +106,7 @@
     align-items: center;
     justify-content: space-between;
     padding: u(8) u(12) calc(#{u(8)} + env(safe-area-inset-bottom));
-    background: rgb(10 14 9 / 94%);
+    background: var(--c-bar);
     border-top: 1px solid var(--c-border);
   }
 
