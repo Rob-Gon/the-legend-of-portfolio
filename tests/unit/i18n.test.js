@@ -77,7 +77,7 @@ describe('loadLanguage', () => {
 
     expect(t('sections.inventory')).toBe('Inventory');
     expect(document.documentElement.lang).toBe('en');
-    expect(document.title).toBe('The Legend Of Portfolio - Roberto Of The Wild');
+    expect(document.title).toBe('The Legend Of Roberto - Portfolio Of The Wild');
     expect(document.querySelector('meta[name="description"]').content).toContain(
       'full-stack developer',
     );

@@ -1,4 +1,4 @@
-# Project Brief — The Legend Of Portfolio - Roberto Of The Wild
+# Project Brief — The Legend Of Roberto - Portfolio Of The Wild
 
 > Status: **Phase 1 approved** (answers recorded in §10). Phase 2 in progress.
 > Unofficial fan project. Not affiliated with, endorsed by or sponsored by Nintendo.
@@ -180,7 +180,7 @@ Common rules for every file:
   "meta": {
     "lang": "es",
     "langName": "Español",
-    "siteTitle": "The Legend Of Portfolio - Roberto Of The Wild",
+    "siteTitle": "The Legend Of Roberto - Portfolio Of The Wild",
     "description": "Portfolio de Roberto Báez González, desarrollador full-stack (Laravel, PHP, JavaScript, React).",
     "disclaimer": "Proyecto de fan no oficial. Sin relación con Nintendo."
   },
@@ -492,7 +492,7 @@ Crealia IT apps are not published; their descriptions come only from the CV and 
 | 2 | WhatsApp chat module for the ERP | Grupo ARI, confidential; Meta API + Laravel Reverb/Echo; 100 operators, 100,000+ messages (LinkedIn) | — |
 | 3 | Pharmacy web application | Crealia IT, maintenance (React + TypeScript, MongoDB/SQL/PHP) | — |
 | 4 | Logistics web application | Crealia IT, maintenance (same stack) | — |
-| 5 | The Legend Of Portfolio (this site) | Personal | demo + repo |
+| 5 | The Legend Of Roberto (this site) | Personal | demo + repo |
 | 6 | Proyecto-Web | Laravel + Blade + JS (2024); description from repo data only | repo |
 | 7 | Api-Rest | Laravel REST API | repo |
 | 8 | Modules-List | Laravel, role-based access | repo |
@@ -644,7 +644,7 @@ run with `npx` instead of installed). Fonts as downloaded WOFF2 files (no packag
 | Placeholder content leaking to production | C5 |
 | ES/EN drift | C6 parity test |
 | IP: look-and-feel too close to the original | §1.1: layout homage only, all artwork original |
-| Wrong Vite `base` breaks every asset on Pages | Repo `the-legend-of-portfolio` → `base: '/the-legend-of-portfolio/'`; Playwright smoke test runs against `vite preview` with the same base |
+| Wrong Vite `base` breaks every asset on Pages | Repo `the-legend-of-roberto` → `base: '/the-legend-of-roberto/'`; Playwright smoke test runs against `vite preview` with the same base |
 | Confidential professional projects | No screenshots, no client names unless you confirm, own illustrations |
 
 ---
@@ -666,7 +666,7 @@ run with `npx` instead of installed). Fonts as downloaded WOFF2 files (no packag
 | 11 | Project images | Own illustrations |
 | 12 | Side quests | Music and photography/video confirmed |
 | 13 | Extra soft skills | Add working under pressure, commitment, versatility; determination (LinkedIn, Nov 2026) |
-| 14 | Repo / deploy | `the-legend-of-portfolio` on GitHub Pages, `base: '/the-legend-of-portfolio/'` |
+| 14 | Repo / deploy | `the-legend-of-roberto` on GitHub Pages, `base: '/the-legend-of-roberto/'` |
 | 15 | Initial language | Saved preference → else Spanish if `navigator.languages` has `es*` → else English |
 | 16 | Type checking | Plain JS, no type checking (C7 rejected) |
 | 17 | Audio | Kenney CC0 SFX ("UI Audio", "Interface Sounds"); music chosen by you later |

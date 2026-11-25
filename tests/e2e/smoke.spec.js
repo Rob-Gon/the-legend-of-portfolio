@@ -7,7 +7,7 @@ test('app shell loads without console errors', async ({ page }) => {
 
   await page.goto('./');
 
-  await expect(page).toHaveTitle(/The Legend Of Portfolio/);
+  await expect(page).toHaveTitle(/The Legend Of Roberto/);
   await expect(page.locator('main#app')).toBeAttached();
   expect(errors).toEqual([]);
 });

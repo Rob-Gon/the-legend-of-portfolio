@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
-// GitHub Pages project site: https://rob-gon.github.io/the-legend-of-portfolio/
-export const BASE = '/the-legend-of-portfolio/';
+// GitHub Pages project site: https://rob-gon.github.io/the-legend-of-roberto/
+export const BASE = '/the-legend-of-roberto/';
 
 export default defineConfig({
   base: BASE,
