@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Profile",
+  "type": "object",
+  "required": ["name", "role", "summary", "available", "hud"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "available": {
+      "type": "boolean"
+    },
+    "hud": {
+      "type": "object",
+      "required": ["hearts"],
+      "additionalProperties": false,
+      "properties": {
+        "hearts": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        }
+      }
+    },
+    "_source": {
+      "type": "string"
+    },
+    "_review": {
+      "type": "boolean"
+    },
+    "_placeholder": {
+      "type": "boolean"
+    },
+    "_note": {
+      "type": "string"
+    }
+  }
+}

@@ -72,7 +72,8 @@
     "stack": "Stack",
     "role": "My role",
     "demo": "Demo",
-    "repo": "Code"
+    "repo": "Code",
+    "confidential": "Confidential project: no public links."
   },
   "errors": {
     "data": "This section could not be loaded. Try reloading the page.",
@@ -86,7 +87,7 @@
       "legend": "Legend"
     },
     "fairy": {
-      "controls": "Hey! This is how you get around the portfolio. Use whatever you have at hand: keyboard, gamepad, mouse or your finger.",
+      "controls": "Hey! Listen! This is how you get around the portfolio. Use whatever you have at hand: keyboard, gamepad, mouse or your finger.",
       "legend": "Not sure where to look? Here is what each section holds."
     },
     "columns": {
@@ -143,5 +144,9 @@
     "titleMenu": "Main menu",
     "systemMenu": "Options",
     "actions": "Actions"
+  },
+  "journal": {
+    "goal": "Current goal",
+    "empty": "Nothing here yet."
   }
 }

@@ -1,0 +1,178 @@
+{
+  "$schema": "../../../schemas/quests.schema.json",
+  "items": [
+    {
+      "id": "ai-projects",
+      "kind": "goal",
+      "status": "active",
+      "title": "Proyectos con IA",
+      "summary": "Buscar nuevos proyectos relacionados con la {{IA}} y sus automatizaciones.",
+      "details": [
+        "Automatización de procesos con {{n8n}}, back ends en PHP y Laravel e interfaces en React.",
+        "Desarrollo de {{videojuegos}}."
+      ],
+      "_source": "user+linkedin",
+      "_review": true
+    },
+    {
+      "id": "matricular",
+      "kind": "milestone",
+      "status": "active",
+      "title": "Matricular",
+      "org": "Proyecto personal",
+      "summary": "Un juego web contrarreloj: te muestra matrículas de coches y tienes que formar palabras con ellas, validadas con una API no oficial de la {{RAE}}.",
+      "details": ["Varios niveles de dificultad.", "Enlace próximamente."],
+      "_source": "user"
+    },
+    {
+      "id": "grupo-ari",
+      "kind": "job",
+      "status": "completed",
+      "title": "Desarrollador Full-Stack",
+      "org": "Grupo ARI",
+      "location": "Las Palmas de G.C.",
+      "period": {
+        "start": "2025-04",
+        "end": "2026-11"
+      },
+      "summary": "Plataforma {{ERP}} empresarial del sector automoción con {{Laravel}} y {{JavaScript}}.",
+      "details": [
+        "Ingestión automatizada de datos por {{SFTP}} y su procesamiento con {{MongoDB}}.",
+        "Facturación y contabilidad procesadas con {{colas}}.",
+        "Integraciones con varias {{APIs externas}} y control de acceso granular.",
+        "Módulo de {{chat con WhatsApp}} desarrollado desde cero: mensajería en tiempo real con la API oficial de Meta, Laravel Reverb y Echo. Lo usan 100 operadores y ha gestionado más de 100.000 mensajes.",
+        "Mantenimiento de otras aplicaciones del grupo, como la gestión de grúas y el servicio de campa.",
+        "Flujo de trabajo con herramientas de IA como {{Claude Code}}."
+      ],
+      "stack": [
+        "laravel",
+        "php",
+        "javascript",
+        "mysql",
+        "mongodb",
+        "laravel-reverb",
+        "rest-apis",
+        "sass",
+        "claude-code"
+      ],
+      "_source": "user+linkedin",
+      "_review": true
+    },
+    {
+      "id": "crealia-it",
+      "kind": "job",
+      "status": "completed",
+      "title": "Desarrollador Full-Stack",
+      "org": "Crealia IT",
+      "location": "Las Palmas de G.C.",
+      "period": {
+        "start": "2024-10",
+        "end": "2025-03"
+      },
+      "summary": "Mantenimiento de dos aplicaciones web: una del sector farmacéutico y otra del logístico.",
+      "details": [
+        "Front-end: desarrollo con {{React}} y {{TypeScript}}.",
+        "Back-end: {{MongoDB}}, SQL y PHP.",
+        "Módulos y componentes llevados a producción."
+      ],
+      "stack": ["react", "typescript", "mongodb", "mysql", "php", "material-ui"],
+      "_source": "cv+user",
+      "_review": true
+    },
+    {
+      "id": "advance-digital-experts",
+      "kind": "job",
+      "status": "completed",
+      "title": "Desarrollador Front-end (prácticas)",
+      "org": "Advance Digital Experts",
+      "location": "Las Palmas de G.C.",
+      "period": {
+        "start": "2024-03",
+        "end": "2024-05"
+      },
+      "summary": "Prácticas desarrollando páginas y aplicaciones web con {{React}}.",
+      "details": [
+        "Desarrollo con {{React}}, Sass y Vite.",
+        "Componentes en distintos contextos, la mayoría en producción.",
+        "Trabajo en sprints de {{Scrum}}."
+      ],
+      "stack": ["react", "sass", "vite", "javascript", "jest"],
+      "_source": "cv+skills-list",
+      "_review": true
+    },
+    {
+      "id": "cifp-daw",
+      "kind": "education",
+      "status": "completed",
+      "title": "Ciclo Superior en Desarrollo de Aplicaciones Web",
+      "org": "CIFP Villa de Agüimes",
+      "location": "Agüimes",
+      "period": {
+        "start": "2021",
+        "end": "2024"
+      },
+      "summary": "Formación profesional de grado superior en {{desarrollo de aplicaciones web}}.",
+      "stack": [
+        "php",
+        "laravel",
+        "javascript",
+        "html",
+        "css",
+        "mysql",
+        "java",
+        "csharp",
+        "xml",
+        "xquery"
+      ],
+      "_source": "cv+linkedin",
+      "_review": true
+    },
+    {
+      "id": "programming-hub",
+      "kind": "certification",
+      "status": "completed",
+      "title": "Cursos de programación",
+      "org": "Programming Hub",
+      "period": {
+        "start": "2021"
+      },
+      "summary": "Certificados en PHP, JavaScript, HTML, CSS, Python, Java, Java avanzado y C#.",
+      "stack": ["php", "javascript", "html", "css", "python", "java", "csharp"],
+      "_source": "cv+linkedin",
+      "_review": true
+    },
+    {
+      "id": "linkedin-assessments",
+      "kind": "assessment",
+      "status": "completed",
+      "title": "Evaluaciones de aptitudes",
+      "org": "LinkedIn",
+      "summary": "Superadas las evaluaciones de C#, Git y desarrollo front-end.",
+      "stack": ["csharp", "git"],
+      "_source": "linkedin",
+      "_review": true
+    },
+    {
+      "id": "english-b2",
+      "kind": "certification",
+      "status": "completed",
+      "title": "Inglés B2",
+      "summary": "Título oficial de inglés de nivel avanzado (B2).",
+      "_source": "cv",
+      "_review": true
+    },
+    {
+      "id": "journey-begins",
+      "kind": "milestone",
+      "status": "completed",
+      "title": "Comienza la aventura",
+      "org": "WordPress",
+      "summary": "Mis primeras webs fueron en {{WordPress}}. No pongo enlaces porque da pena verlas.",
+      "details": [
+        "Poco a poco avancé de forma autodidacta hasta descubrir que el desarrollo web era mi verdadera vocación."
+      ],
+      "_source": "linkedin",
+      "_review": true
+    }
+  ]
+}

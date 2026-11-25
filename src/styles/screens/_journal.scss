@@ -1,0 +1,47 @@
+@use '../tokens' as *;
+
+.s-journal {
+  display: flex;
+  flex-direction: column;
+  gap: u(24);
+
+  // Room for the selection brackets, which sit outside each row.
+  &__list {
+    padding: u(8);
+  }
+
+  &__message {
+    padding: u(24);
+    font-size: u(18);
+    color: var(--c-text-muted);
+  }
+
+  // Desktop stage: list on the left, detail on the right (taller, as in the reference).
+  @include from($bp-desktop) {
+    flex-direction: row;
+    gap: u(36);
+    padding-left: u(44);
+
+    &__list {
+      flex: none;
+      overflow-y: auto;
+    }
+
+    // The framed panel keeps its size; only its body scrolls (the frame never moves).
+    &__detail {
+      height: calc(100% + #{u(65)});
+      margin-top: u(-65);
+
+      .c-detail {
+        height: 100%;
+        min-height: 0;
+      }
+
+      .c-detail__body {
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
+      }
+    }
+  }
+}

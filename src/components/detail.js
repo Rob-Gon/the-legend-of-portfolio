@@ -26,9 +26,24 @@ function chip({ iconName, value, label }) {
 /**
  * Detail panel. `variant`: 'quest' (large Adventure Log panel) or 'item' (inventory card).
  * `meta`: { alert?, left?, right? } line under the title.
- * `body`: array of paragraphs with optional `{{highlights}}`.
+ * `body`: array of paragraphs with optional `{{highlights}}`. `points`: bullet list (same markup).
+ * `links`: [{ href, label }] opened in a new tab. `note`: muted line (e.g. confidential project).
+ * `scrollable`: the body scrolls inside a fixed frame, so it is focusable for keyboard users.
  */
-export function detail({ variant, id, title, stars: rating, meta, chips = [], effect, body = [] }) {
+export function detail({
+  variant,
+  id,
+  title,
+  stars: rating,
+  meta,
+  chips = [],
+  effect,
+  body = [],
+  points = [],
+  links = [],
+  note,
+  scrollable = false,
+}) {
   const titleId = `detail-title-${id}`;
 
   return el(
@@ -56,8 +71,33 @@ export function detail({ variant, id, title, stars: rating, meta, chips = [], ef
         ]),
       el(
         'div',
-        { class: 'c-detail__body' },
-        body.map((paragraph) => el('p', {}, rich(paragraph))),
+        {
+          class: 'c-detail__body',
+          tabindex: scrollable ? '0' : null,
+          'aria-labelledby': scrollable ? titleId : null,
+        },
+        [
+          ...body.map((paragraph) => el('p', {}, rich(paragraph))),
+          points.length > 0 &&
+            el(
+              'ul',
+              { class: 'c-detail__points' },
+              points.map((point) => el('li', {}, rich(point))),
+            ),
+          note && el('p', { class: 'c-detail__note', text: note }),
+          links.length > 0 &&
+            el(
+              'p',
+              { class: 'c-detail__links' },
+              links.map(({ href, label }) =>
+                el(
+                  'a',
+                  { class: 'c-detail__link', href, target: '_blank', rel: 'noopener noreferrer' },
+                  label,
+                ),
+              ),
+            ),
+        ],
       ),
     ],
   );

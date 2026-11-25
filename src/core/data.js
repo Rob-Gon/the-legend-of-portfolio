@@ -1,4 +1,6 @@
 const cache = new Map();
+// Settled results, so screens can read preloaded files synchronously while rendering.
+const settled = new Map();
 
 /** Removes invented example items (`_placeholder: true`) from list files. */
 export function stripPlaceholders(data) {
@@ -30,10 +32,16 @@ export function load(lang, file, fetcher = globalThis.fetch) {
     cache.set(
       key,
       request(url, fetcher).then((result) => {
-        if (!result.ok) cache.delete(key);
+        if (result.ok) settled.set(key, result);
+        else cache.delete(key);
         return result;
       }),
     );
   }
   return cache.get(key);
+}
+
+/** The loaded result of a file preloaded with `load()`, or undefined if it never loaded. */
+export function peek(lang, file) {
+  return settled.get(`${lang}/${file}`);
 }

@@ -87,6 +87,31 @@
     color: var(--c-accent-green);
   }
 
+  &__points {
+    display: flex;
+    flex-direction: column;
+    gap: u(6);
+    padding-left: u(22);
+    list-style: disc;
+  }
+
+  &__note {
+    font-size: u(15);
+    color: var(--c-text-muted);
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: u(20);
+  }
+
+  &__link {
+    font-weight: var(--fw-bold);
+    color: var(--c-accent-blue);
+    text-underline-offset: u(3);
+  }
+
   &--quest {
     display: flex;
     flex-direction: column;

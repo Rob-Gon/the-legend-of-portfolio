@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schemas/profile.schema.json",
+  "name": "Roberto Báez González",
+  "role": "Desarrollador Full-Stack",
+  "summary": [
+    "Empecé muy joven haciendo páginas en WordPress y, de forma autodidacta, descubrí que el desarrollo web era mi vocación.",
+    "Hoy me muevo con más soltura en {{Laravel}} y {{React}}: desarrollo back end y front end, diseño de interfaces y resolución de incidencias.",
+    "Ahora estoy inmerso en proyectos de {{IA}}, {{automatización de procesos}} y {{desarrollo de videojuegos}}: flujos con n8n, back ends en PHP y Laravel conectados por APIs REST, interfaces en React y JavaScript, MongoDB y MySQL, Git y Docker."
+  ],
+  "available": true,
+  "hud": {
+    "hearts": 3
+  },
+  "_source": "cv+linkedin"
+}

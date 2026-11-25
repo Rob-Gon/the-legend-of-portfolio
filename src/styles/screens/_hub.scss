@@ -31,6 +31,12 @@
     min-height: u(240);
   }
 
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: u(16);
+  }
+
   // Desktop stage: positions follow the 1280 × 720 reference layout.
   @include from($bp-desktop) {
     &__section {
@@ -54,6 +60,17 @@
       position: absolute;
       inset: u(115) u(60) u(70);
       min-height: 0;
+    }
+
+    &__footer {
+      position: absolute;
+      inset: auto u(60) 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: u(70);
+      padding-right: u(20);
+      border-top: 1px solid var(--c-border);
     }
   }
 }

@@ -3,6 +3,7 @@ import { icon } from './icon.js';
 
 /**
  * Quest/project row. `status`: 'active' (tracked, ring marker), 'done' (greyed) or null.
+ * Clicking it dispatches the `item` action with its id.
  */
 export function listRow({ id, iconName, title, subtitle, status = null, selected = false }) {
   const modifier = status ? ` c-row--${status}` : '';
@@ -15,7 +16,7 @@ export function listRow({ id, iconName, title, subtitle, status = null, selected
       id: `option-${id}`,
       'aria-selected': String(selected),
       tabindex: selected ? '0' : '-1',
-      dataset: { id },
+      dataset: { action: 'item', id },
     },
     [
       el('span', { class: 'c-row__icon' }, iconName && icon(iconName)),

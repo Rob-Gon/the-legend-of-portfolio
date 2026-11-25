@@ -1,0 +1,41 @@
+{
+  "$schema": "../../../schemas/sidequests.schema.json",
+  "items": [
+    {
+      "id": "music",
+      "title": "Music",
+      "location": "Hobby",
+      "description": [
+        "I am a {{DJ}} and I love electronic music, especially {{Makina}}.",
+        "Currently learning music production with {{Ableton}}."
+      ],
+      "_source": "user",
+      "links": [
+        {
+          "href": "https://soundcloud.com/ravertou",
+          "label": "SoundCloud"
+        }
+      ]
+    },
+    {
+      "id": "photo-video",
+      "title": "Photography and video",
+      "location": "Hobby",
+      "description": [
+        "I edit photos and video with {{Lightroom}}, {{Photoshop}}, {{Premiere Pro}}, {{DaVinci Resolve}} and the {{Affinity}} suite."
+      ],
+      "_source": "user"
+    },
+    {
+      "id": "french",
+      "title": "French",
+      "location": "Learning",
+      "description": [
+        "Beginner level (A2)."
+      ],
+      "_source": "user+cv",
+      "_review": true,
+      "_note": "From the CV"
+    }
+  ]
+}

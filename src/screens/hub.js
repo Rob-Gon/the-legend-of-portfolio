@@ -1,15 +1,21 @@
 import { el } from '../core/dom.js';
 import { emit } from '../core/bus.js';
+import { peek } from '../core/data.js';
+import { totalExperience } from '../core/experience.js';
 import { t } from '../core/i18n.js';
 import { KEY_HINTS } from '../core/input.js';
 import { HOME } from '../core/router.js';
 import { SECTIONS } from '../core/sections.js';
 import { set, state } from '../core/store.js';
+import { hints } from '../components/hints.js';
 import { hud } from '../components/hud.js';
 import { tabs } from '../components/tabs.js';
+import * as journal from './journal.js';
 import * as system from './system.js';
 
 const PANEL_ID = 'hub-panel';
+// Section content screens; Inventory arrives in M5.
+const PANELS = { journal, system };
 
 let root = null;
 let shownIndex = -1;
@@ -20,6 +26,22 @@ const sectionIndex = () => SECTIONS.findIndex((section) => section.id === state.
 
 function neighbour(section, keys) {
   return section && { label: t(`sections.${section.id}`), keys };
+}
+
+/** HUD values from the preloaded data; each one is left out if its file failed to load. */
+function hudStatus() {
+  const profile = peek(state.lang, 'profile')?.data;
+  const quests = peek(state.lang, 'quests')?.data.items;
+  const projects = peek(state.lang, 'projects')?.data.items;
+  return {
+    hearts: profile &&
+      quests && { value: profile.hud.hearts, label: t('hud.hearts', totalExperience(quests)) },
+    gems: projects && {
+      value: projects.length,
+      label: t('hud.gems', { count: projects.length }),
+    },
+    available: profile?.available ? t('availability') : null,
+  };
 }
 
 function view(enter) {
@@ -34,6 +56,7 @@ function view(enter) {
       sections: { index, count: SECTIONS.length },
       prev: neighbour(SECTIONS[index - 1], KEY_HINTS.prevSection),
       next: neighbour(SECTIONS[index + 1], KEY_HINTS.nextSection),
+      ...hudStatus(),
     }),
     el(
       'div',
@@ -65,6 +88,12 @@ function view(enter) {
         }),
       ],
     ),
+    el('footer', { class: 's-hub__footer' }, [
+      hints({
+        label: t('a11y.actions'),
+        items: [{ action: 'back', label: t('hints.back'), keys: KEY_HINTS.back }],
+      }),
+    ]),
   ];
 }
 
@@ -74,7 +103,7 @@ function render({ focus }) {
     shownIndex === -1 || index === shownIndex ? null : index > shownIndex ? 'next' : 'prev';
   shownIndex = index;
   root.replaceChildren(...view(enter));
-  if (state.section === 'system') system.mount(root.querySelector('.s-hub__panel'));
+  PANELS[state.section]?.mount(root.querySelector('.s-hub__panel'));
   // After a section or tab change, focus follows to the active tab (or the panel if none).
   if (focus) root.querySelector('[role="tab"][aria-selected="true"], .s-hub__panel').focus();
 }
@@ -90,6 +119,7 @@ export function update(keys) {
   // Leaving the hub (title, Guide) is handled by main.js swapping screens.
   if (sectionIndex() === -1) return;
   if (keys.includes('section') || keys.includes('tab')) render({ focus: true });
+  else if (keys.includes('selection')) PANELS[state.section]?.update?.(keys);
 }
 
 function goSection(step) {
@@ -122,7 +152,7 @@ function stepTab(step) {
 
 /** Section and tab switching; Back returns to the title. Returns true when handled. */
 export function handle(action) {
-  if (state.section === 'system' && system.handle(action)) return true;
+  if (PANELS[state.section]?.handle(action)) return true;
 
   switch (action.type) {
     case 'prevSection':
