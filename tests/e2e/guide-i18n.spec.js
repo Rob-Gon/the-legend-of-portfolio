@@ -30,12 +30,29 @@ test.describe('Spanish browser', () => {
     await page.goto('./');
     await expect(page.locator('html')).toHaveAttribute('lang', 'es');
 
-    await page.getByRole('button', { name: 'Idioma: Español' }).click();
+    await page.getByRole('button', { name: 'Idioma: Español', exact: true }).click();
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
     await expect(page.getByRole('button', { name: 'Start' })).toBeVisible();
 
     await page.reload();
-    await expect(page.getByRole('button', { name: 'Language: English' })).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Language: English', exact: true }),
+    ).toBeVisible();
+  });
+
+  test('the language shortcut by the music bar switches language from any screen', async ({
+    page,
+  }) => {
+    await page.goto('./#/inventario/objetos-clave');
+    const shortcut = page.getByRole('button', { name: /Cambiar a inglés/ });
+    await expect(shortcut).toHaveText('ES');
+
+    await shortcut.click();
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+    const back = page.getByRole('button', { name: /Switch to Spanish/ });
+    await expect(back).toHaveText('EN');
+    await expect(back).toBeFocused();
+    await expect(page).toHaveURL(/#\/inventario\/objetos-clave/);
   });
 
   test('only the inner tabpanel scrolls, so the panel frame stays in place', async ({ page }) => {

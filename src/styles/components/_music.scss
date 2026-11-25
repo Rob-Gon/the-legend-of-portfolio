@@ -19,6 +19,13 @@
     border-radius: 50%;
     transition: border-color var(--t-base);
 
+    // Language shortcut: same round button, with the language code instead of an icon.
+    &--lang {
+      font-size: u(13);
+      font-weight: var(--fw-bold);
+      font-style: italic;
+    }
+
     &:disabled {
       opacity: 0.35;
     }

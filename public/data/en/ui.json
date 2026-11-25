@@ -2,6 +2,7 @@
   "meta": {
     "lang": "en",
     "langName": "English",
+    "langCode": "EN",
     "siteTitle": "The Legend Of Roberto - Portfolio Of The Wild",
     "description": "Portfolio of Roberto Báez González - Full-stack Developer (Laravel, PHP, JavaScript, React).",
     "disclaimer": "Unofficial fan project. Not affiliated with Nintendo."
@@ -158,7 +159,8 @@
     "systemMenu": "Options",
     "actions": "Actions",
     "settings": "Settings",
-    "sections": "Sections"
+    "sections": "Sections",
+    "switchLanguage": "Language: English. Switch to Spanish"
   },
   "journal": {
     "goal": "Current goal",
