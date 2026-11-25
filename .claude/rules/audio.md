@@ -21,7 +21,8 @@ Read/write through `core/prefs.js` (try/catch; works without storage).
 ## Files
 
 - `public/audio/music/` — `title.*`, `hub.*` (loop).
-- `public/audio/sfx/` — `cursor`, `select`, `back`, `tab`, `section`, `open`.
+- `public/audio/sfx/` — `cursor`, `select`, `back`, `tab`, `section`, `open`, `guide` (short
+  CC0 chime played when the Guide opens; never a game voice or a recreation of one).
 - Each sound in two formats: `.webm` (Opus) first, `.mp3` fallback. SFX ≤ 30 KB each,
   music ≤ 1.5 MB per track, loudness-normalised.
 - Missing or failing files: log once in dev, disable that sound, never break the UI.

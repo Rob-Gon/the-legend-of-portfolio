@@ -22,6 +22,13 @@ The repository is **public** and carries the owner's name. These rules are manda
   technology; logos not available there are replaced by an own neutral glyph.
 - Every third-party asset gets a line in `THIRD_PARTY.md`: name, author, source URL, licence.
 
+## Guide fairy
+
+- Original SVG/CSS design made for this project (own colours, wing shape and glow). It is
+  never traced from or modelled on game art.
+- It has **no name** in the UI, the JSON or the code (`guide-fairy`); never call it Navi.
+- Its sound is an original CC0 chime (see `audio.md`), never the game character's voice.
+
 ## Title and disclaimer
 
 - The title "The Legend Of Portfolio - Roberto Of The Wild" is set as **live text** in the

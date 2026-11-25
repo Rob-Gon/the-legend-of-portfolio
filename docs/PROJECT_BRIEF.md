@@ -610,10 +610,10 @@ Checked at 360, 390, 768, 1024, 1280 and 1920 px, portrait and landscape.
 | Phase 3 | Scaffold, tooling, CI, `.gitignore` (references + sources), first commit | `git status` clean of `docs/sources/` |
 | M1 | Design system + base components (panel, row, cell, tabs, detail, hints, HUD) | Component demo page |
 | M2 | Input manager (+ gamepad), router, hub structure with L/R transitions | Unit tests green |
-| M3 | Title screen + i18n ES/EN | Language switch works everywhere |
+| M3 | Title screen + i18n ES/EN + **Guide** (controls + section legend, guide fairy; own commit) | Language switch works everywhere; Guide reachable from the title menu and from System |
 | M4 | Adventure Log (quests, side quests, memories) | Reads JSON, deep links |
 | M5 | Inventory (weapons with category pages, armour, key items) + detail panel | Computed years shown |
-| M6 | System + audio (Howler, volumes, persistence, SFX) | Never autoplays |
+| M6 | System + audio (Howler, volumes, persistence, SFX incl. the Guide chime) | Never autoplays |
 | M7 | Full tablet/mobile + Quick mode (pre-rendered), sitemap, OG | Lighthouse a11y 100 on Quick mode |
 | M8 | 3D on desktop (viewer, extruded tech icons, avatar or placeholder) | ≤ 1.5 MB/model, paused when hidden |
 | M9 | Polish: a11y, performance, SEO, error states, deploy to GitHub Pages | Lighthouse ≥ 90 ×4 |
@@ -670,3 +670,6 @@ run with `npx` instead of installed). Fonts as downloaded WOFF2 files (no packag
 | 15 | Initial language | Saved preference → else Spanish if `navigator.languages` has `es*` → else English |
 | 16 | Type checking | Plain JS, no type checking (C7 rejected) |
 | 17 | Audio | Kenney CC0 SFX ("UI Audio", "Interface Sounds"); music chosen by you later |
+| 18 | Guide | New "Guide" option in the title menu and in System. Two tabs: Controls (keyboard, gamepad, touch; generated from `KEY_HINTS`) and Legend (what each section, tab and HUD value means) |
+| 19 | Guide fairy | Original animated SVG/CSS fairy that introduces each Guide tab with a speech bubble. **No name** (left for the user to guess). Still under reduced motion |
+| 20 | Guide sound | Original CC0 chime (Kenney) when entering the Guide, only after a user gesture; added in M6. Never Navi's voice or any recreation of it |
