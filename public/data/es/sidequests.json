@@ -30,9 +30,7 @@
       "id": "french",
       "title": "Francés",
       "location": "Aprendiendo",
-      "description": [
-        "Nivel principiante (A2)."
-      ],
+      "description": ["Nivel principiante (A2)."],
       "_source": "user+cv",
       "_review": true,
       "_note": "From the CV"
