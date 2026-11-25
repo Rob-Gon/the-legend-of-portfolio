@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../schemas/softskills.schema.json",
+  "items": [
+    {
+      "id": "communication",
+      "name": "Communication",
+      "icon": "armor",
+      "level": 5,
+      "description": "I communicate clearly and efficiently with colleagues and managers.",
+      "example": "Efficient collaboration with colleagues and managers in every role.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "teamwork",
+      "name": "Teamwork",
+      "icon": "armor",
+      "level": 5,
+      "description": "I work with the team to reach shared goals.",
+      "example": "Building components in Scrum sprints during my internship at Advance Digital Experts.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "problem-solving",
+      "name": "Problem solving",
+      "icon": "armor",
+      "level": 4,
+      "description": "I solve problems with abstract thinking.",
+      "example": "Support and fixes for other Grupo ARI applications, such as tow-truck management and the vehicle yard service.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "analytical-thinking",
+      "name": "Analytical thinking",
+      "icon": "armor",
+      "level": 4,
+      "description": "I break complex processes down into pieces that can be automated.",
+      "example": "Designing the SFTP ingestion and queue processing for the ERP's invoicing and accounting.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "emotional-intelligence",
+      "name": "Emotional intelligence",
+      "icon": "armor",
+      "level": 4,
+      "description": "I keep in mind how others feel and look after the team atmosphere.",
+      "_source": "cv+linkedin+user",
+      "_review": true,
+      "_note": "Add a real example"
+    },
+    {
+      "id": "working-under-pressure",
+      "name": "Working under pressure",
+      "icon": "armor",
+      "level": 5,
+      "description": "I keep calm and keep quality up when time is short.",
+      "example": "The ERP's WhatsApp chat module, built from scratch in about 3 weeks.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "commitment",
+      "name": "Commitment",
+      "icon": "armor",
+      "level": 5,
+      "description": "I see things through to the end.",
+      "example": "1 year and 8 months on Grupo ARI's ERP; the WhatsApp chat is now used by 100 operators.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "versatility",
+      "name": "Versatility",
+      "icon": "armor",
+      "level": 4,
+      "description": "I adapt to different stacks and teams.",
+      "example": "Laravel and JavaScript at Grupo ARI; React and TypeScript at Crealia IT.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "determination",
+      "name": "Determination",
+      "icon": "armor",
+      "level": 5,
+      "description": "I pursue my goals even when the road is long.",
+      "example": "From my first self-taught WordPress sites to a higher diploma and a full-stack job.",
+      "_source": "cv+linkedin+user"
+    }
+  ]
+}

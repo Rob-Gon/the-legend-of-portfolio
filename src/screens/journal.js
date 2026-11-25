@@ -12,6 +12,14 @@ const period = (item) =>
   item.period ? formatPeriod(item.period, state.lang, t('status.current')) : null;
 const joined = (...parts) => parts.filter(Boolean).join(' · ');
 
+/** "Stack: Laravel, PHP…" with the names from tech.json (falls back to the id). */
+function stackLine(stack = []) {
+  if (!stack.length) return null;
+  const tech = peek(state.lang, 'tech')?.data.items ?? [];
+  const names = stack.map((id) => tech.find((item) => item.id === id)?.name ?? id);
+  return `${t('detail.stack')}: ${names.join(', ')}`;
+}
+
 // One entry per journal tab: data file, list row and detail panel.
 const TABS = {
   quests: {
@@ -23,7 +31,7 @@ const TABS = {
     }),
     detail: (quest) => ({
       meta: { alert: quest.status === 'active', left: period(quest), right: quest.org },
-      body: [quest.summary, ...(quest.details ?? [])],
+      body: [quest.summary, ...(quest.details ?? []), stackLine(quest.stack)].filter(Boolean),
     }),
   },
   'side-quests': {
@@ -40,9 +48,11 @@ const TABS = {
     row: (project) => ({ iconName: 'memories', subtitle: project.context }),
     detail: (project) => ({
       meta: { left: period(project), right: project.context },
-      body: [project.summary, project.role && `${t('detail.role')}: ${project.role}`].filter(
-        Boolean,
-      ),
+      body: [
+        project.summary,
+        project.role && `${t('detail.role')}: ${project.role}`,
+        stackLine(project.stack),
+      ].filter(Boolean),
       points: project.highlights,
       note: project.confidential ? t('detail.confidential') : null,
       links: [

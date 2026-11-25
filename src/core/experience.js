@@ -38,3 +38,17 @@ export function formatPeriod({ start, end }, lang, currentLabel) {
   if (end === undefined || end === start) return format(start);
   return `${format(start)} – ${end === null ? currentLabel : format(end)}`;
 }
+
+/**
+ * Months as readable text, e.g. "1 año y 8 meses" / "6 months". `t` is the translator
+ * (keys `duration.*`), passed in so this module stays free of app state.
+ */
+export function formatDuration(totalMonths, t) {
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  const part = (n, one, many) => (n === 1 ? t(one) : t(many, { n }));
+  const yearText = years > 0 ? part(years, 'duration.year', 'duration.years') : null;
+  const monthText = months > 0 ? part(months, 'duration.month', 'duration.months') : null;
+  if (yearText && monthText) return t('duration.and', { a: yearText, b: monthText });
+  return yearText ?? monthText ?? part(0, 'duration.month', 'duration.months');
+}

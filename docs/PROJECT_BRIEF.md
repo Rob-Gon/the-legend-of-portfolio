@@ -617,8 +617,8 @@ Checked at 360, 390, 768, 1024, 1280 and 1920 px, portrait and landscape.
 | M5 | Inventory (weapons with category pages, armour, key items) + detail panel | Computed years shown |
 | M6 | System + audio (Howler, volumes, persistence, SFX incl. the Guide chime) | Never autoplays |
 | M7 | Full tablet/mobile + Quick mode (pre-rendered), sitemap, OG | Lighthouse a11y 100 on Quick mode |
-| M8 | 3D on desktop (viewer, extruded tech icons, avatar or placeholder) | ≤ 1.5 MB/model, paused when hidden |
-| M9 | Polish: a11y, performance, SEO, error states, deploy to GitHub Pages | Lighthouse ≥ 90 ×4 |
+| M8 | 3D on desktop (viewer, extruded tech icons, avatar or placeholder; avatar holds the selected item with a gentle bob) | ≤ 1.5 MB/model, paused when hidden |
+| M9 | Polish: a11y, performance, SEO, error states, deploy to GitHub Pages; one own icon per soft skill (Armour) | Lighthouse ≥ 90 ×4 |
 
 Every milestone: tests green → Conventional Commit on a `feature/…` branch → screenshot or
 description → stop for your review.

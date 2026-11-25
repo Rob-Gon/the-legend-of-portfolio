@@ -1,7 +1,10 @@
 import { el } from '../core/dom.js';
 import { icon } from './icon.js';
 
-/** Inventory cell. `label` is the accessible name (cells show no visible text besides the badge). */
+/**
+ * Inventory cell. `label` is the accessible name (cells show no visible text besides the badge).
+ * Clicking it dispatches the `item` action with its id. `color`: icon colour (brand logos).
+ */
 export function gridCell({
   id,
   iconName,
@@ -9,11 +12,14 @@ export function gridCell({
   label,
   badge,
   featured = false,
+  color,
   selected = false,
 }) {
   const visual = image
     ? el('img', { class: 'c-cell__icon', src: image.src, alt: '', loading: 'lazy' })
     : iconName && icon(iconName, 'c-icon c-cell__icon');
+  // CSSOM, not a style attribute, so a strict CSP keeps working.
+  if (color && visual) visual.style.setProperty('--icon-color', color);
 
   return el(
     'div',
@@ -23,7 +29,7 @@ export function gridCell({
       'aria-label': label,
       'aria-selected': String(selected),
       tabindex: selected ? '0' : '-1',
-      dataset: { id },
+      dataset: { action: 'item', id },
     },
     [
       visual,

@@ -73,7 +73,10 @@
     "role": "Mi papel",
     "demo": "Demo",
     "repo": "Código",
-    "confidential": "Proyecto confidencial: sin enlaces públicos."
+    "confidential": "Proyecto confidencial: sin enlaces públicos.",
+    "levelOf": "Nivel {value} de 5",
+    "usedIn": "Usado en",
+    "example": "Ejemplo"
   },
   "errors": {
     "data": "No se ha podido cargar esta sección. Prueba a recargar la página.",
@@ -148,5 +151,17 @@
   "journal": {
     "goal": "Meta actual",
     "empty": "Todavía no hay nada aquí."
+  },
+  "inventory": {
+    "page": "{name} · {current}/{total}",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente"
+  },
+  "duration": {
+    "year": "1 año",
+    "years": "{n} años",
+    "month": "1 mes",
+    "months": "{n} meses",
+    "and": "{a} y {b}"
   }
 }

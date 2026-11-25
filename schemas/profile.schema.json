@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Profile",
   "type": "object",
-  "required": ["name", "role", "summary", "available", "hud"],
+  "required": ["name", "role", "summary", "keyItems", "available", "hud"],
   "additionalProperties": false,
   "properties": {
     "$schema": {
@@ -49,6 +49,52 @@
     },
     "_note": {
       "type": "string"
+    },
+    "keyItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "icon", "name", "value"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "icon": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "href": {
+            "type": "string",
+            "pattern": "^(https://|mailto:|cv/)"
+          },
+          "_source": {
+            "type": "string"
+          },
+          "_review": {
+            "type": "boolean"
+          },
+          "_placeholder": {
+            "type": "boolean"
+          },
+          "_note": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }

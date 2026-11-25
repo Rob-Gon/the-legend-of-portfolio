@@ -1,6 +1,7 @@
-// Own SVG files inlined so they inherit `currentColor`. They are static project assets,
-// never user data, so parsing them with a template is safe.
-const sources = import.meta.glob('../assets/icons/*.svg', {
+// Own SVG icons plus technology logos (Simple Icons, CC0), inlined so they inherit
+// `currentColor`. They are static project assets, never user data, so parsing them with a
+// template is safe. File names are unique across both folders.
+const sources = import.meta.glob(['../assets/icons/*.svg', '../assets/tech/*.svg'], {
   query: '?raw',
   import: 'default',
   eager: true,

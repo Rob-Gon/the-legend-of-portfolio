@@ -7,6 +7,54 @@
     "Hoy me muevo con más soltura en {{Laravel}} y {{React}}: desarrollo back end y front end, diseño de interfaces y resolución de incidencias.",
     "Ahora estoy inmerso en proyectos de {{IA}}, {{automatización de procesos}} y {{desarrollo de videojuegos}}: flujos con n8n, back ends en PHP y Laravel conectados por APIs REST, interfaces en React y JavaScript, MongoDB y MySQL, Git y Docker."
   ],
+  "keyItems": [
+    {
+      "id": "email",
+      "icon": "mail",
+      "name": "Email",
+      "value": ["robertobbgg@gmail.com"],
+      "href": "mailto:robertobbgg@gmail.com",
+      "_source": "cv"
+    },
+    {
+      "id": "linkedin",
+      "icon": "idcard",
+      "name": "LinkedIn",
+      "value": ["roberto-gonzalez-web-dev"],
+      "href": "https://www.linkedin.com/in/roberto-gonzalez-web-dev/",
+      "_source": "linkedin"
+    },
+    {
+      "id": "github",
+      "icon": "github",
+      "name": "GitHub",
+      "value": ["Rob-Gon"],
+      "href": "https://github.com/Rob-Gon",
+      "_source": "github"
+    },
+    {
+      "id": "location",
+      "icon": "pin",
+      "name": "Ubicación",
+      "value": ["Gran Canaria (España)"],
+      "_source": "linkedin"
+    },
+    {
+      "id": "languages",
+      "icon": "languages",
+      "name": "Idiomas",
+      "value": ["Español: nativo", "Inglés: avanzado (título B2)", "Francés: principiante (A2)"],
+      "_source": "cv"
+    },
+    {
+      "id": "cv",
+      "icon": "cv",
+      "name": "Currículum",
+      "value": ["Descargar el CV en PDF"],
+      "href": "cv/cv-es.pdf",
+      "_source": "cv"
+    }
+  ],
   "available": true,
   "hud": {
     "hearts": 3

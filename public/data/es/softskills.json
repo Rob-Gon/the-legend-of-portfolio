@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../schemas/softskills.schema.json",
+  "items": [
+    {
+      "id": "communication",
+      "name": "Comunicación",
+      "icon": "armor",
+      "level": 5,
+      "description": "Me comunico de forma clara y eficiente con compañeros y superiores.",
+      "example": "Colaboración eficiente con compañeros y superiores en todos mis puestos.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "teamwork",
+      "name": "Trabajo en equipo",
+      "icon": "armor",
+      "level": 5,
+      "description": "Colaboro con el equipo para sacar adelante los objetivos comunes.",
+      "example": "Desarrollo de componentes en sprints de Scrum durante mis prácticas en Advance Digital Experts.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "problem-solving",
+      "name": "Resolución de problemas",
+      "icon": "armor",
+      "level": 4,
+      "description": "Resuelvo problemas con pensamiento abstracto.",
+      "example": "Soporte y corrección de otras aplicaciones del Grupo ARI, como la gestión de grúas y el servicio de campa.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "analytical-thinking",
+      "name": "Pensamiento analítico",
+      "icon": "armor",
+      "level": 4,
+      "description": "Descompongo los procesos complejos en piezas que se pueden automatizar.",
+      "example": "Diseño de la ingestión por SFTP y del procesamiento con colas para la facturación y la contabilidad del ERP.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "emotional-intelligence",
+      "name": "Inteligencia emocional",
+      "icon": "armor",
+      "level": 4,
+      "description": "Tengo en cuenta cómo se sienten los demás y cuido el ambiente de trabajo.",
+      "_source": "cv+linkedin+user",
+      "_review": true,
+      "_note": "Add a real example"
+    },
+    {
+      "id": "working-under-pressure",
+      "name": "Trabajo bajo presión",
+      "icon": "armor",
+      "level": 5,
+      "description": "Mantengo la calma y la calidad cuando aprieta el tiempo.",
+      "example": "El módulo de chat con WhatsApp del ERP, desarrollado desde cero en unas 3 semanas.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "commitment",
+      "name": "Compromiso",
+      "icon": "armor",
+      "level": 5,
+      "description": "Me implico hasta el final en lo que empiezo.",
+      "example": "1 año y 8 meses en el ERP del Grupo ARI; el chat con WhatsApp ya lo usan 100 operadores.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "versatility",
+      "name": "Versatilidad",
+      "icon": "armor",
+      "level": 4,
+      "description": "Me adapto a stacks y equipos distintos.",
+      "example": "Laravel y JavaScript en Grupo ARI; React y TypeScript en Crealia IT.",
+      "_source": "cv+linkedin+user"
+    },
+    {
+      "id": "determination",
+      "name": "Determinación",
+      "icon": "armor",
+      "level": 5,
+      "description": "Persigo mis metas aunque el camino sea largo.",
+      "example": "De mis primeras webs en WordPress, de forma autodidacta, al ciclo superior y a un puesto full-stack.",
+      "_source": "cv+linkedin+user"
+    }
+  ]
+}

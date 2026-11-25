@@ -7,6 +7,54 @@
     "Today I am most fluent in {{Laravel}} and {{React}}: back-end and front-end development, interface design and issue resolution.",
     "I am now immersed in {{AI}}, {{process automation}} and {{game development}} projects: n8n workflows, PHP and Laravel back ends connected through REST APIs, React and JavaScript interfaces, MongoDB and MySQL, Git and Docker."
   ],
+  "keyItems": [
+    {
+      "id": "email",
+      "icon": "mail",
+      "name": "Email",
+      "value": ["robertobbgg@gmail.com"],
+      "href": "mailto:robertobbgg@gmail.com",
+      "_source": "cv"
+    },
+    {
+      "id": "linkedin",
+      "icon": "idcard",
+      "name": "LinkedIn",
+      "value": ["roberto-gonzalez-web-dev"],
+      "href": "https://www.linkedin.com/in/roberto-gonzalez-web-dev/",
+      "_source": "linkedin"
+    },
+    {
+      "id": "github",
+      "icon": "github",
+      "name": "GitHub",
+      "value": ["Rob-Gon"],
+      "href": "https://github.com/Rob-Gon",
+      "_source": "github"
+    },
+    {
+      "id": "location",
+      "icon": "pin",
+      "name": "Location",
+      "value": ["Gran Canaria (Spain)"],
+      "_source": "linkedin"
+    },
+    {
+      "id": "languages",
+      "icon": "languages",
+      "name": "Languages",
+      "value": ["Spanish: native", "English: advanced (B2 certificate)", "French: beginner (A2)"],
+      "_source": "cv"
+    },
+    {
+      "id": "cv",
+      "icon": "cv",
+      "name": "CV",
+      "value": ["Download the CV as a PDF"],
+      "href": "cv/cv-en.pdf",
+      "_source": "cv"
+    }
+  ],
   "available": true,
   "hud": {
     "hearts": 3

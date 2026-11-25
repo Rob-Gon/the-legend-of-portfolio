@@ -1,0 +1,110 @@
+@use '../tokens' as *;
+
+.s-inventory {
+  display: flex;
+  flex-flow: row wrap;
+  gap: u(16);
+  align-items: center;
+  justify-content: center;
+
+  &__grid,
+  &__page,
+  &__detail {
+    flex-basis: 100%;
+  }
+
+  &__grid {
+    display: flex;
+    justify-content: center;
+    order: 1;
+  }
+
+  &__page {
+    order: 2;
+    font-size: u(16);
+    color: var(--c-text-muted);
+    text-align: center;
+  }
+
+  &__detail {
+    display: flex;
+    justify-content: center;
+    order: 3;
+  }
+
+  // Big version of the selected icon; the 3D viewer takes this spot in M8.
+  &__preview {
+    display: none;
+  }
+
+  &__message {
+    padding: u(24);
+    font-size: u(18);
+    color: var(--c-text-muted);
+  }
+
+  // Desktop stage: grid and pagers left, preview top-right, item card bottom-right.
+  @include from($bp-desktop) {
+    display: block;
+
+    > * {
+      position: absolute;
+    }
+
+    &__grid {
+      top: 0;
+      left: u(62);
+    }
+
+    .c-pager--prev {
+      top: u(138);
+      left: u(6);
+    }
+
+    .c-pager--next {
+      top: u(138);
+      left: u(552);
+    }
+
+    &__page {
+      top: u(296);
+      left: u(62);
+      width: u(474);
+    }
+
+    &__preview {
+      top: u(-92);
+      right: u(150);
+      display: grid;
+      place-items: center;
+      width: u(230);
+      height: u(230);
+      background: radial-gradient(circle, rgb(233 225 209 / 12%) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+
+    &__preview-icon {
+      font-size: u(120);
+      color: var(--icon-color, currentcolor);
+      filter: drop-shadow(0 0 u(14) rgb(233 225 209 / 35%));
+    }
+
+    // The card never grows past the footer line; long texts scroll inside it.
+    &__detail {
+      top: u(150);
+      right: u(24);
+      bottom: 0;
+      display: flex;
+      align-items: flex-end;
+
+      .c-detail {
+        max-height: 100%;
+      }
+
+      .c-detail__body {
+        min-height: 0;
+        overflow-y: auto;
+      }
+    }
+  }
+}
