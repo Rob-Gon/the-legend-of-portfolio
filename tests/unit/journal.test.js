@@ -35,7 +35,7 @@ describe('HUD', () => {
 
 describe('journal: main quests', () => {
   it('lists goals first as active and completed quests greyed, selecting the first', () => {
-    expect(options()).toHaveLength(10);
+    expect(options()).toHaveLength(9);
     expect(options()[0].classList.contains('c-row--active')).toBe(true);
     expect(options()[2].classList.contains('c-row--done')).toBe(true);
     expect(options()[0].querySelector('.c-row__subtitle').textContent).toBe('Meta actual');

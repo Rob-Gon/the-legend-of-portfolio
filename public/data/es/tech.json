@@ -112,7 +112,7 @@
       "level": 4,
       "icon": "html5",
       "color": "#e34f26",
-      "usedIn": ["grupo-ari"],
+      "usedIn": ["grupo-ari", "crealia-it", "advance-digital-experts"],
       "studiedIn": ["cifp-daw", "programming-hub"],
       "_source": "skills-list"
     },
@@ -123,7 +123,7 @@
       "level": 4,
       "icon": "css",
       "color": "#1572b6",
-      "usedIn": ["grupo-ari"],
+      "usedIn": ["grupo-ari", "crealia-it", "advance-digital-experts"],
       "studiedIn": ["cifp-daw", "programming-hub"],
       "_source": "skills-list"
     },
@@ -134,8 +134,8 @@
       "level": 5,
       "icon": "git",
       "color": "#f03c2e",
-      "usedIn": ["grupo-ari", "crealia-it"],
-      "studiedIn": ["cifp-daw", "linkedin-assessments"],
+      "usedIn": ["grupo-ari", "crealia-it", "advance-digital-experts"],
+      "studiedIn": ["cifp-daw"],
       "_source": "skills-list"
     },
     {
@@ -145,7 +145,7 @@
       "level": 3,
       "icon": "vite",
       "color": "#9135ff",
-      "usedIn": ["advance-digital-experts"],
+      "usedIn": ["grupo-ari", "advance-digital-experts"],
       "studiedIn": [],
       "_source": "skills-list"
     },
@@ -199,7 +199,7 @@
       "category": "secondary",
       "level": 5,
       "icon": "json",
-      "usedIn": [],
+      "usedIn": ["grupo-ari"],
       "studiedIn": ["cifp-daw"],
       "_source": "skills-list"
     },
@@ -243,7 +243,7 @@
       "icon": "csharp",
       "color": "#a76fb2",
       "usedIn": [],
-      "studiedIn": ["cifp-daw", "programming-hub", "linkedin-assessments"],
+      "studiedIn": ["cifp-daw", "programming-hub"],
       "_source": "skills-list"
     },
     {
@@ -286,7 +286,7 @@
       "level": 3,
       "icon": "gitlab",
       "color": "#fc6d26",
-      "usedIn": [],
+      "usedIn": ["crealia-it"],
       "studiedIn": [],
       "_source": "skills-list"
     },
@@ -297,7 +297,7 @@
       "level": 4,
       "icon": "postman",
       "color": "#ff6c37",
-      "usedIn": [],
+      "usedIn": ["grupo-ari", "crealia-it"],
       "studiedIn": [],
       "_source": "skills-list"
     },
@@ -308,7 +308,7 @@
       "level": 3,
       "icon": "jira",
       "color": "#0d5bcf",
-      "usedIn": [],
+      "usedIn": ["grupo-ari"],
       "studiedIn": [],
       "_source": "skills-list"
     },
@@ -330,7 +330,7 @@
       "level": 4,
       "icon": "dbeaver",
       "color": "#5bc0eb",
-      "usedIn": [],
+      "usedIn": ["grupo-ari"],
       "studiedIn": [],
       "_source": "skills-list"
     },
@@ -341,7 +341,7 @@
       "level": 3,
       "icon": "linux",
       "color": "#58b947",
-      "usedIn": [],
+      "usedIn": ["grupo-ari", "crealia-it"],
       "studiedIn": [],
       "_source": "skills-list"
     },

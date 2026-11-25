@@ -6,7 +6,8 @@
       "title": "Music",
       "location": "Hobby",
       "description": [
-        "I am a {{DJ}} and I love electronic music, especially {{Makina}}.",
+        "I have been an occasional {{DJ}} at country estates and private events for 5 years.",
+        "I am an {{electronic music}} enthusiast, especially genres such as Makina, Hard Bounce, Hard Groove and Hard Techno, among others like Drum & Bass and Hardcore.",
         "Currently learning music production with {{Ableton}}."
       ],
       "_source": "user",
@@ -22,7 +23,8 @@
       "title": "Photography and video",
       "location": "Hobby",
       "description": [
-        "I edit photos and video with {{Lightroom}}, {{Photoshop}}, {{Premiere Pro}}, {{DaVinci Resolve}} and the {{Affinity}} suite."
+        "I edit photos and video with {{Lightroom}}, {{Photoshop}}, {{Premiere Pro}}, {{DaVinci Resolve}} and the {{Affinity}} suite.",
+        "In the process of starting a {{YouTube}} channel to upload videos about film and my own horror short films."
       ],
       "_source": "user"
     },
@@ -30,7 +32,7 @@
       "id": "french",
       "title": "French",
       "location": "Learning",
-      "description": ["Beginner level (A2)."],
+      "description": ["I am humbly learning French in my spare time.", "Beginner level (A2)."],
       "_source": "user+cv",
       "_review": true,
       "_note": "From the CV"

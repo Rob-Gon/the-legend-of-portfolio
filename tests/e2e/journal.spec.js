@@ -4,7 +4,7 @@ test.use({ locale: 'es-ES' });
 
 test('the Adventure Log reads its JSON and keeps the selection in the URL', async ({ page }) => {
   await page.goto('./#/diario/misiones');
-  await expect(page.getByRole('option')).toHaveCount(10);
+  await expect(page.getByRole('option')).toHaveCount(9);
   await expect(page.locator('.c-hud__hearts')).toHaveText(
     '2 años y 5 meses de experiencia profesional',
   );
