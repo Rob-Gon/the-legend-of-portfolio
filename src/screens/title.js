@@ -2,6 +2,8 @@ import { el } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { state } from '../core/store.js';
 import { menu, moveMenuFocus, quickModeHref } from '../components/menu.js';
+import avatarAvif from '../assets/scenery/avatar-back.avif';
+import avatarWebp from '../assets/scenery/avatar-back.webp';
 
 let root = null;
 
@@ -9,6 +11,24 @@ export function mount(target) {
   root = target;
   root.classList.add('s-title');
   root.replaceChildren(
+    // Decorative floating lights over the valley (positions and timing live in the SCSS).
+    el(
+      'div',
+      { class: 's-title__motes', 'aria-hidden': 'true' },
+      Array.from({ length: 10 }, () => el('span', { class: 's-title__mote' })),
+    ),
+    // The owner's avatar on the cliff, looking out over the valley (desktop only, decorative).
+    el('picture', { class: 's-title__avatar', 'aria-hidden': 'true' }, [
+      el('source', { srcset: avatarAvif, type: 'image/avif' }),
+      el('img', {
+        src: avatarWebp,
+        alt: '',
+        width: '236',
+        height: '720',
+        loading: 'lazy',
+        decoding: 'async',
+      }),
+    ]),
     el('div', { class: 's-title__center' }, [
       // Live text in the project's own typography; never an imitation of the game logo.
       el('h1', { class: 's-title__heading' }, [

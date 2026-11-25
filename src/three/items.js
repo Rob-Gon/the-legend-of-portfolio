@@ -25,7 +25,7 @@ export function createItemMesh(svgText, { color, size = 1, gradientMap } = {}) {
   for (const path of paths) {
     const style = path.userData.style;
     if (style.fill && style.fill !== 'none') {
-      for (const shape of SVGLoader.createShapes(path)) {
+      for (const shape of path.toShapes()) {
         group.add(
           new Mesh(new ExtrudeGeometry(shape, { depth: DEPTH, bevelEnabled: false }), material),
         );

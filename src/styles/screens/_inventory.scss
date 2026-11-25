@@ -42,6 +42,10 @@
 
   // Big version of the selected icon: the 2D fallback when there is no 3D viewer.
   &__preview,
+  &__rotate {
+    display: none;
+  }
+
   &__viewer {
     display: none;
   }
@@ -111,6 +115,23 @@
 
     &.has-3d &__preview {
       display: none;
+    }
+
+    &.has-3d &__rotate {
+      position: absolute;
+      top: u(-96);
+      right: u(24);
+      display: flex;
+      gap: u(6);
+      align-items: center;
+      font-size: u(15);
+      font-weight: var(--fw-bold);
+      color: var(--c-text-muted);
+      pointer-events: none;
+
+      .c-icon {
+        font-size: u(22);
+      }
     }
 
     &__detail {

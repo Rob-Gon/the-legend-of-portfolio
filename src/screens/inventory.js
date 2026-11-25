@@ -7,6 +7,7 @@ import { findSection } from '../core/sections.js';
 import { isDesktop, isMobile } from '../core/device.js';
 import { set, state } from '../core/store.js';
 import { detail } from '../components/detail.js';
+import { toast } from '../components/toast.js';
 import { grid, pager } from '../components/grid.js';
 import { icon, iconSource } from '../components/icon.js';
 import { openSheet } from '../components/sheet.js';
@@ -126,6 +127,11 @@ function render() {
   const children = [
     el('div', { class: 's-inventory__preview', 'aria-hidden': 'true' }, previewIcon(current)),
     viewerSlot,
+    // Shown only while the 3D viewer is up (CSS): drag rotates the avatar, as the game's Rotate.
+    el('p', { class: 's-inventory__rotate', 'aria-hidden': 'true' }, [
+      icon('rotate', 'c-icon'),
+      el('span', { text: t('hints.rotate') }),
+    ]),
     isWeapons() &&
       pager({ direction: 'prev', label: t('inventory.prevPage'), disabled: pageIndex === 0 }),
     el(
@@ -166,8 +172,11 @@ function showInViewer(item) {
     .then(async ({ createViewer }) => {
       viewer = await createViewer({ reducedMotion: prefersReducedMotion });
     })
-    // 3D is optional: on failure the 2D preview simply stays.
-    .catch((error) => console.error(error));
+    // 3D is optional: on failure the 2D preview stays, with one notice.
+    .catch((error) => {
+      console.error(error);
+      toast(t('errors.model'), { once: 'model' });
+    });
   viewerLoading.then(() => {
     if (!viewer || !viewerSlot.isConnected || selected(items()) !== item) return;
     viewer.attach(viewerSlot);

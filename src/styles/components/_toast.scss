@@ -1,0 +1,35 @@
+@use '../tokens' as *;
+
+// Toasts sit top-centre, under the HUD, above everything else; they never take focus.
+.c-toast-region {
+  position: fixed;
+  top: calc(#{u(96)} + env(safe-area-inset-top));
+  left: 50%;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: u(8);
+  align-items: center;
+  width: max-content;
+  max-width: calc(100vw - #{u(32)});
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.c-toast {
+  padding: u(10) u(18);
+  font-size: u(16);
+  font-weight: var(--fw-bold);
+  color: var(--c-text);
+  text-align: center;
+  background: var(--c-row);
+  border: 1px solid var(--c-border-strong);
+  animation: c-toast-in var(--t-base) both;
+}
+
+@keyframes c-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(#{u(-8)});
+  }
+}

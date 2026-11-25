@@ -2,13 +2,14 @@ import './styles/main.scss';
 import { el } from './core/dom.js';
 import { bus, emit } from './core/bus.js';
 import { load } from './core/data.js';
-import { DEFAULT_LANG, SUPPORTED_LANGS, detectLang, loadLanguage } from './core/i18n.js';
+import { DEFAULT_LANG, SUPPORTED_LANGS, detectLang, loadLanguage, t } from './core/i18n.js';
 import { startInput } from './core/input.js';
 import { readPrefs, writePrefs } from './core/prefs.js';
 import { HOME, startRouter } from './core/router.js';
 import { set, state } from './core/store.js';
 import { AUDIO_ACTIONS, startAudio } from './audio/bridge.js';
 import { closeSheet, isSheetOpen } from './components/sheet.js';
+import { toast } from './components/toast.js';
 import { onLayoutChange } from './core/device.js';
 import * as title from './screens/title.js';
 import * as guide from './screens/guide.js';
@@ -38,8 +39,8 @@ async function switchLanguage() {
   const next = SUPPORTED_LANGS[(SUPPORTED_LANGS.indexOf(state.lang) + 1) % SUPPORTED_LANGS.length];
   const [result] = await Promise.all([loadLanguage(next), loadContent(next)]);
   if (!result.ok) {
-    // shortcut: failure is only logged; the toast component arrives in M9.
     console.error(result.error);
+    toast(t('errors.data'));
     return;
   }
   writePrefs({ ...state.prefs, lang: next });

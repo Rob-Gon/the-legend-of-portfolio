@@ -16,9 +16,19 @@
   --c-callout-line: #3b8ed8;
   --c-heart: #e3343f;
   --c-gem: #3fbf5a;
-  --c-backdrop:
+
+  // Hub backdrop: the title scenery, blurred and darkened by this veil (like a paused game).
+  --c-backdrop: #0a0c0b;
+  --c-backdrop-veil: rgb(4 6 6 / 74%);
+
+  // Alternatives kept for comparison (`<html data-backdrop="black|green">`).
+  --c-backdrop-black: radial-gradient(ellipse at 50% 40%, #1a1d1c, #070808 75%);
+  --c-backdrop-green:
     radial-gradient(ellipse at 28% 18%, rgb(86 116 64 / 35%), transparent 60%),
     radial-gradient(ellipse at 82% 85%, rgb(40 72 52 / 45%), transparent 55%),
     linear-gradient(160deg, #1e2b1b, #0f160e);
-  --c-title-bg: linear-gradient(115deg, #b99a5b 0%, #7a5e3c 55%, #3a2c35 100%);
+  --c-bar: rgb(8 10 10 / 92%);
+  --c-title-scrim: rgb(4 10 16 / 62%);
+  --c-title-glow: rgb(0 0 0 / 70%);
+  --c-mote: #fff6c8;
 }
