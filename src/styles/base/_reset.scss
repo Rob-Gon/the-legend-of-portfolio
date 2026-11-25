@@ -42,3 +42,9 @@ select {
 button {
   cursor: pointer;
 }
+
+// Thin, low-contrast scrollbars that match the panels (Firefox and Chromium).
+* {
+  scrollbar-color: var(--c-border) transparent;
+  scrollbar-width: thin;
+}

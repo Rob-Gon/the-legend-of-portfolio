@@ -83,7 +83,8 @@
     "confidential": "Confidential project: no public links.",
     "levelOf": "Level {value} of 5",
     "usedIn": "Used at",
-    "example": "Example"
+    "example": "Example",
+    "close": "Close"
   },
   "errors": {
     "data": "This section could not be loaded. Try reloading the page.",
@@ -156,7 +157,8 @@
     "titleMenu": "Main menu",
     "systemMenu": "Options",
     "actions": "Actions",
-    "settings": "Settings"
+    "settings": "Settings",
+    "sections": "Sections"
   },
   "journal": {
     "goal": "Current goal",
@@ -182,5 +184,21 @@
     "pause": "Pause the music",
     "play": "Resume the music",
     "volume": "Master volume"
+  },
+  "quick": {
+    "title": "Quick mode",
+    "summary": "Summary",
+    "contact": "Contact",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Technologies",
+    "softSkills": "Soft skills",
+    "education": "Education and certifications",
+    "goals": "Current goals",
+    "hobbies": "Hobbies",
+    "skip": "Skip to content",
+    "interactive": "Open the interactive version",
+    "otherLanguage": "Versión en español",
+    "level": "level {value}/5"
   }
 }

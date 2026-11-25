@@ -10,7 +10,7 @@ public/data/{es,en}/       ui, profile, quests, sidequests, projects, tech, soft
 public/{audio,models,img,cv}/
 src/main.js                Bootstrap order: prefs → device → i18n/data → router → screens
 src/core/                  bus, store, sections, router, input, i18n, data, prefs, device, experience, dom
-src/components/            panel, list-row, grid, tabs, detail-card, button-hints, hud, sheet, toast
+src/components/            panel, list-row, grid, tabs, detail-card, button-hints, hud, sheet, menu, music, fairy, toast
 src/screens/               title, guide, hub, journal, inventory, system
 src/audio/audio.js         Howler wrapper (lazy)
 src/three/                 viewer, tech-icon, avatar (lazy chunk, desktop only)

@@ -1,0 +1,109 @@
+// Quick mode (static page): plain, readable, same palette as the app. Compiled by the build
+// plugin and inlined, so the page needs no other request.
+:root {
+  color-scheme: dark;
+
+  --c-text: #e9e1d1;
+  --c-muted: #c9c2b4;
+  --c-accent: #e2d146;
+  --c-link: #7fe0ff;
+  --c-green: #6fd49c;
+  --c-border: rgb(226 222 211 / 35%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+  font:
+    1rem/1.6 system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  color: var(--c-text);
+  background: #0f160e;
+}
+
+h1 {
+  margin: 0.5rem 0 0;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+h2 {
+  margin: 2.25rem 0 0.75rem;
+  padding-bottom: 0.25rem;
+  font-size: 1.35rem;
+  color: var(--c-accent);
+  border-bottom: 1px solid var(--c-border);
+}
+
+h3 {
+  margin: 1.25rem 0 0.25rem;
+  font-size: 1.1rem;
+}
+
+p,
+ul {
+  margin: 0.4rem 0;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+a {
+  color: var(--c-link);
+  text-underline-offset: 0.15em;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--c-link);
+  outline-offset: 2px;
+}
+
+strong {
+  color: #fff6e0;
+}
+
+.role {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--c-muted);
+}
+
+.meta {
+  color: var(--c-muted);
+}
+
+.nav {
+  font-size: 0.95rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  font-weight: 700;
+  color: var(--c-green);
+  border: 1px solid var(--c-green);
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+}
+
+.skip:focus {
+  position: static;
+}
+
+footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: var(--c-muted);
+}

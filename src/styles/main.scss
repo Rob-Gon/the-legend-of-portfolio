@@ -8,3 +8,6 @@
 @use 'components';
 @use 'layouts';
 @use 'screens';
+
+// Last, so the mobile/tablet overrides win over the screens' base rules.
+@use 'layouts/compact';

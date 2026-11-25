@@ -13,3 +13,9 @@ $bp-desktop: 1200px;
     @content;
   }
 }
+
+@mixin until($bp) {
+  @media (width < $bp) {
+    @content;
+  }
+}

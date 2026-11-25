@@ -64,7 +64,7 @@ describe('System settings', () => {
   });
 
   it('moves focus through menu buttons and settings with up/down', () => {
-    for (let step = 0; step < 4; step += 1) system.handle({ type: 'move', dx: 0, dy: 1 });
+    for (let step = 0; step < 5; step += 1) system.handle({ type: 'move', dx: 0, dy: 1 });
     expect(document.activeElement).toBe(control('musicVolume'));
   });
 });

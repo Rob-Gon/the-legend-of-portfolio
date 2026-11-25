@@ -74,8 +74,10 @@ describe('hub', () => {
     expect([...root.querySelectorAll('.c-menu__button')].map((b) => b.dataset.action)).toEqual([
       'guide',
       'language',
+      undefined, // Quick mode is a real link
       'title',
     ]);
+    expect(root.querySelector('a.c-menu__button').getAttribute('href')).toMatch(/quick\/$/);
   });
 
   it('moves through the System menu with up/down', () => {

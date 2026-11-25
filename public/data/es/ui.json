@@ -83,7 +83,8 @@
     "confidential": "Proyecto confidencial: sin enlaces públicos.",
     "levelOf": "Nivel {value} de 5",
     "usedIn": "Usado en",
-    "example": "Ejemplo"
+    "example": "Ejemplo",
+    "close": "Cerrar"
   },
   "errors": {
     "data": "No se ha podido cargar esta sección. Prueba a recargar la página.",
@@ -156,7 +157,8 @@
     "titleMenu": "Menú principal",
     "systemMenu": "Opciones",
     "actions": "Acciones",
-    "settings": "Ajustes"
+    "settings": "Ajustes",
+    "sections": "Secciones"
   },
   "journal": {
     "goal": "Meta actual",
@@ -182,5 +184,21 @@
     "pause": "Pausar la música",
     "play": "Reanudar la música",
     "volume": "Volumen general"
+  },
+  "quick": {
+    "title": "Modo rápido",
+    "summary": "Resumen",
+    "contact": "Contacto",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "skills": "Tecnologías",
+    "softSkills": "Habilidades",
+    "education": "Formación y certificaciones",
+    "goals": "Metas actuales",
+    "hobbies": "Aficiones",
+    "skip": "Saltar al contenido",
+    "interactive": "Ver la versión interactiva",
+    "otherLanguage": "English version",
+    "level": "nivel {value}/5"
   }
 }

@@ -8,6 +8,8 @@ import { readPrefs, writePrefs } from './core/prefs.js';
 import { HOME, startRouter } from './core/router.js';
 import { set, state } from './core/store.js';
 import { AUDIO_ACTIONS, startAudio } from './audio/bridge.js';
+import { closeSheet, isSheetOpen } from './components/sheet.js';
+import { onLayoutChange } from './core/device.js';
 import * as title from './screens/title.js';
 import * as guide from './screens/guide.js';
 import * as hub from './screens/hub.js';
@@ -68,6 +70,14 @@ function applyMotion(motion) {
 
 function onAction(event) {
   const action = event.detail;
+  // While the mobile detail sheet is open, Back closes it and nothing moves behind it.
+  if (isSheetOpen()) {
+    if (action.type === 'back') {
+      closeSheet();
+      event.preventDefault();
+    }
+    return;
+  }
   if (active.handle(action)) {
     event.preventDefault();
     return;
@@ -109,6 +119,11 @@ if (ui.ok) {
   startRouter();
   show({ animate: false });
   startAudio(musicHost);
+  // Crossing the mobile breakpoint swaps layouts (grouped inventory, sheet): re-render.
+  onLayoutChange(() => {
+    closeSheet();
+    show({ animate: false });
+  });
   bus.addEventListener('state:change', onStateChange);
   bus.addEventListener('action', onAction);
   startInput({ getPrefs: () => state.prefs });

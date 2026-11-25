@@ -9,6 +9,7 @@ import { SECTIONS } from '../core/sections.js';
 import { set, state } from '../core/store.js';
 import { hints } from '../components/hints.js';
 import { hud } from '../components/hud.js';
+import { icon } from '../components/icon.js';
 import { tabs } from '../components/tabs.js';
 import * as inventory from './inventory.js';
 import * as journal from './journal.js';
@@ -43,6 +44,23 @@ function hudStatus() {
     },
     available: profile?.available ? t('availability') : null,
   };
+}
+
+/** Mobile bottom bar: the L/R neighbours as large touch buttons (hidden from 768 px up). */
+function sectionButton(side, section) {
+  if (!section) return el('span', { class: 's-hub__sectionbar-spacer' });
+  return el(
+    'button',
+    {
+      class: `s-hub__sectionbar-button s-hub__sectionbar-button--${side}`,
+      type: 'button',
+      dataset: { action: side === 'prev' ? 'prevSection' : 'nextSection' },
+    },
+    [
+      icon('chevron', 'c-icon s-hub__sectionbar-icon'),
+      el('span', { text: t(`sections.${section.id}`) }),
+    ],
+  );
 }
 
 function view(enter) {
@@ -89,6 +107,10 @@ function view(enter) {
         }),
       ],
     ),
+    el('nav', { class: 's-hub__sectionbar', 'aria-label': t('a11y.sections') }, [
+      sectionButton('prev', SECTIONS[index - 1]),
+      sectionButton('next', SECTIONS[index + 1]),
+    ]),
     el('footer', { class: 's-hub__footer' }, [
       hints({
         label: t('a11y.actions'),
