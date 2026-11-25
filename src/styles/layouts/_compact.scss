@@ -1,0 +1,264 @@
+@use '../tokens' as *;
+
+// Mobile (< 768 px) and tablet (768–1199 px) layouts. The desktop stage lives in each
+// component/screen partial under `from($bp-desktop)`; nothing here applies from 1200 px up.
+
+// Mobile-only L/R bar; the HUD shows the neighbours from 768 px up.
+.s-hub__sectionbar {
+  display: none;
+}
+
+@include until($bp-desktop) {
+  // Room at the bottom for the fixed music bar, which gets its own backdrop over content.
+  .l-screen {
+    padding-bottom: calc(#{u(76)} + env(safe-area-inset-bottom));
+  }
+
+  .l-music {
+    padding: u(4) u(10) u(4) u(4);
+    background: rgb(10 14 9 / 92%);
+    border: 1px solid var(--c-border);
+    border-radius: 999px;
+  }
+
+  .s-title {
+    min-height: calc(100dvh - #{u(76)});
+  }
+
+  .s-title__footer {
+    padding-bottom: 0;
+  }
+
+  .c-detail--quest,
+  .c-detail--item {
+    width: 100%;
+    min-height: 0;
+  }
+
+  .c-hud__available {
+    white-space: nowrap;
+  }
+}
+
+@include until($bp-tablet) {
+  .l-stage {
+    overflow-x: clip;
+  }
+
+  // HUD: two compact rows (hearts · status, then the title).
+  .c-hud {
+    grid-template-areas:
+      'hearts status'
+      'center center';
+    grid-template-columns: 1fr auto;
+    row-gap: u(6);
+    height: auto;
+    padding: u(12) u(16) u(10);
+  }
+
+  .c-hud__hearts {
+    grid-area: hearts;
+  }
+
+  .c-hud__status {
+    flex-direction: row;
+    grid-area: status;
+    gap: u(10);
+    align-items: center;
+  }
+
+  .c-hud__center {
+    grid-area: center;
+    justify-content: center;
+  }
+
+  .c-hud__neighbor,
+  .c-tabs__key,
+  .s-hub__footer {
+    display: none;
+  }
+
+  .c-hud__title {
+    font-size: u(24);
+  }
+
+  .c-hud__gems {
+    font-size: u(18);
+  }
+
+  .c-hud__gem {
+    font-size: u(22);
+  }
+
+  .c-hud__available {
+    font-size: u(12);
+  }
+
+  .s-hub__section {
+    padding: 0 u(12) u(16);
+  }
+
+  .s-hub__sectionbar {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: u(8) u(12) calc(#{u(8)} + env(safe-area-inset-bottom));
+    background: rgb(10 14 9 / 94%);
+    border-top: 1px solid var(--c-border);
+  }
+
+  .s-hub__sectionbar-button {
+    display: flex;
+    gap: u(6);
+    align-items: center;
+    max-width: 34%;
+    min-height: var(--tap-min);
+    padding: 0 u(10);
+    font-size: u(15);
+    font-weight: var(--fw-bold);
+    font-style: italic;
+    color: var(--c-text);
+    background: none;
+    border: 1px solid var(--c-border);
+
+    span {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .s-hub__sectionbar-button--next {
+    flex-direction: row-reverse;
+
+    .s-hub__sectionbar-icon {
+      scale: -1 1;
+    }
+  }
+
+  .s-hub__sectionbar-icon {
+    flex: none;
+    font-size: u(16);
+  }
+
+  .s-hub__sectionbar-spacer {
+    width: var(--tap-min);
+  }
+
+  // On hub screens the music bar sits in the middle of the section bar, compact.
+  .l-stage:has(.s-hub) .l-music {
+    bottom: calc(#{u(8)} + env(safe-area-inset-bottom));
+    left: 50%;
+    translate: -50% 0;
+  }
+
+  .l-stage:has(.s-hub) {
+    .c-music__button--prev,
+    .c-music__speaker,
+    .c-music__volume,
+    .c-music__track {
+      display: none;
+    }
+  }
+
+  .c-row {
+    width: 100%;
+  }
+
+  // Inventory: every group stacked, 4 fluid columns.
+  .s-inventory {
+    flex-direction: column;
+    gap: u(20);
+    align-items: stretch;
+  }
+
+  .s-inventory__group-title {
+    margin-bottom: u(8);
+    font-size: u(16);
+    color: var(--c-text-muted);
+  }
+
+  .c-grid {
+    gap: u(10);
+  }
+
+  .c-grid__row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: u(10);
+  }
+
+  .c-cell {
+    width: auto;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .c-cell__icon {
+    width: 58%;
+    height: 58%;
+  }
+
+  // Guide: each control becomes a small card instead of a cramped 4-column table.
+  .s-guide__table {
+    thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+
+    tr {
+      display: block;
+      padding: u(10) 0;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    th,
+    td {
+      display: block;
+      padding: u(3) 0;
+      border: 0;
+    }
+
+    td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: u(13);
+      color: var(--c-accent-yellow);
+    }
+  }
+}
+
+@media (width >= $bp-tablet) and (width < $bp-desktop) {
+  .c-hud {
+    padding: u(24) u(24) 0;
+  }
+
+  .s-hub__section {
+    padding: 0 u(24) u(24);
+  }
+
+  .s-journal {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .s-journal__list {
+    flex: 0 1 u(400);
+    min-width: 0;
+  }
+
+  .s-journal__detail {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .c-row {
+    width: 100%;
+  }
+}

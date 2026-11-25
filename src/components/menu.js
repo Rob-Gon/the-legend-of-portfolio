@@ -1,21 +1,30 @@
 import { el } from '../core/dom.js';
 
-/** Vertical list of large buttons (title menu, System). `items`: [{ action, label }]. */
+/**
+ * Vertical list of large buttons (title menu, System). `items`: [{ action, label }] for app
+ * actions, or [{ href, label }] for a real link (e.g. Quick mode, a separate static page).
+ */
 export function menu({ label, items }) {
   return el(
     'ul',
     { class: 'c-menu', 'aria-label': label },
-    items.map(({ action, label: text }) =>
+    items.map(({ action, href, label: text }) =>
       el('li', {}, [
-        el(
-          'button',
-          { class: 'c-button c-menu__button', type: 'button', dataset: { action } },
-          text,
-        ),
+        href
+          ? el('a', { class: 'c-button c-menu__button', href }, text)
+          : el(
+              'button',
+              { class: 'c-button c-menu__button', type: 'button', dataset: { action } },
+              text,
+            ),
       ]),
     ),
   );
 }
+
+/** Quick mode page for the current language (static, generated at build time). */
+export const quickModeHref = (lang) =>
+  `${import.meta.env.BASE_URL}${lang === 'es' ? '' : `${lang}/`}quick/`;
 
 /**
  * Moves focus up/down the menu buttons (or `selector` matches) inside `container`.

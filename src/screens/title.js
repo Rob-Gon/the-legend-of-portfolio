@@ -1,6 +1,7 @@
 import { el } from '../core/dom.js';
 import { t } from '../core/i18n.js';
-import { menu, moveMenuFocus } from '../components/menu.js';
+import { state } from '../core/store.js';
+import { menu, moveMenuFocus, quickModeHref } from '../components/menu.js';
 
 let root = null;
 
@@ -21,6 +22,7 @@ export function mount(target) {
           { action: 'start', label: t('title.start') },
           { action: 'guide', label: t('title.guide') },
           { action: 'language', label: t('title.languageCurrent', { name: t('meta.langName') }) },
+          { href: quickModeHref(state.lang), label: t('title.quickMode') },
         ],
       }),
     ]),

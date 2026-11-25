@@ -4,9 +4,11 @@ import { peek } from '../core/data.js';
 import { formatPeriod } from '../core/experience.js';
 import { t } from '../core/i18n.js';
 import { findSection } from '../core/sections.js';
+import { isMobile } from '../core/device.js';
 import { set, state } from '../core/store.js';
 import { detail } from '../components/detail.js';
 import { list } from '../components/list.js';
+import { openSheet } from '../components/sheet.js';
 
 const period = (item) =>
   item.period ? formatPeriod(item.period, state.lang, t('status.current')) : null;
@@ -85,32 +87,47 @@ function render() {
 
   const { row, detail: detailOf } = tabConfig();
   const current = selected(entries);
-  root.replaceChildren(
-    el(
-      'div',
-      { class: 's-journal__list' },
-      list({
-        label: t(`tabs.${findSection('journal').tabs.find((tab) => tab.id === state.tab).key}`),
-        rows: entries.map((item) => ({
-          id: item.id,
-          title: item.title,
-          selected: item === current,
-          ...row(item),
-        })),
-      }),
-    ),
-    el(
-      'div',
-      { class: 's-journal__detail' },
-      detail({
-        variant: 'quest',
-        id: current.id,
-        title: current.title,
-        scrollable: true,
-        ...detailOf(current),
-      }),
-    ),
+  const listNode = el(
+    'div',
+    { class: 's-journal__list' },
+    list({
+      label: t(`tabs.${findSection('journal').tabs.find((tab) => tab.id === state.tab).key}`),
+      rows: entries.map((item) => ({
+        id: item.id,
+        title: item.title,
+        selected: item === current,
+        ...row(item),
+      })),
+    }),
   );
+  // On mobile the detail opens in a bottom sheet instead (see openDetail).
+  if (isMobile()) root.replaceChildren(listNode);
+  else {
+    root.replaceChildren(
+      listNode,
+      el('div', { class: 's-journal__detail' }, detailPanel(current, detailOf, true)),
+    );
+  }
+}
+
+function detailPanel(item, detailOf, scrollable) {
+  return detail({
+    variant: 'quest',
+    id: item.id,
+    title: item.title,
+    scrollable,
+    ...detailOf(item),
+  });
+}
+
+function openDetail() {
+  const current = selected(items());
+  openSheet({
+    content: detailPanel(current, tabConfig().detail, false),
+    labelledBy: `detail-title-${current.id}`,
+    closeLabel: t('detail.close'),
+    onClose: focusSelected,
+  });
 }
 
 function focusSelected() {
@@ -143,8 +160,16 @@ export function handle(action) {
   const entries = items();
   if (!entries?.length) return false;
 
-  if (action.type === 'item') return choose(action.id);
-  if (action.type === 'select') return Boolean(document.activeElement?.closest('[role="option"]'));
+  if (action.type === 'item') {
+    choose(action.id);
+    if (isMobile()) openDetail();
+    return true;
+  }
+  if (action.type === 'select') {
+    if (!document.activeElement?.closest('[role="option"]')) return false;
+    if (isMobile()) openDetail();
+    return true;
+  }
   if (action.type !== 'move' || !action.dy) return false;
 
   const inTabs = document.activeElement?.closest('[role="tablist"]');

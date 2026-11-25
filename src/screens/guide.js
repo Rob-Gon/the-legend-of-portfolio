@@ -48,9 +48,16 @@ function controlsTable() {
         CONTROLS.map(({ action, keyboard, gamepad }) =>
           el('tr', {}, [
             el('th', { scope: 'row', text: t(`guide.actions.${action}`) }),
-            el('td', {}, keycaps(keyboard, 'c-key--kb')),
-            el('td', {}, gamepad.length ? keycaps(gamepad, 's-guide__pad') : '—'),
-            el('td', { text: t(`guide.pointer.${action}`) }),
+            el('td', { 'data-label': t('guide.columns.keyboard') }, keycaps(keyboard, 'c-key--kb')),
+            el(
+              'td',
+              { 'data-label': t('guide.columns.gamepad') },
+              gamepad.length ? keycaps(gamepad, 's-guide__pad') : '—',
+            ),
+            el('td', {
+              'data-label': t('guide.columns.pointer'),
+              text: t(`guide.pointer.${action}`),
+            }),
           ]),
         ),
       ),

@@ -7,20 +7,28 @@
   align-items: center;
   justify-content: center;
 
-  &__grid,
-  &__page,
-  &__detail {
-    flex-basis: 100%;
+  // Below desktop: [prev] grid [next], then the page label and the detail card.
+  .c-pager--prev {
+    order: 1;
   }
 
   &__grid {
     display: flex;
     justify-content: center;
-    order: 1;
+    order: 2;
+  }
+
+  .c-pager--next {
+    order: 3;
+  }
+
+  &__page,
+  &__detail {
+    flex-basis: 100%;
   }
 
   &__page {
-    order: 2;
+    order: 4;
     font-size: u(16);
     color: var(--c-text-muted);
     text-align: center;
@@ -29,7 +37,7 @@
   &__detail {
     display: flex;
     justify-content: center;
-    order: 3;
+    order: 5;
   }
 
   // Big version of the selected icon; the 3D viewer takes this spot in M8.
@@ -103,7 +111,7 @@
 
       .c-detail__body {
         min-height: 0;
-        overflow-y: auto;
+        overflow: hidden auto;
       }
     }
   }

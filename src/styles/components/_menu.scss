@@ -16,4 +16,13 @@
     min-height: max(#{u(46)}, var(--tap-min));
     padding: u(8) u(28);
   }
+
+  // Links (Quick mode) look exactly like the menu buttons.
+  a#{&}__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-text);
+    text-decoration: none;
+  }
 }

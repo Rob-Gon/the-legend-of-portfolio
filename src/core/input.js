@@ -160,7 +160,49 @@ function startGamepad(dispatch) {
   });
 }
 
-/** The only place that reads raw keyboard, pointer and gamepad input. */
+export const SWIPE_MIN_PX = 60;
+const SWIPE_MAX_MS = 600;
+
+/**
+ * Pure swipe mapping: a quick, mostly horizontal swipe changes section (left → next, like
+ * turning a page). Returns an action or null.
+ */
+export function swipeToAction({ dx, dy, ms }) {
+  if (ms > SWIPE_MAX_MS || Math.abs(dx) < SWIPE_MIN_PX || Math.abs(dx) < 2 * Math.abs(dy)) {
+    return null;
+  }
+  return { type: dx < 0 ? 'nextSection' : 'prevSection' };
+}
+
+function startSwipe(dispatch) {
+  let start = null;
+  document.addEventListener(
+    'touchstart',
+    (event) => {
+      const touch = event.touches[0];
+      // Sliders and open sheets keep their own horizontal gestures.
+      const ignored = event.target.closest?.('input, dialog');
+      start =
+        event.touches.length === 1 && !ignored
+          ? { x: touch.clientX, y: touch.clientY, t: event.timeStamp }
+          : null;
+    },
+    { passive: true },
+  );
+  document.addEventListener('touchend', (event) => {
+    if (!start) return;
+    const touch = event.changedTouches[0];
+    const action = swipeToAction({
+      dx: touch.clientX - start.x,
+      dy: touch.clientY - start.y,
+      ms: event.timeStamp - start.t,
+    });
+    start = null;
+    if (action) dispatch(action);
+  });
+}
+
+/** The only place that reads raw keyboard, pointer, touch and gamepad input. */
 export function startInput({ getPrefs, dispatch = dispatchAction }) {
   document.addEventListener('keydown', (event) => {
     setInputMode('keyboard');
@@ -182,4 +224,5 @@ export function startInput({ getPrefs, dispatch = dispatchAction }) {
   });
 
   startGamepad(dispatch);
+  startSwipe(dispatch);
 }

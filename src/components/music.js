@@ -8,11 +8,11 @@ import { icon } from './icon.js';
  * `labels`: { group, prev, next, pause, volume }.
  */
 export function musicControls({ labels, onVolume }) {
-  const button = (action, iconName, label) =>
+  const button = (action, modifier, iconName, label) =>
     el(
       'button',
       {
-        class: `c-music__button c-music__button--${action}`,
+        class: `c-music__button c-music__button--${modifier}`,
         type: 'button',
         'aria-label': label,
         title: label,
@@ -22,9 +22,9 @@ export function musicControls({ labels, onVolume }) {
     );
 
   return el('div', { class: 'c-music', role: 'group', 'aria-label': labels.group }, [
-    button('prevTrack', 'track-prev', labels.prev),
-    button('toggleMusic', 'pause', labels.pause),
-    button('nextTrack', 'track-next', labels.next),
+    button('prevTrack', 'prev', 'track-prev', labels.prev),
+    button('toggleMusic', 'toggle', 'pause', labels.pause),
+    button('nextTrack', 'next', 'track-next', labels.next),
     el('span', { class: 'c-music__speaker', 'aria-hidden': 'true' }, icon('sound-on')),
     el('input', {
       class: 'c-range c-music__volume',

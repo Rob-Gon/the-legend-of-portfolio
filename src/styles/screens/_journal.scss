@@ -22,9 +22,11 @@
     gap: u(36);
     padding-left: u(44);
 
+    // overflow-y alone turns on horizontal scrolling too; the selection brackets and glow
+    // stick out a few pixels, which showed an empty horizontal scrollbar.
     &__list {
       flex: none;
-      overflow-y: auto;
+      overflow: hidden auto;
     }
 
     // The framed panel keeps its size; only its body scrolls (the frame never moves).
@@ -40,7 +42,7 @@
       .c-detail__body {
         flex: 1;
         min-height: 0;
-        overflow-y: auto;
+        overflow: hidden auto;
       }
     }
   }

@@ -2,7 +2,7 @@ import { el } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 import { writePrefs } from '../core/prefs.js';
 import { set, state } from '../core/store.js';
-import { menu, moveMenuFocus } from '../components/menu.js';
+import { menu, moveMenuFocus, quickModeHref } from '../components/menu.js';
 
 const MOTION_ORDER = ['system', 'reduced', 'full'];
 const NAVIGABLE = '.c-menu__button, .c-setting__control';
@@ -110,6 +110,7 @@ export function mount(target) {
         items: [
           { action: 'guide', label: t('system.guide') },
           { action: 'language', label: t('title.languageCurrent', { name: t('meta.langName') }) },
+          { href: quickModeHref(state.lang), label: t('system.quickMode') },
           { action: 'title', label: t('system.backToTitle') },
         ],
       }),

@@ -23,7 +23,14 @@ describe('title screen', () => {
 
     expect(root.querySelector('h1').textContent).toBe('The Legend Of RobertoPortfolio Of The Wild');
     const buttons = [...root.querySelectorAll('.c-menu__button')];
-    expect(buttons.map((button) => button.dataset.action)).toEqual(['start', 'guide', 'language']);
+    expect(buttons.map((button) => button.dataset.action)).toEqual([
+      'start',
+      'guide',
+      'language',
+      undefined,
+    ]);
+    expect(buttons[3].tagName).toBe('A');
+    expect(buttons[3].getAttribute('href')).toBe(`${import.meta.env.BASE_URL}quick/`);
     expect(buttons[2].textContent).toBe('Idioma: Español');
     expect(document.activeElement).toBe(buttons[0]);
     expect(root.textContent).toContain('Proyecto de fan no oficial. Sin relación con Nintendo.');
@@ -36,9 +43,8 @@ describe('title screen', () => {
 
     expect(title.handle({ type: 'move', dx: 0, dy: 1 })).toBe(true);
     expect(document.activeElement).toBe(buttons[1]);
-    title.handle({ type: 'move', dx: 0, dy: 1 });
-    title.handle({ type: 'move', dx: 0, dy: 1 });
-    expect(document.activeElement).toBe(buttons[2]);
+    for (let step = 0; step < 4; step += 1) title.handle({ type: 'move', dx: 0, dy: 1 });
+    expect(document.activeElement).toBe(buttons[3]);
     expect(title.handle({ type: 'move', dx: 1, dy: 0 })).toBe(false);
     expect(title.handle({ type: 'back' })).toBe(false);
   });
