@@ -79,7 +79,7 @@ describe('loadLanguage', () => {
     expect(document.documentElement.lang).toBe('en');
     expect(document.title).toBe('The Legend Of Roberto - Portfolio Of The Wild');
     expect(document.querySelector('meta[name="description"]').content).toContain(
-      'full-stack developer',
+      'Full-stack Developer',
     );
   });
 });

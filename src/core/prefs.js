@@ -2,11 +2,16 @@ const STORAGE_KEY = 'tlop:prefs';
 
 export const DEFAULT_PREFS = Object.freeze({
   lang: null,
+  // Master volume (music bar), applied on top of the music and effects volumes.
+  volume: 1,
   musicVolume: 0.5,
   sfxVolume: 0.7,
   muted: false,
+  musicPaused: false,
   motion: 'system',
   shortcuts: true,
+  // The intro track plays only on the first visit.
+  introPlayed: false,
 });
 
 const isUnit = (value) => typeof value === 'number' && value >= 0 && value <= 1;
@@ -14,11 +19,14 @@ const isBool = (value) => typeof value === 'boolean';
 
 const VALIDATORS = {
   lang: (value) => value === null || value === 'es' || value === 'en',
+  volume: isUnit,
   musicVolume: isUnit,
   sfxVolume: isUnit,
   muted: isBool,
+  musicPaused: isBool,
   motion: (value) => ['system', 'full', 'reduced'].includes(value),
   shortcuts: isBool,
+  introPlayed: isBool,
 };
 
 /** Keeps only known keys with valid values; anything else falls back to the default. */

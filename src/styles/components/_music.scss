@@ -1,0 +1,59 @@
+@use '../tokens' as *;
+
+// Music bar: small round buttons, same surfaces as rows and keycaps.
+.c-music {
+  display: flex;
+  gap: u(8);
+  align-items: center;
+
+  &__button {
+    display: grid;
+    place-items: center;
+    width: max(#{u(34)}, var(--tap-min));
+    height: max(#{u(34)}, var(--tap-min));
+    padding: 0;
+    font-size: u(18);
+    color: var(--c-text);
+    background: var(--c-row);
+    border: 1px solid var(--c-border);
+    border-radius: 50%;
+    transition: border-color var(--t-base);
+
+    &:disabled {
+      opacity: 0.35;
+    }
+  }
+
+  &__speaker {
+    margin-left: u(6);
+    font-size: u(18);
+    line-height: 0;
+    color: var(--c-text-muted);
+  }
+
+  &__volume {
+    width: u(96);
+  }
+
+  &__track {
+    max-width: u(260);
+    overflow: hidden;
+    font-size: u(13);
+    color: var(--c-text-muted);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (hover: hover) {
+  .c-music__button:not(:disabled):hover {
+    border-color: var(--c-border-strong);
+  }
+}
+
+@include from($bp-desktop) {
+  .c-music__button {
+    width: u(34);
+    height: u(34);
+  }
+}

@@ -30,7 +30,8 @@ describe.each(FILES)('%s.json', (file) => {
     it('keeps availability, hearts and key item ids/icons identical across languages', () => {
       const [es, en] = LANGS.map((lang) => data(lang, file));
       expect([en.available, en.hud]).toEqual([es.available, es.hud]);
-      const neutral = (profile) => profile.keyItems.map(({ id, icon }) => ({ id, icon }));
+      const neutral = (profile) =>
+        profile.keyItems.map(({ id, icon, color }) => ({ id, icon, color }));
       expect(neutral(en)).toEqual(neutral(es));
     });
     return;

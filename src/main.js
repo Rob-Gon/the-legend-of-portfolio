@@ -1,12 +1,13 @@
 import './styles/main.scss';
 import { el } from './core/dom.js';
-import { bus } from './core/bus.js';
+import { bus, emit } from './core/bus.js';
 import { load } from './core/data.js';
 import { DEFAULT_LANG, SUPPORTED_LANGS, detectLang, loadLanguage } from './core/i18n.js';
 import { startInput } from './core/input.js';
 import { readPrefs, writePrefs } from './core/prefs.js';
 import { HOME, startRouter } from './core/router.js';
 import { set, state } from './core/store.js';
+import { AUDIO_ACTIONS, startAudio } from './audio/bridge.js';
 import * as title from './screens/title.js';
 import * as guide from './screens/guide.js';
 import * as hub from './screens/hub.js';
@@ -17,6 +18,8 @@ const root = document.querySelector('#app');
 const CONTENT_FILES = ['profile', 'quests', 'sidequests', 'projects', 'tech', 'softskills'];
 const loadContent = (lang) => Promise.all(CONTENT_FILES.map((file) => load(lang, file)));
 let active = null;
+// Music bar: lives outside the screen host so it stays across screen changes.
+const musicHost = el('div', { class: 'l-music' });
 
 const screenFor = (section) => (section === null ? title : section === 'guide' ? guide : hub);
 
@@ -24,7 +27,7 @@ const screenFor = (section) => (section === null ? title : section === 'guide' ?
 function show({ animate }) {
   active = screenFor(state.section);
   const host = el('div', { class: `l-screen${animate ? ' l-screen--enter' : ''}` });
-  root.replaceChildren(host);
+  root.replaceChildren(host, musicHost);
   active.mount(host);
 }
 
@@ -47,11 +50,21 @@ function openGuide() {
 
 // Actions available on every screen (title menu, System menu).
 const GLOBAL_ACTIONS = {
-  start: () => set({ section: 'journal', tab: 'quests', selection: null }),
+  start: () => {
+    emit('ui:sfx', 'select');
+    set({ section: 'journal', tab: 'quests', selection: null });
+  },
   guide: openGuide,
   language: switchLanguage,
   title: () => set(HOME),
+  ...AUDIO_ACTIONS,
 };
+
+/** System motion setting: 'system' follows the OS; the others force it either way. */
+function applyMotion(motion) {
+  if (motion === 'system') delete document.documentElement.dataset.motion;
+  else document.documentElement.dataset.motion = motion;
+}
 
 function onAction(event) {
   const action = event.detail;
@@ -73,6 +86,7 @@ function onAction(event) {
 }
 
 function onStateChange({ detail: { keys } }) {
+  if (keys.includes('prefs')) applyMotion(state.prefs.motion);
   if (keys.includes('lang')) return show({ animate: false });
   if (keys.includes('section') && screenFor(state.section) !== active) {
     return show({ animate: true });
@@ -91,8 +105,10 @@ if (!ui.ok && lang !== DEFAULT_LANG) {
 
 if (ui.ok) {
   set({ prefs, lang });
+  applyMotion(prefs.motion);
   startRouter();
   show({ animate: false });
+  startAudio(musicHost);
   bus.addEventListener('state:change', onStateChange);
   bus.addEventListener('action', onAction);
   startInput({ getPrefs: () => state.prefs });

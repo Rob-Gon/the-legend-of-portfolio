@@ -3,7 +3,7 @@
     "lang": "en",
     "langName": "English",
     "siteTitle": "The Legend Of Roberto - Portfolio Of The Wild",
-    "description": "Portfolio of Roberto Báez González, full-stack developer (Laravel, PHP, JavaScript, React).",
+    "description": "Portfolio of Roberto Báez González - Full-stack Developer (Laravel, PHP, JavaScript, React).",
     "disclaimer": "Unofficial fan project. Not affiliated with Nintendo."
   },
   "title": {
@@ -12,7 +12,7 @@
     "language": "Language",
     "languageCurrent": "Language: {name}",
     "quickMode": "Quick mode",
-    "tagline": "Portfolio of Roberto Báez González, full-stack developer"
+    "tagline": "Portfolio of Roberto Báez González - Full-stack Developer"
   },
   "sections": {
     "journal": "Adventure Log",
@@ -63,7 +63,14 @@
     "language": "Language",
     "backToTitle": "Back to the title screen",
     "quickMode": "Quick mode",
-    "guide": "Guide"
+    "guide": "Guide",
+    "on": "On",
+    "off": "Off",
+    "motion": {
+      "system": "System default",
+      "reduced": "On",
+      "full": "Off"
+    }
   },
   "detail": {
     "level": "Level",
@@ -106,7 +113,8 @@
       "nextTab": "Next tab",
       "move": "Move the cursor",
       "select": "Select",
-      "back": "Back"
+      "back": "Back",
+      "toggleMute": "Mute or unmute"
     },
     "pointer": {
       "prevSection": "Click the section name on the left",
@@ -115,7 +123,8 @@
       "nextTab": "Click the tab",
       "move": "Hover with the mouse",
       "select": "Click or tap",
-      "back": "Press “Back”"
+      "back": "Press “Back”",
+      "toggleMute": "In System → Mute"
     },
     "keys": {
       "Space": "Space",
@@ -146,7 +155,8 @@
   "a11y": {
     "titleMenu": "Main menu",
     "systemMenu": "Options",
-    "actions": "Actions"
+    "actions": "Actions",
+    "settings": "Settings"
   },
   "journal": {
     "goal": "Current goal",
@@ -163,5 +173,14 @@
     "month": "1 month",
     "months": "{n} months",
     "and": "{a} and {b}"
+  },
+  "music": {
+    "label": "Music",
+    "prev": "Previous track",
+    "next": "Next track",
+    "nowPlaying": "{title} · {author}",
+    "pause": "Pause the music",
+    "play": "Resume the music",
+    "volume": "Master volume"
   }
 }

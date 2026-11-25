@@ -18,13 +18,26 @@
 
 Read/write through `core/prefs.js` (try/catch; works without storage).
 
+## Playback (owner's spec)
+
+- `public/audio/manifest.json` is the single source: `intro` (track id), `music`
+  (`[{ id, title, author, licence, source, files }]`) and `sfx` (`{ name: [files] }`). Only
+  files that exist are listed (a unit test checks it), so no request ever 404s.
+- First visit: the `intro` track plays first, then the other tracks loop in a shuffled order
+  that never includes the intro again (`prefs.introPlayed`). Tracks fade out (1.5 s) and the
+  next fades in (1.5 s), overlapping.
+- Music bar (bottom-left on every screen): previous, mute, next and the current
+  "title · author" (credit). `M` toggles mute anywhere.
+- Effects never stack: one instance per effect (restart, not layer) plus a minimum gap
+  (cursor 60 ms, Guide chime 400 ms). The Guide chime plays only when the Guide opens.
+
 ## Files
 
 - `public/audio/music/` — `title.*`, `hub.*` (loop).
-- `public/audio/sfx/` — `cursor`, `select`, `back`, `tab`, `section`, `open`, `guide` (short
-  CC0 chime played when the Guide opens; never a game voice or a recreation of one).
-- Each sound in two formats: `.webm` (Opus) first, `.mp3` fallback. SFX ≤ 30 KB each,
-  music ≤ 1.5 MB per track, loudness-normalised.
+- `public/audio/sfx/` — `cursor`, `select`, `back`, `tab`, `section` (Kenney, CC0) and `guide`
+  (fairy sound provided by the owner; see the owner's risk decision in `assets-ip.md`).
+- Formats: `.mp3` (plays everywhere); `.webm` (Opus) first is optional once ffmpeg is available. SFX ≤ 30 KB each,
+  music ≤ 2.5 MB per track (96 kbps, streamed), loudness-normalised.
 - Missing or failing files: log once in dev, disable that sound, never break the UI.
 
 ## Licences
@@ -33,4 +46,5 @@ Read/write through `core/prefs.js` (try/catch; works without storage).
 - Music: chosen by the owner; must allow commercial use. Until then, slots stay empty and the
   music controls still work (silent).
 - Every audio file gets an entry in `THIRD_PARTY.md` (title, author, source URL, licence).
-- **Never** use sounds or music from any Nintendo game, or recordings/remixes of them.
+- **Never** use sounds or music ripped from any Nintendo game. Owner-approved exceptions (lo-fi
+  versions from Pixabay, fairy sound) are listed in `assets-ip.md`.

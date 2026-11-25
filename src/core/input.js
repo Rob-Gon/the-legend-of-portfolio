@@ -12,6 +12,7 @@ const SHORTCUTS = {
   a: [-1, 0],
   s: [0, 1],
   d: [1, 0],
+  m: 'toggleMute',
 };
 const ARROWS = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0] };
 const FORM_CONTROLS = 'input, select, textarea, [contenteditable]:not([contenteditable="false"])';
@@ -35,6 +36,7 @@ export const CONTROLS = [
   },
   { action: 'select', keyboard: ['Enter', 'Space'], gamepad: ['A'] },
   { action: 'back', keyboard: ['Esc', 'Backspace'], gamepad: ['B'] },
+  { action: 'toggleMute', keyboard: ['M'], gamepad: [] },
 ];
 export const TRANSLATED_KEYS = ['Space', 'Backspace', 'DPad', 'Stick'];
 

@@ -43,8 +43,10 @@
     color: var(--c-text-muted);
   }
 
+  // Leaves room below for the music bar, which sits bottom-left on every screen.
   &__footer {
     padding-top: u(16);
+    padding-bottom: calc(max(#{u(34)}, var(--tap-min)) + #{u(16)});
     text-align: center;
   }
 

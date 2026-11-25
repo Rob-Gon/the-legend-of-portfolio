@@ -29,6 +29,18 @@ The repository is **public** and carries the owner's name. These rules are manda
 - It has **no name** in the UI, the JSON or the code (`guide-fairy`); never call it Navi.
 - Its sound is an original CC0 chime (see `audio.md`), never the game character's voice.
 
+## Owner's risk decision (2026-11-25)
+
+The owner chose to publish, against the default rule above:
+- AI-made lo-fi versions of game themes by Feora (Pixabay) and the intro "Heavy Ascension"
+  (QuentinGaming, Pixabay), all under the Pixabay Content License;
+- a fairy sound that the owner states is not the game's original recording.
+
+Claude warned that a new arrangement of a game melody is still a derivative of the original
+composition (takedown risk). If a takedown notice arrives: remove the entries from
+`public/audio/manifest.json` and the files, then redeploy. Do not add more game-derived
+audio without asking the owner again.
+
 ## Title and disclaimer
 
 - The title "The Legend Of Roberto - Portfolio Of The Wild" is set as **live text** in the

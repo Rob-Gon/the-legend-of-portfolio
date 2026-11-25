@@ -1,0 +1,53 @@
+{
+  "intro": "heavy-ascension",
+  "music": [
+    {
+      "id": "heavy-ascension",
+      "title": "Heavy Ascension",
+      "author": "QuentinGaming",
+      "licence": "Pixabay Content License",
+      "source": "https://pixabay.com/es/music/orquestal-a-heavy-ascension-cinematic-607096/",
+      "files": ["music/heavy-ascension.mp3"]
+    },
+    {
+      "id": "lost-woods",
+      "title": "Lost Woods (lo-fi)",
+      "author": "Feora",
+      "licence": "Pixabay Content License",
+      "source": "https://pixabay.com/es/music/late-feora-lost-woods-legend-of-zelda-lofi-421674/",
+      "files": ["music/lost-woods.mp3"]
+    },
+    {
+      "id": "gerudo-valley",
+      "title": "Gerudo Valley (lo-fi)",
+      "author": "Feora",
+      "licence": "Pixabay Content License",
+      "source": "https://pixabay.com/es/music/late-feora-gerudo-valley-legend-of-zelda-lofi-421677/",
+      "files": ["music/gerudo-valley.mp3"]
+    },
+    {
+      "id": "song-of-storms",
+      "title": "Song of Storms (lo-fi)",
+      "author": "Feora",
+      "licence": "Pixabay Content License",
+      "source": "https://pixabay.com/es/music/late-feora-song-of-storms-legend-of-zelda-lofi-421673/",
+      "files": ["music/song-of-storms.mp3"]
+    },
+    {
+      "id": "zeldas-lullaby",
+      "title": "Zelda's Lullaby (lo-fi)",
+      "author": "Feora",
+      "licence": "Pixabay Content License",
+      "source": "https://pixabay.com/es/music/late-feora-zeldax27s-lullaby-legend-of-zelda-lofi-421675/",
+      "files": ["music/zeldas-lullaby.mp3"]
+    }
+  ],
+  "sfx": {
+    "cursor": ["sfx/cursor.mp3"],
+    "select": ["sfx/select.mp3"],
+    "back": ["sfx/back.mp3"],
+    "tab": ["sfx/tab.mp3"],
+    "section": ["sfx/section.mp3"],
+    "guide": ["sfx/guide.mp3"]
+  }
+}

@@ -385,6 +385,7 @@
       "category": "office",
       "level": 4,
       "icon": "photo",
+      "color": "#31a8ff",
       "usedIn": [],
       "studiedIn": [],
       "_source": "skills-list"
@@ -395,6 +396,7 @@
       "category": "office",
       "level": 4,
       "icon": "memories",
+      "color": "#9999ff",
       "usedIn": [],
       "studiedIn": [],
       "_source": "skills-list"
@@ -405,6 +407,7 @@
       "category": "office",
       "level": 4,
       "icon": "photo",
+      "color": "#31a8ff",
       "usedIn": [],
       "studiedIn": [],
       "_source": "skills-list"
@@ -415,6 +418,7 @@
       "category": "office",
       "level": 4,
       "icon": "sheet",
+      "color": "#33a463",
       "usedIn": [],
       "studiedIn": [],
       "_source": "skills-list"
@@ -425,6 +429,7 @@
       "category": "office",
       "level": 4,
       "icon": "doc",
+      "color": "#4a86e8",
       "usedIn": [],
       "studiedIn": [],
       "_source": "skills-list"
@@ -435,9 +440,32 @@
       "category": "office",
       "level": 4,
       "icon": "slides",
+      "color": "#e0603a",
       "usedIn": [],
       "studiedIn": [],
       "_source": "skills-list"
+    },
+    {
+      "id": "davinci-resolve",
+      "name": "DaVinci Resolve",
+      "category": "office",
+      "level": 4,
+      "icon": "davinciresolve",
+      "color": "#e8a33c",
+      "usedIn": [],
+      "studiedIn": [],
+      "_source": "user"
+    },
+    {
+      "id": "affinity",
+      "name": "Affinity",
+      "category": "office",
+      "level": 4,
+      "icon": "affinity",
+      "color": "#c86dd7",
+      "usedIn": [],
+      "studiedIn": [],
+      "_source": "user"
     }
   ]
 }

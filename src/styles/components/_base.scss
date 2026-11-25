@@ -116,3 +116,56 @@
   font-style: inherit;
   color: var(--c-accent-red);
 }
+
+// Range slider with the same look in every browser; `--fill` (set from JS) colours the track.
+.c-range {
+  --fill: 50%;
+
+  height: u(18);
+  appearance: none;
+  cursor: pointer;
+  background: transparent;
+
+  &::-webkit-slider-runnable-track {
+    height: u(4);
+    background: linear-gradient(
+      to right,
+      var(--c-accent-blue) var(--fill),
+      var(--c-border) var(--fill)
+    );
+    border-radius: u(2);
+  }
+
+  &::-moz-range-track {
+    height: u(4);
+    background: linear-gradient(
+      to right,
+      var(--c-accent-blue) var(--fill),
+      var(--c-border) var(--fill)
+    );
+    border-radius: u(2);
+  }
+
+  &::-webkit-slider-thumb {
+    width: u(14);
+    height: u(14);
+    margin-top: u(-5);
+    appearance: none;
+    background: var(--c-text);
+    border: 0;
+    border-radius: 50%;
+  }
+
+  &::-moz-range-thumb {
+    width: u(14);
+    height: u(14);
+    background: var(--c-text);
+    border: 0;
+    border-radius: 50%;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--c-accent-blue);
+    outline-offset: u(4);
+  }
+}

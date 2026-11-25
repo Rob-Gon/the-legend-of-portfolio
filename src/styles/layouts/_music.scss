@@ -1,0 +1,15 @@
+@use '../tokens' as *;
+
+// Music bar host: bottom-left on every screen, clear of the footer hints (bottom-right).
+.l-music {
+  position: fixed;
+  bottom: calc(#{u(12)} + env(safe-area-inset-bottom));
+  left: calc(#{u(12)} + env(safe-area-inset-left));
+  z-index: 10;
+
+  @include from($bp-desktop) {
+    position: absolute;
+    bottom: u(18);
+    left: u(60);
+  }
+}
