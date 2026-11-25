@@ -4,12 +4,13 @@ import { peek } from '../core/data.js';
 import { formatDuration, monthsIn } from '../core/experience.js';
 import { t } from '../core/i18n.js';
 import { findSection } from '../core/sections.js';
-import { isMobile } from '../core/device.js';
+import { isDesktop, isMobile } from '../core/device.js';
 import { set, state } from '../core/store.js';
 import { detail } from '../components/detail.js';
 import { grid, pager } from '../components/grid.js';
-import { icon } from '../components/icon.js';
+import { icon, iconSource } from '../components/icon.js';
 import { openSheet } from '../components/sheet.js';
+import { prefersReducedMotion, webglAvailable } from '../three/support.js';
 
 const COLUMNS = 5;
 // Mobile: 4 columns and every weapons page stacked as a titled group (no pagers).
@@ -20,6 +21,12 @@ const CATEGORIES = ['core', 'secondary', 'tools', 'office'];
 const ABSOLUTE_URL = /^(https:|mailto:)/;
 
 let root = null;
+// The 3D viewer (desktop + WebGL only) is loaded once, lazily, and kept across renders; its
+// slot element is reused so the single canvas never has to be recreated.
+let viewer = null;
+let viewerLoading = null;
+let viewerSlot = null;
+const ITEM_COLOR = '#e9e1d1'; // own glyphs without a brand colour use the text colour
 
 const isWeapons = () => state.tab === 'weapons';
 const tabKey = () => findSection('inventory').tabs.find((tab) => tab.id === state.tab).key;
@@ -118,6 +125,7 @@ function render() {
   // Native replaceChildren would print `false` for the missing pagers, so filter them out.
   const children = [
     el('div', { class: 's-inventory__preview', 'aria-hidden': 'true' }, previewIcon(current)),
+    viewerSlot,
     isWeapons() &&
       pager({ direction: 'prev', label: t('inventory.prevPage'), disabled: pageIndex === 0 }),
     el(
@@ -148,6 +156,29 @@ function render() {
     el('div', { class: 's-inventory__detail' }, itemDetail(current, true)),
   ];
   root.replaceChildren(...children.filter(Boolean));
+  showInViewer(current);
+}
+
+/** Loads the viewer on first use and makes the avatar hold `item`; 2D preview on failure. */
+function showInViewer(item) {
+  if (!isDesktop() || !webglAvailable()) return;
+  viewerLoading ??= import('../three/viewer.js')
+    .then(async ({ createViewer }) => {
+      viewer = await createViewer({ reducedMotion: prefersReducedMotion });
+    })
+    // 3D is optional: on failure the 2D preview simply stays.
+    .catch((error) => console.error(error));
+  viewerLoading.then(() => {
+    if (!viewer || !viewerSlot.isConnected || selected(items()) !== item) return;
+    viewer.attach(viewerSlot);
+    viewer.show({ svg: iconSource(item.icon), color: item.color ?? ITEM_COLOR });
+    root.classList.add('has-3d');
+  });
+}
+
+/** System's motion toggle changed: let the viewer start or stop its idle animation. */
+export function refreshMotion() {
+  viewer?.refresh();
 }
 
 function cell(item, current) {
@@ -209,6 +240,7 @@ function focusSelected() {
 export function mount(target) {
   root = target;
   root.classList.add('s-inventory');
+  viewerSlot ??= el('div', { class: 's-inventory__viewer', 'aria-hidden': 'true' });
   render();
 }
 

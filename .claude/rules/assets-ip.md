@@ -36,6 +36,12 @@ The owner chose to publish, against the default rule above:
   (QuentinGaming, Pixabay), all under the Pixabay Content License;
 - a fairy sound that the owner states is not the game's original recording.
 
+- the 3D avatar wears an adventurer outfit inspired by Link's in Twilight Princess (green
+  tunic, long cap, belts, gauntlets, boots), worn by the owner's own likeness, like a cosplay.
+  At the owner's request it also carries, on its back, a sword and a shield that only resemble
+  the game's (own simple models) and three gold triangles on the shield. Claude warned that the
+  Triforce is a registered Nintendo trademark (not a copyright matter). No bird crest.
+
 Claude warned that a new arrangement of a game melody is still a derivative of the original
 composition (takedown risk). If a takedown notice arrives: remove the entries from
 `public/audio/manifest.json` and the files, then redeploy. Do not add more game-derived

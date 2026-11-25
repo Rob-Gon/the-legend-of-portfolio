@@ -23,6 +23,8 @@ listen to raw `keydown`/gamepad events themselves (exception: native form contro
   contenteditable, or when a modifier key (Ctrl/Alt/Meta) is held.
 - Gamepad polling runs only while a gamepad is connected (`gamepadconnected`) and the page is
   visible.
+- Exception: the 3D viewer's canvas handles its own drag-to-rotate pointer events (a widget
+  gesture, like a native slider), in `src/three/viewer.js`.
 
 ## Focus model
 

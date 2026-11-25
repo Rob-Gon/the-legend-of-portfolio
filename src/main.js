@@ -13,6 +13,7 @@ import { onLayoutChange } from './core/device.js';
 import * as title from './screens/title.js';
 import * as guide from './screens/guide.js';
 import * as hub from './screens/hub.js';
+import { refreshMotion } from './screens/inventory.js';
 
 const root = document.querySelector('#app');
 // Content preloaded with each language so screens render synchronously (no request waterfalls).
@@ -96,7 +97,10 @@ function onAction(event) {
 }
 
 function onStateChange({ detail: { keys } }) {
-  if (keys.includes('prefs')) applyMotion(state.prefs.motion);
+  if (keys.includes('prefs')) {
+    applyMotion(state.prefs.motion);
+    refreshMotion();
+  }
   if (keys.includes('lang')) return show({ animate: false });
   if (keys.includes('section') && screenFor(state.section) !== active) {
     return show({ animate: true });

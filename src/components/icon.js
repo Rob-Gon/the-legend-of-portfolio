@@ -13,6 +13,11 @@ const svgByName = Object.fromEntries(
 
 export const iconNames = Object.keys(svgByName);
 
+/** Raw SVG source of an icon (the 3D viewer extrudes it). */
+export function iconSource(name) {
+  return svgByName[name] ?? null;
+}
+
 export function icon(name, className = 'c-icon') {
   const svg = svgByName[name];
   if (!svg) throw new Error(`Unknown icon: ${name}`);

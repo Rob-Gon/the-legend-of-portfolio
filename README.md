@@ -31,15 +31,16 @@ npm run dev          # Vite dev server
 
 ## Scripts
 
-| Command            | What it does                                                                                                   |
-| ------------------ | -------------------------------------------------------------------------------------------------------------- |
-| `npm run dev`      | Development server with hot reload                                                                             |
-| `npm run build`    | Production build into `dist/`                                                                                  |
-| `npm run preview`  | Serves the production build locally                                                                            |
-| `npm test`         | Unit tests (Vitest)                                                                                            |
-| `npm run test:e2e` | Smoke tests (Playwright, Chromium) against the production build. First time: `npx playwright install chromium` |
-| `npm run lint`     | ESLint + Stylelint + Prettier check                                                                            |
-| `npm run format`   | Auto-format and auto-fix                                                                                       |
+| Command                  | What it does                                                                                                        |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`            | Development server with hot reload                                                                                  |
+| `npm run build`          | Production build into `dist/`                                                                                       |
+| `npm run preview`        | Serves the production build locally                                                                                 |
+| `npm test`               | Unit tests (Vitest)                                                                                                 |
+| `npm run test:e2e`       | Smoke tests (Playwright, Chromium) against the production build. First time: `npx playwright install chromium`      |
+| `npm run lint`           | ESLint + Stylelint + Prettier check                                                                                 |
+| `npm run format`         | Auto-format and auto-fix                                                                                            |
+| `npm run model:optimize` | Compresses the avatar exported from Blender (`assets-src/avatar.raw.glb`) into `public/models/avatar.glb` (meshopt) |
 
 ## Design system
 
