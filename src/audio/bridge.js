@@ -4,6 +4,7 @@ import { writePrefs } from '../core/prefs.js';
 import { set, state } from '../core/store.js';
 import { icon } from '../components/icon.js';
 import { musicControls } from '../components/music.js';
+import { toast } from '../components/toast.js';
 
 // Small eager part of the audio feature: music bar, gesture unlock and wiring. Howler and the
 // player itself are loaded lazily on the first user gesture, so music never autoplays.
@@ -96,8 +97,11 @@ function enable() {
       syncControls();
       if (pending && performance.now() - pending.time < PENDING_SFX_MS) audio.sfx(pending.name);
     })
-    // Audio is optional: if it fails the site keeps working, silently.
-    .catch((error) => console.error(error));
+    // Audio is optional: if it fails the site keeps working, with one notice.
+    .catch((error) => {
+      console.error(error);
+      toast(t('errors.audio'), { once: 'audio' });
+    });
   return loading;
 }
 

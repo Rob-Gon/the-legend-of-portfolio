@@ -4,7 +4,7 @@
     {
       "id": "communication",
       "name": "Comunicación",
-      "icon": "armor",
+      "icon": "skill-communication",
       "level": 5,
       "description": "Me comunico de forma clara y eficiente con compañeros y superiores.",
       "example": "Colaboración eficiente con compañeros y superiores en todos mis puestos.",
@@ -13,7 +13,7 @@
     {
       "id": "teamwork",
       "name": "Trabajo en equipo",
-      "icon": "armor",
+      "icon": "skill-teamwork",
       "level": 5,
       "description": "Colaboro con el equipo para sacar adelante los objetivos comunes.",
       "example": "Desarrollo de componentes en sprints de Scrum durante mis prácticas en Advance Digital Experts.",
@@ -22,7 +22,7 @@
     {
       "id": "problem-solving",
       "name": "Resolución de problemas",
-      "icon": "armor",
+      "icon": "skill-problem-solving",
       "level": 4,
       "description": "Resuelvo problemas con pensamiento abstracto.",
       "example": "Soporte y corrección de otras aplicaciones del Grupo ARI, como la gestión de grúas y el servicio de campa.",
@@ -31,7 +31,7 @@
     {
       "id": "analytical-thinking",
       "name": "Pensamiento analítico",
-      "icon": "armor",
+      "icon": "skill-analytical-thinking",
       "level": 4,
       "description": "Descompongo los procesos complejos en piezas que se pueden automatizar.",
       "example": "Diseño de la ingestión por SFTP y del procesamiento con colas para la facturación y la contabilidad del ERP.",
@@ -40,17 +40,15 @@
     {
       "id": "emotional-intelligence",
       "name": "Inteligencia emocional",
-      "icon": "armor",
+      "icon": "skill-emotional-intelligence",
       "level": 4,
-      "description": "Tengo en cuenta cómo se sienten los demás y cuido el ambiente de trabajo.",
-      "_source": "cv+linkedin+user",
-      "_review": true,
-      "_note": "Add a real example"
+      "description": "Siempre se me ha dado bien {{entender a las personas}} y sus emociones, así que sé llevar con cabeza y cautela situaciones muy distintas entre compañeros.",
+      "_source": "cv+linkedin+user"
     },
     {
       "id": "working-under-pressure",
       "name": "Trabajo bajo presión",
-      "icon": "armor",
+      "icon": "skill-working-under-pressure",
       "level": 5,
       "description": "Mantengo la calma y la calidad cuando aprieta el tiempo.",
       "example": "El módulo de chat con WhatsApp del ERP, desarrollado desde cero en unas 3 semanas.",
@@ -59,7 +57,7 @@
     {
       "id": "commitment",
       "name": "Compromiso",
-      "icon": "armor",
+      "icon": "skill-commitment",
       "level": 5,
       "description": "Me implico hasta el final en lo que empiezo.",
       "example": "1 año y 8 meses en el ERP del Grupo ARI; el chat con WhatsApp ya lo usan 100 operadores.",
@@ -68,7 +66,7 @@
     {
       "id": "versatility",
       "name": "Versatilidad",
-      "icon": "armor",
+      "icon": "skill-versatility",
       "level": 4,
       "description": "Me adapto a stacks y equipos distintos.",
       "example": "Laravel y JavaScript en Grupo ARI; React y TypeScript en Crealia IT.",
@@ -77,7 +75,7 @@
     {
       "id": "determination",
       "name": "Determinación",
-      "icon": "armor",
+      "icon": "skill-determination",
       "level": 5,
       "description": "Persigo mis metas aunque el camino sea largo.",
       "example": "De mis primeras webs en WordPress, de forma autodidacta, al ciclo superior y a un puesto full-stack.",

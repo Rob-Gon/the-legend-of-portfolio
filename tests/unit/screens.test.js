@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
-import { beforeAll, describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
+import { toast } from '../../src/components/toast.js';
 import { bus } from '../../src/core/bus.js';
 import { CONTROLS } from '../../src/core/input.js';
 import { HOME } from '../../src/core/router.js';
@@ -106,5 +107,18 @@ describe('guide screen', () => {
     expect(guide.handle({ type: 'back' })).toBe(true);
     expect(state).toMatchObject({ section: 'system', tab: null });
     guide.setReturn(HOME);
+  });
+});
+
+describe('toast', () => {
+  it('announces a message in a status region, once per key, then removes it', () => {
+    vi.useFakeTimers();
+    toast('Audio unavailable', { once: 'audio' });
+    toast('Audio unavailable', { once: 'audio' });
+    const region = document.querySelector('[role="status"].c-toast-region');
+    expect(region.textContent).toBe('Audio unavailable');
+    vi.advanceTimersByTime(4000);
+    expect(region.textContent).toBe('');
+    vi.useRealTimers();
   });
 });

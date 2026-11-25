@@ -161,6 +161,7 @@ export function renderQuickPage(data, { lang, base, siteUrl, alternate, styles =
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0a0c0b">
+<link rel="icon" href="${escape(`${base}favicon.svg`)}" type="image/svg+xml">
 <title>${escape(`${profile.name} · ${t('quick.title')}`)}</title>
 <meta name="description" content="${escape(t('meta.description'))}">
 <link rel="canonical" href="${escape(url)}">
