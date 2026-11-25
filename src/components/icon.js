@@ -15,7 +15,11 @@ export const iconNames = Object.keys(svgByName);
 export function icon(name, className = 'c-icon') {
   const svg = svgByName[name];
   if (!svg) throw new Error(`Unknown icon: ${name}`);
+  return inlineSvg(svg, className);
+}
 
+/** Decorative inline SVG from a static project asset (never user data). */
+export function inlineSvg(svg, className) {
   const template = document.createElement('template');
   template.innerHTML = svg.trim();
   const node = template.content.firstElementChild;

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <radialGradient id="guide-fairy-glow">
+      <stop offset="0" stop-color="#fffdf2" stop-opacity="0.95" />
+      <stop offset="0.25" stop-color="#c9f7dc" stop-opacity="0.7" />
+      <stop offset="0.6" stop-color="#6fd49c" stop-opacity="0.22" />
+      <stop offset="1" stop-color="#6fd49c" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <circle class="c-fairy__glow" cx="60" cy="60" r="58" fill="url(#guide-fairy-glow)" />
+  <g class="c-fairy__wing c-fairy__wing--left" fill="#eafff3" fill-opacity="0.45" stroke="#fff" stroke-opacity="0.8" stroke-width="1.2">
+    <path d="M56 56C46 34 26 30 22 40c-4 10 14 20 34 18z" />
+    <path d="M56 64C44 66 32 78 38 86c6 7 16-6 18-20z" />
+  </g>
+  <g class="c-fairy__wing c-fairy__wing--right" fill="#eafff3" fill-opacity="0.45" stroke="#fff" stroke-opacity="0.8" stroke-width="1.2">
+    <path d="M64 56c10-22 30-26 34-16 4 10-14 20-34 18z" />
+    <path d="M64 64c12 2 24 14 18 22-6 7-16-6-18-20z" />
+  </g>
+  <circle cx="60" cy="60" r="11" fill="#fffdf2" />
+  <circle cx="60" cy="60" r="6" fill="#fff" />
+</svg>

@@ -31,7 +31,7 @@ The repository is **public** and carries the owner's name. These rules are manda
 
 ## Title and disclaimer
 
-- The title "The Legend Of Portfolio - Roberto Of The Wild" is set as **live text** in the
+- The title "The Legend Of Roberto - Portfolio Of The Wild" is set as **live text** in the
   project's own typography. Never imitate the game logo's lettering, sword or layout.
 - The footer of the site, Quick mode and the README carry: "Unofficial fan project. Not
   affiliated with Nintendo." (localised via `ui.json` `meta.disclaimer`).

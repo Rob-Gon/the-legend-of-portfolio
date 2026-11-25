@@ -1,15 +1,17 @@
 import { el } from '../core/dom.js';
 import { emit } from '../core/bus.js';
+import { t } from '../core/i18n.js';
 import { KEY_HINTS } from '../core/input.js';
+import { HOME } from '../core/router.js';
 import { SECTIONS } from '../core/sections.js';
 import { set, state } from '../core/store.js';
 import { hud } from '../components/hud.js';
 import { tabs } from '../components/tabs.js';
+import * as system from './system.js';
 
 const PANEL_ID = 'hub-panel';
 
 let root = null;
-let ui = null;
 let shownIndex = -1;
 // Each section remembers its last tab, as the pause menu does.
 const lastTab = {};
@@ -17,13 +19,13 @@ const lastTab = {};
 const sectionIndex = () => SECTIONS.findIndex((section) => section.id === state.section);
 
 function neighbour(section, keys) {
-  return section && { label: ui.sections[section.id], keys };
+  return section && { label: t(`sections.${section.id}`), keys };
 }
 
 function view(enter) {
   const index = sectionIndex();
   const section = SECTIONS[index];
-  const name = ui.sections[section.id];
+  const name = t(`sections.${section.id}`);
   const hasTabs = section.tabs.length > 0;
 
   return [
@@ -48,7 +50,7 @@ function view(enter) {
               items: section.tabs.map((tab) => ({
                 id: tab.id,
                 iconName: tab.icon,
-                label: ui.tabs[tab.key],
+                label: t(`tabs.${tab.key}`),
                 controls: PANEL_ID,
               })),
             }),
@@ -72,18 +74,21 @@ function render({ focus }) {
     shownIndex === -1 || index === shownIndex ? null : index > shownIndex ? 'next' : 'prev';
   shownIndex = index;
   root.replaceChildren(...view(enter));
+  if (state.section === 'system') system.mount(root.querySelector('.s-hub__panel'));
   // After a section or tab change, focus follows to the active tab (or the panel if none).
   if (focus) root.querySelector('[role="tab"][aria-selected="true"], .s-hub__panel').focus();
 }
 
-export function mount(target, strings) {
+export function mount(target) {
   root = target;
-  ui = strings;
+  shownIndex = -1;
   root.classList.add('s-hub');
   render({ focus: false });
 }
 
 export function update(keys) {
+  // Leaving the hub (title, Guide) is handled by main.js swapping screens.
+  if (sectionIndex() === -1) return;
   if (keys.includes('section') || keys.includes('tab')) render({ focus: true });
 }
 
@@ -115,8 +120,10 @@ function stepTab(step) {
   return goTab(sectionTabs[index + step]?.id);
 }
 
-/** Section and tab switching. Returns true when the action was handled. */
+/** Section and tab switching; Back returns to the title. Returns true when handled. */
 export function handle(action) {
+  if (state.section === 'system' && system.handle(action)) return true;
+
   switch (action.type) {
     case 'prevSection':
       return goSection(-1);
@@ -128,6 +135,9 @@ export function handle(action) {
       return stepTab(1);
     case 'tab':
       return goTab(action.id);
+    case 'back':
+      set(HOME);
+      return true;
     default:
       return false;
   }

@@ -1,4 +1,4 @@
-# The Legend Of Portfolio - Roberto Of The Wild
+# The Legend Of Roberto - Portfolio Of The Wild
 
 <!-- This file overrides the global rules in ~/.claude/. Detailed project rules live in .claude/rules/. -->
 
@@ -66,9 +66,9 @@ Details: `.claude/rules/architecture.md`.
 
 - Platform: **GitHub Pages via GitHub Actions** (not Forge, not a VPS). Global rule
   `08-deploy-maintenance.md` does not apply except its general advice on CI.
-- Repo: `the-legend-of-portfolio` → Vite `base: '/the-legend-of-portfolio/'`.
+- Repo: `the-legend-of-roberto` → Vite `base: '/the-legend-of-roberto/'`.
 - Branch deployed: `main`, only after lint, tests, build and e2e pass.
-- Environments: local (`npm run dev`) · production (`https://rob-gon.github.io/the-legend-of-portfolio/`).
+- Environments: local (`npm run dev`) · production (`https://rob-gon.github.io/the-legend-of-roberto/`).
 
 Details: `.claude/rules/deploy.md`.
 

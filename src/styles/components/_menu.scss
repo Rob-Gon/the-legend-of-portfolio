@@ -1,0 +1,19 @@
+@use '../tokens' as *;
+
+.c-menu {
+  display: flex;
+  flex-direction: column;
+  gap: u(16);
+  padding: 0;
+  width: fit-content;
+  list-style: none;
+
+  // All buttons share the widest label's width and grow instead of overflowing.
+  &__button {
+    width: 100%;
+    min-width: u(260);
+    height: auto;
+    min-height: max(#{u(46)}, var(--tap-min));
+    padding: u(8) u(28);
+  }
+}

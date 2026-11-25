@@ -39,3 +39,13 @@ export function readPrefs(storage) {
     return { ...DEFAULT_PREFS };
   }
 }
+
+/** Saves the sanitised prefs. Returns false when storage is unavailable (the app keeps working). */
+export function writePrefs(prefs, storage) {
+  try {
+    (storage ?? globalThis.localStorage).setItem(STORAGE_KEY, JSON.stringify(sanitizePrefs(prefs)));
+    return true;
+  } catch {
+    return false;
+  }
+}

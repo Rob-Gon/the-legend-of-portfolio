@@ -2,9 +2,9 @@
 
 ## Target
 
-- Repo: `the-legend-of-portfolio` (owner `Rob-Gon`).
-- URL: `https://rob-gon.github.io/the-legend-of-portfolio/`.
-- Vite `base: '/the-legend-of-portfolio/'`. Every runtime URL (JSON, audio, models, images,
+- Repo: `the-legend-of-roberto` (owner `Rob-Gon`).
+- URL: `https://rob-gon.github.io/the-legend-of-roberto/`.
+- Vite `base: '/the-legend-of-roberto/'`. Every runtime URL (JSON, audio, models, images,
   CV) must be built from `import.meta.env.BASE_URL`, never from `/`.
 - Hash routing means no SPA 404 fallback is needed. Quick mode pages are real files
   (`quick/index.html`, `en/quick/index.html`).

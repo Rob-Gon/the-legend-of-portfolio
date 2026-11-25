@@ -33,7 +33,7 @@ compile-time things (breakpoints, `u()`). Values: `docs/PROJECT_BRIEF.md` §6. K
 
 ## Components (SCSS partial in `src/styles/components/`; JS module in `src/components/` when it builds DOM)
 
-Live showcase (dev only, not built): `npm run dev` → `/the-legend-of-portfolio/dev/design-system.html`.
+Live showcase (dev only, not built): `npm run dev` → `/the-legend-of-roberto/dev/design-system.html`.
 
 | Component | Key traits |
 |---|---|

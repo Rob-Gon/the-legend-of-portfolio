@@ -1,15 +1,14 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest';
-import { startRouter } from '../../src/core/router.js';
+import { HOME, startRouter } from '../../src/core/router.js';
 import { set, state } from '../../src/core/store.js';
 
-const LANDING = { section: 'journal', tab: 'quests', selection: null };
 const nextHashChange = () =>
   new Promise((resolve) => window.addEventListener('hashchange', resolve, { once: true }));
 
 describe('router ⇄ store', () => {
   history.replaceState(null, '', '#/inventario');
-  startRouter(LANDING);
+  startRouter();
 
   it('reads the deep link and normalises the URL without adding history', () => {
     expect(state).toMatchObject({ section: 'inventory', tab: 'weapons', selection: null });
@@ -35,10 +34,10 @@ describe('router ⇄ store', () => {
     expect(state).toMatchObject({ section: 'system', tab: null });
   });
 
-  it('sends unknown routes to the landing state and fixes the URL', async () => {
+  it('sends unknown routes to the title screen and fixes the URL', async () => {
     location.hash = '#/nope';
     await nextHashChange();
-    expect(state).toMatchObject(LANDING);
-    expect(location.hash).toBe('#/diario/misiones');
+    expect(state).toMatchObject(HOME);
+    expect(location.hash).toBe('#/inicio');
   });
 });

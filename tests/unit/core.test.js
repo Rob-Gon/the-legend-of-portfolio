@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { bus } from '../../src/core/bus.js';
 import { set, state } from '../../src/core/store.js';
-import { DEFAULT_PREFS, readPrefs } from '../../src/core/prefs.js';
+import { DEFAULT_PREFS, readPrefs, writePrefs } from '../../src/core/prefs.js';
 import { load, stripPlaceholders } from '../../src/core/data.js';
 
 describe('store', () => {
@@ -44,6 +44,20 @@ describe('prefs', () => {
       motion: 'reduced',
       shortcuts: false,
     });
+  });
+
+  it('writes sanitised prefs and survives blocked storage', () => {
+    const saved = {};
+    const memory = { setItem: (key, value) => (saved[key] = value), getItem: (key) => saved[key] };
+    expect(writePrefs({ ...DEFAULT_PREFS, lang: 'en', evil: 1 }, memory)).toBe(true);
+    expect(readPrefs(memory)).toEqual({ ...DEFAULT_PREFS, lang: 'en' });
+    expect(
+      writePrefs(DEFAULT_PREFS, {
+        setItem() {
+          throw new Error('QuotaExceededError');
+        },
+      }),
+    ).toBe(false);
   });
 
   it('never throws on broken JSON or blocked storage', () => {

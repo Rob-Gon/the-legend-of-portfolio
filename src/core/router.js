@@ -1,5 +1,5 @@
 import { bus } from './bus.js';
-import { SECTIONS, findSection } from './sections.js';
+import { ROUTES, findSection } from './sections.js';
 import { set, state } from './store.js';
 
 export const HOME = Object.freeze({ section: null, tab: null, selection: null });
@@ -12,7 +12,7 @@ export function parse(hash) {
     .replace(/^#\/?/, '')
     .split('/')
     .filter(Boolean);
-  const section = SECTIONS.find((candidate) => candidate.slug === sectionSlug);
+  const section = ROUTES.find((candidate) => candidate.slug === sectionSlug);
   if (!section || rest.length) return HOME;
 
   if (!section.tabs.length) {
@@ -42,16 +42,14 @@ export function format({ section, tab, selection }) {
 
 /**
  * Keeps the hash and the store in sync. Section/tab changes push a history entry (so Back
- * works); selection changes replace it. `fallback` replaces HOME until the title screen exists.
+ * works); selection changes replace it. HOME is the title screen (`#/inicio`).
  */
-export function startRouter(fallback) {
-  const resolve = (route) => (route.section || !fallback ? route : fallback);
-
-  set(resolve(parse(location.hash)));
+export function startRouter() {
+  set(parse(location.hash));
   history.replaceState(null, '', format(state));
 
   window.addEventListener('hashchange', () => {
-    const route = resolve(parse(location.hash));
+    const route = parse(location.hash);
     // Replace, not push: an invalid or home hash must not leave a Back-button trap behind it.
     if (format(route) !== location.hash) history.replaceState(null, '', format(route));
     set(route);

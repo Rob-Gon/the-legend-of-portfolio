@@ -18,15 +18,33 @@ const FORM_CONTROLS = 'input, select, textarea, [contenteditable]:not([contented
 // These already turn Enter/Space into a click, which reaches us through `data-action`.
 const NATIVE_ACTIVATION = 'button, a[href], summary';
 
-/** Keycap and gamepad glyph per action, for button hints. */
-export const KEY_HINTS = {
-  prevSection: { keyboard: 'L', gamepad: 'LB' },
-  nextSection: { keyboard: 'R', gamepad: 'RB' },
-  prevTab: { keyboard: 'Z', gamepad: 'LT' },
-  nextTab: { keyboard: 'C', gamepad: 'RT' },
-  back: { keyboard: 'Esc', gamepad: 'B' },
-  select: { keyboard: 'Enter', gamepad: 'A' },
-};
+/**
+ * Documented controls per action (Guide screen and button hints). Entries are display ids:
+ * symbols and key names shown as is, except the words in `TRANSLATED_KEYS`, which come from
+ * `ui.json` (`guide.keys`). A unit test checks every keyboard entry really maps to its action.
+ */
+export const CONTROLS = [
+  { action: 'prevSection', keyboard: ['L', 'Q'], gamepad: ['LB'] },
+  { action: 'nextSection', keyboard: ['R', 'E'], gamepad: ['RB'] },
+  { action: 'prevTab', keyboard: ['Z'], gamepad: ['LT'] },
+  { action: 'nextTab', keyboard: ['C'], gamepad: ['RT'] },
+  {
+    action: 'move',
+    keyboard: ['↑', '↓', '←', '→', 'W', 'A', 'S', 'D'],
+    gamepad: ['DPad', 'Stick'],
+  },
+  { action: 'select', keyboard: ['Enter', 'Space'], gamepad: ['A'] },
+  { action: 'back', keyboard: ['Esc', 'Backspace'], gamepad: ['B'] },
+];
+export const TRANSLATED_KEYS = ['Space', 'Backspace', 'DPad', 'Stick'];
+
+/** First keycap and gamepad glyph per action, for button hints. */
+export const KEY_HINTS = Object.fromEntries(
+  CONTROLS.map(({ action, keyboard, gamepad }) => [
+    action,
+    { keyboard: keyboard[0], gamepad: gamepad[0] },
+  ]),
+);
 
 const move = ([dx, dy]) => ({ type: 'move', dx, dy });
 

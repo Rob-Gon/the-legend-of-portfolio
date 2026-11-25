@@ -1,4 +1,4 @@
-# The Legend Of Portfolio - Roberto Of The Wild
+# The Legend Of Roberto - Portfolio Of The Wild
 
 Personal portfolio of **Roberto Báez González**, full-stack web developer (Laravel, PHP,
 JavaScript, React). The interface is a homage to the structure and feel of a classic
@@ -9,7 +9,7 @@ adventure-game pause menu: a title screen and a hub with three sections switched
 > No Nintendo assets are used: all artwork, icons and models are original or under a
 > permissive licence (see [`THIRD_PARTY.md`](THIRD_PARTY.md)).
 
-Live site: https://rob-gon.github.io/the-legend-of-portfolio/
+Live site: https://rob-gon.github.io/the-legend-of-roberto/
 
 ## Stack
 
@@ -43,7 +43,7 @@ npm run dev          # Vite dev server
 ## Design system
 
 Component showcase (development only): run `npm run dev` and open
-`http://localhost:5173/the-legend-of-portfolio/dev/design-system.html`.
+`http://localhost:5173/the-legend-of-roberto/dev/design-system.html`.
 
 ## Editing content
 
@@ -55,7 +55,7 @@ of the `_source`, `_review` and `_placeholder` fields.
 
 Every push to `main` runs lint, unit tests, build and smoke tests, then deploys `dist/` to
 GitHub Pages (`.github/workflows/ci-deploy.yml`). The Vite `base` is
-`/the-legend-of-portfolio/`.
+`/the-legend-of-roberto/`.
 
 ## Credits and licences
 

@@ -30,6 +30,18 @@ export const SECTIONS = [
   { id: 'system', slug: 'sistema', tabs: [] },
 ];
 
+/** The Guide is routed like a section but lives outside the L/R ring (title menu and System). */
+export const GUIDE = {
+  id: 'guide',
+  slug: 'guia',
+  tabs: [
+    { id: 'controls', key: 'controls', slug: 'controles', icon: 'controls' },
+    { id: 'legend', key: 'legend', slug: 'leyenda', icon: 'legend' },
+  ],
+};
+
+export const ROUTES = [...SECTIONS, GUIDE];
+
 export function findSection(id) {
-  return SECTIONS.find((section) => section.id === id);
+  return ROUTES.find((section) => section.id === id);
 }
