@@ -1,0 +1,73 @@
+@use '../tokens' as *;
+
+.s-hub {
+  // The entering section slides from the side; never let it widen the page on small screens.
+  overflow-x: clip;
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: u(16);
+    padding: 0 u(16) u(24);
+
+    &[data-enter] {
+      animation: s-hub-enter var(--t-section) both;
+    }
+
+    &[data-enter='next'] {
+      --enter-from: #{u(48)};
+    }
+
+    &[data-enter='prev'] {
+      --enter-from: #{u(-48)};
+    }
+  }
+
+  &__tabs {
+    align-self: center;
+  }
+
+  &__panel {
+    min-height: u(240);
+  }
+
+  // Desktop stage: positions follow the 1280 × 720 reference layout.
+  @include from($bp-desktop) {
+    &__section {
+      position: absolute;
+      inset: u(107) 0 0;
+      display: block;
+      padding: 0;
+    }
+
+    &__tabs {
+      position: absolute;
+      top: u(3);
+      left: u(197);
+    }
+
+    &__section--inventory &__tabs {
+      left: u(140);
+    }
+
+    &__panel {
+      position: absolute;
+      inset: u(115) u(60) u(70);
+      min-height: 0;
+    }
+  }
+}
+
+.s-fatal {
+  max-width: 40rem;
+  margin: auto;
+  padding: u(24);
+  font-size: u(18);
+}
+
+@keyframes s-hub-enter {
+  from {
+    opacity: 0;
+    transform: translateX(var(--enter-from, 0));
+  }
+}
