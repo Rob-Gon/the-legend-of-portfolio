@@ -9,7 +9,7 @@ en/quick/index.html        Quick mode EN — generated at build
 public/data/{es,en}/       ui, profile, quests, sidequests, projects, tech, softskills (.json)
 public/{audio,models,img,cv}/
 src/main.js                Bootstrap order: prefs → device → i18n/data → router → screens
-src/core/                  bus, store, router, input, i18n, data, prefs, device, experience, dom
+src/core/                  bus, store, sections, router, input, i18n, data, prefs, device, experience, dom
 src/components/            panel, list-row, grid, tabs, detail-card, button-hints, hud, sheet, toast
 src/screens/               title, hub, journal, inventory, system
 src/audio/audio.js         Howler wrapper (lazy)

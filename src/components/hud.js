@@ -41,6 +41,7 @@ function neighbor(side, data) {
 /**
  * Top bar. `hearts`/`gems`: { value, label } where `label` is the full screen-reader text.
  * `sections`: { index, count } for the pagination dots. `available`: badge text or null.
+ * `hearts`, `gems` and `available` are optional (their data files arrive in later milestones).
  */
 export function hud({ title, sections, prev, next, hearts, gems, available }) {
   const dots = Array.from({ length: sections.count }, (_, index) =>
@@ -48,10 +49,12 @@ export function hud({ title, sections, prev, next, hearts, gems, available }) {
   );
 
   return el('header', { class: 'c-hud' }, [
-    el('p', { class: 'c-hud__hearts' }, [
-      el('span', { class: 'u-visually-hidden', text: hearts.label }),
-      ...heartFills(hearts.value).map(heart),
-    ]),
+    hearts
+      ? el('p', { class: 'c-hud__hearts' }, [
+          el('span', { class: 'u-visually-hidden', text: hearts.label }),
+          ...heartFills(hearts.value).map(heart),
+        ])
+      : el('span', { 'aria-hidden': 'true' }),
     el('div', { class: 'c-hud__center' }, [
       neighbor('prev', prev),
       el('div', { class: 'c-hud__heading' }, [
@@ -61,11 +64,12 @@ export function hud({ title, sections, prev, next, hearts, gems, available }) {
       neighbor('next', next),
     ]),
     el('div', { class: 'c-hud__status' }, [
-      el('p', { class: 'c-hud__gems' }, [
-        icon('gem', 'c-icon c-hud__gem'),
-        el('span', { 'aria-hidden': 'true', text: String(gems.value) }),
-        el('span', { class: 'u-visually-hidden', text: gems.label }),
-      ]),
+      gems &&
+        el('p', { class: 'c-hud__gems' }, [
+          icon('gem', 'c-icon c-hud__gem'),
+          el('span', { 'aria-hidden': 'true', text: String(gems.value) }),
+          el('span', { class: 'u-visually-hidden', text: gems.label }),
+        ]),
       available && el('p', { class: 'c-hud__available', text: available }),
     ]),
   ]);

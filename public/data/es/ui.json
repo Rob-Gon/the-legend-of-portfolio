@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "lang": "es",
+    "langName": "Español",
+    "siteTitle": "The Legend Of Portfolio - Roberto Of The Wild",
+    "description": "Portfolio de Roberto Báez González, desarrollador full-stack (Laravel, PHP, JavaScript, React).",
+    "disclaimer": "Proyecto de fan no oficial. Sin relación con Nintendo."
+  },
+  "title": { "start": "Iniciar", "language": "Idioma", "quickMode": "Modo rápido" },
+  "sections": { "journal": "Diario de Aventura", "inventory": "Inventario", "system": "Sistema" },
+  "tabs": {
+    "quests": "Misiones principales",
+    "sideQuests": "Side Quests",
+    "memories": "Recuerdos",
+    "weapons": "Armas",
+    "armor": "Armaduras",
+    "keyItems": "Objetos clave"
+  },
+  "tabHints": { "weapons": "Tecnologías", "armor": "Habilidades", "keyItems": "Sobre mí" },
+  "weaponPages": {
+    "core": "Principales",
+    "secondary": "Secundarias",
+    "tools": "Herramientas",
+    "office": "Ofimática y diseño"
+  },
+  "availability": "Disponible para trabajar",
+  "hints": { "back": "Atrás", "select": "Seleccionar", "rotate": "Girar", "open": "Abrir" },
+  "status": { "completed": "Completada", "active": "En curso", "current": "Actualidad" },
+  "hud": {
+    "hearts": "{years} años y {months} meses de experiencia profesional",
+    "gems": "{count} proyectos"
+  },
+  "system": {
+    "musicVolume": "Volumen de la música",
+    "sfxVolume": "Volumen de los efectos",
+    "mute": "Silenciar",
+    "reduceMotion": "Reducir animaciones",
+    "shortcuts": "Atajos de una tecla",
+    "language": "Idioma",
+    "backToTitle": "Volver a la pantalla de inicio",
+    "quickMode": "Modo rápido"
+  },
+  "detail": {
+    "level": "Nivel",
+    "years": "{value} de uso profesional",
+    "studied": "Formación",
+    "stack": "Stack",
+    "role": "Mi papel",
+    "demo": "Demo",
+    "repo": "Código"
+  },
+  "errors": {
+    "data": "No se ha podido cargar esta sección. Prueba a recargar la página.",
+    "audio": "El audio no está disponible.",
+    "model": "El modelo 3D no está disponible."
+  }
+}

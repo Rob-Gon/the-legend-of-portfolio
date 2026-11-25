@@ -19,7 +19,7 @@ export function tabs({ label, items, activeId, keys }) {
         'aria-selected': String(active),
         'aria-controls': controls,
         tabindex: active ? '0' : '-1',
-        dataset: { id },
+        dataset: { action: 'tab', id },
       },
       [el('span', { class: 'c-tabs__name', text: name }), icon(iconName)],
     );
