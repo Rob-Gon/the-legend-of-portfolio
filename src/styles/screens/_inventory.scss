@@ -40,8 +40,9 @@
     order: 5;
   }
 
-  // Big version of the selected icon; the 3D viewer takes this spot in M8.
-  &__preview {
+  // Big version of the selected icon: the 2D fallback when there is no 3D viewer.
+  &__preview,
+  &__viewer {
     display: none;
   }
 
@@ -98,7 +99,22 @@
     }
 
     // The card never grows past the footer line; long texts scroll inside it.
+    // 3D viewer: the avatar stands on the right; the item card overlaps its legs, as in the
+    // reference. The 2D preview hides once the viewer is up.
+    &__viewer {
+      top: u(-104);
+      right: 0;
+      bottom: 0;
+      display: block;
+      width: u(470);
+    }
+
+    &.has-3d &__preview {
+      display: none;
+    }
+
     &__detail {
+      z-index: 1;
       top: u(150);
       right: u(24);
       bottom: 0;
