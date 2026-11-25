@@ -466,7 +466,9 @@ resolution) go into the profile summary, not the grid.
 **Active (goals, confirmed by you):**
 1. Find new projects related to AI and AI-driven automation. Includes process automation with n8n
    and video game development (LinkedIn, Nov 2026; confirmed).
-2. Keep improving the skills I already have.
+2. ~~Keep improving the skills I already have.~~ Replaced (Nov 2026, owner) by **Matricular**:
+   a timed web game (car number plates → words checked against an unofficial RAE API), link
+   coming soon.
 
 **Completed (greyed):**
 1. Full-Stack Developer — Grupo ARI (automotive ERP + WhatsApp chat module), 2025-04 → 2026-11

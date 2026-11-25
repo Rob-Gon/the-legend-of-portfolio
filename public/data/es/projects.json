@@ -1,0 +1,233 @@
+{
+  "$schema": "../../../schemas/projects.schema.json",
+  "items": [
+    {
+      "id": "automotive-erp",
+      "title": "ERP del sector automoción",
+      "context": "Grupo ARI · Profesional",
+      "period": {
+        "start": "2025-04",
+        "end": "2026-11"
+      },
+      "featured": true,
+      "confidential": true,
+      "summary": "ERP empresarial del sector automoción: ingestión de datos, facturación y contabilidad.",
+      "role": "Desarrollador full-stack en parte de la aplicación.",
+      "highlights": [
+        "Ingestión automatizada por {{SFTP}} y procesamiento con MongoDB",
+        "Colas para facturación y contabilidad",
+        "Integraciones con APIs externas",
+        "Control de acceso granular"
+      ],
+      "stack": ["laravel", "php", "javascript", "mysql", "mongodb"],
+      "links": {
+        "demo": null,
+        "repo": null
+      },
+      "_source": "user",
+      "_review": true
+    },
+    {
+      "id": "erp-whatsapp-chat",
+      "title": "Chat de WhatsApp para el ERP",
+      "context": "Grupo ARI · Profesional",
+      "period": {
+        "start": "2026-02"
+      },
+      "featured": true,
+      "confidential": true,
+      "summary": "Módulo de mensajería en tiempo real con WhatsApp, integrado en el ERP del grupo.",
+      "role": "Lo desarrollé desde cero en unas 3 semanas.",
+      "highlights": [
+        "API oficial de {{WhatsApp}} (Meta)",
+        "Tiempo real con {{Laravel Reverb}} y Echo",
+        "100 operadores en activo",
+        "Más de 100.000 mensajes gestionados"
+      ],
+      "stack": ["laravel", "php", "javascript", "laravel-reverb", "rest-apis"],
+      "links": {
+        "demo": null,
+        "repo": null
+      },
+      "_source": "user"
+    },
+    {
+      "id": "pharmacy-webapp",
+      "title": "Aplicación web farmacéutica",
+      "context": "Crealia IT · Profesional",
+      "period": {
+        "start": "2024-10",
+        "end": "2025-03"
+      },
+      "featured": false,
+      "confidential": true,
+      "summary": "Mantenimiento de una aplicación web del sector farmacéutico.",
+      "role": "Mantenimiento y desarrollo de módulos y componentes en producción.",
+      "highlights": ["Front-end con {{React}} y TypeScript", "Back-end con MongoDB, SQL y PHP"],
+      "stack": ["react", "typescript", "mongodb", "mysql", "php"],
+      "links": {
+        "demo": null,
+        "repo": null
+      },
+      "_source": "cv+user",
+      "_review": true
+    },
+    {
+      "id": "logistics-webapp",
+      "title": "Aplicación web logística",
+      "context": "Crealia IT · Profesional",
+      "period": {
+        "start": "2024-10",
+        "end": "2025-03"
+      },
+      "featured": false,
+      "confidential": true,
+      "summary": "Mantenimiento de una aplicación web del sector logístico.",
+      "role": "Mantenimiento y desarrollo de módulos y componentes en producción.",
+      "highlights": ["Front-end con {{React}} y TypeScript", "Back-end con MongoDB, SQL y PHP"],
+      "stack": ["react", "typescript", "mongodb", "mysql", "php"],
+      "links": {
+        "demo": null,
+        "repo": null
+      },
+      "_source": "cv+user",
+      "_review": true
+    },
+    {
+      "id": "the-legend-of-roberto",
+      "title": "The Legend Of Roberto",
+      "context": "Personal",
+      "period": {
+        "start": "2026-11",
+        "end": null
+      },
+      "featured": true,
+      "confidential": false,
+      "summary": "Este portfolio: un homenaje de fan para los fans basado en el mítico, y en pocos años retro, {{The Legend of Zelda: Breath of the Wild}}, junto con {{Outer Wilds}}, mi juego favorito.",
+      "role": "Diseño, desarrollo y contenido.",
+      "highlights": [
+        "{{JavaScript}} sin frameworks, Vite y Sass",
+        "Se maneja con teclado, mando, ratón o táctil",
+        "Contenido en JSON, en español e inglés",
+        "Tests con Vitest y Playwright; despliegue con GitHub Actions"
+      ],
+      "stack": ["javascript", "vite", "sass", "html", "css", "git"],
+      "links": {
+        "demo": "https://rob-gon.github.io/the-legend-of-roberto/",
+        "repo": "https://github.com/Rob-Gon/the-legend-of-roberto"
+      },
+      "_source": "user"
+    },
+    {
+      "id": "proyecto-web",
+      "title": "Proyecto-Web",
+      "context": "Personal",
+      "period": {
+        "start": "2024-05"
+      },
+      "featured": false,
+      "confidential": false,
+      "summary": "Aplicación web con {{Laravel}}, Blade y JavaScript.",
+      "stack": ["laravel", "php", "javascript"],
+      "links": {
+        "demo": null,
+        "repo": "https://github.com/Rob-Gon/Proyecto-Web"
+      },
+      "_source": "github",
+      "_review": true,
+      "_note": "Repo has no description; confirm the summary"
+    },
+    {
+      "id": "api-rest",
+      "title": "API REST",
+      "context": "Personal",
+      "period": {
+        "start": "2024-02"
+      },
+      "featured": false,
+      "confidential": false,
+      "summary": "Implementación de una {{API REST}} con Laravel.",
+      "stack": ["laravel", "php", "rest-apis"],
+      "links": {
+        "demo": null,
+        "repo": "https://github.com/Rob-Gon/Api-Rest"
+      },
+      "_source": "github",
+      "_review": true
+    },
+    {
+      "id": "modules-list",
+      "title": "Lista de módulos",
+      "context": "Personal",
+      "period": {
+        "start": "2024-02"
+      },
+      "featured": false,
+      "confidential": false,
+      "summary": "Aplicación web que muestra los módulos que puedes estudiar según tu tipo de usuario y los permisos de tu perfil.",
+      "highlights": ["{{Control de acceso}} por roles"],
+      "stack": ["laravel", "php"],
+      "links": {
+        "demo": null,
+        "repo": "https://github.com/Rob-Gon/Modules-List"
+      },
+      "_source": "github",
+      "_review": true
+    },
+    {
+      "id": "contact-form",
+      "title": "Formulario de contacto",
+      "context": "Personal",
+      "period": {
+        "start": "2024-02"
+      },
+      "featured": false,
+      "confidential": false,
+      "summary": "Formulario de contacto con {{JavaScript}} y Bootstrap, con validaciones.",
+      "stack": ["javascript", "bootstrap", "html", "css"],
+      "links": {
+        "demo": "https://rob-gon.github.io/Contact-Form/",
+        "repo": "https://github.com/Rob-Gon/Contact-Form"
+      },
+      "_source": "github",
+      "_review": true
+    },
+    {
+      "id": "to-dos",
+      "title": "Lista de tareas",
+      "context": "Personal",
+      "period": {
+        "start": "2023-12",
+        "end": "2024-02"
+      },
+      "featured": false,
+      "confidential": false,
+      "summary": "Aplicación con {{Laravel}} para gestionar tareas y asignarlas a categorías. La hice mientras aprendía las bases del framework.",
+      "stack": ["laravel", "php"],
+      "links": {
+        "demo": null,
+        "repo": "https://github.com/Rob-Gon/To-Dos"
+      },
+      "_source": "github",
+      "_review": true
+    },
+    {
+      "id": "crud-projects",
+      "title": "CRUD de proyectos",
+      "context": "Personal",
+      "period": {
+        "start": "2024-02"
+      },
+      "featured": false,
+      "confidential": false,
+      "summary": "Aplicación web con un {{CRUD}} de proyectos en Laravel 8 y PHP 8.",
+      "stack": ["laravel", "php"],
+      "links": {
+        "demo": null,
+        "repo": "https://github.com/Rob-Gon/CRUD-Projects"
+      },
+      "_source": "github",
+      "_review": true
+    }
+  ]
+}

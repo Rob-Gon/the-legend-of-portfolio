@@ -72,7 +72,8 @@
     "stack": "Stack",
     "role": "Mi papel",
     "demo": "Demo",
-    "repo": "Código"
+    "repo": "Código",
+    "confidential": "Proyecto confidencial: sin enlaces públicos."
   },
   "errors": {
     "data": "No se ha podido cargar esta sección. Prueba a recargar la página.",
@@ -86,7 +87,7 @@
       "legend": "Leyenda"
     },
     "fairy": {
-      "controls": "¡Oye! Así te mueves por el portfolio. Usa lo que tengas a mano: teclado, mando, ratón o el dedo.",
+      "controls": "¡Hey! ¡Escucha! Así te mueves por el portfolio. Usa lo que tengas a mano: teclado, mando, ratón o el dedo.",
       "legend": "¿No sabes dónde mirar? Aquí tienes lo que guarda cada sección."
     },
     "columns": {
@@ -143,5 +144,9 @@
     "titleMenu": "Menú principal",
     "systemMenu": "Opciones",
     "actions": "Acciones"
+  },
+  "journal": {
+    "goal": "Meta actual",
+    "empty": "Todavía no hay nada aquí."
   }
 }

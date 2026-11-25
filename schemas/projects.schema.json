@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Adventure Log: memories (projects)",
+  "type": "object",
+  "required": ["items"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "context", "summary", "featured", "confidential", "links"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context": {
+            "type": "string",
+            "minLength": 1
+          },
+          "period": {
+            "type": "object",
+            "required": ["start"],
+            "additionalProperties": false,
+            "properties": {
+              "start": {
+                "type": "string",
+                "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+              },
+              "end": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          },
+          "featured": {
+            "type": "boolean"
+          },
+          "confidential": {
+            "type": "boolean"
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "highlights": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "stack": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+            }
+          },
+          "links": {
+            "type": "object",
+            "required": ["demo", "repo"],
+            "additionalProperties": false,
+            "properties": {
+              "demo": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^https://"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "repo": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^https://"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          },
+          "_source": {
+            "type": "string"
+          },
+          "_review": {
+            "type": "boolean"
+          },
+          "_placeholder": {
+            "type": "boolean"
+          },
+          "_note": {
+            "type": "string"
+          }
+        },
+        "if": {
+          "properties": {
+            "confidential": {
+              "const": true
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "links": {
+              "properties": {
+                "demo": {
+                  "type": "null"
+                },
+                "repo": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

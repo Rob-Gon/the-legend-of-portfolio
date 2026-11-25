@@ -73,7 +73,7 @@ describe('guide screen', () => {
     expect(root.querySelector('.c-fairy__art').getAttribute('aria-hidden')).toBe('true');
     const bubble = root.querySelector('.c-fairy__bubble');
     expect(bubble.getAttribute('aria-live')).toBe('polite');
-    expect(bubble.textContent).toMatch(/^¡Oye!/);
+    expect(bubble.textContent).toMatch(/^¡Hey!/);
     expect(root.textContent).not.toMatch(/navi/i);
   });
 

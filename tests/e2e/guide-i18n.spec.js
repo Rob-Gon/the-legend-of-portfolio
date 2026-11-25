@@ -10,7 +10,7 @@ test.describe('Spanish browser', () => {
     await page.getByRole('button', { name: 'Guía' }).click();
     await expect(page).toHaveURL(/#\/guia\/controles$/);
     await expect(page.getByRole('table')).toBeVisible();
-    await expect(page.locator('.c-fairy__bubble')).toContainText('¡Oye!');
+    await expect(page.locator('.c-fairy__bubble')).toContainText('¡Hey!');
 
     await page.keyboard.press('c');
     await expect(page).toHaveURL(/#\/guia\/leyenda$/);

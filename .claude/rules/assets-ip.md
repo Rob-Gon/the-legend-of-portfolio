@@ -37,6 +37,9 @@ The repository is **public** and carries the owner's name. These rules are manda
   affiliated with Nintendo." (localised via `ui.json` `meta.disclaimer`).
 - UI wording uses generic terms (Adventure Log, Inventory, Side Quests, gems); no Nintendo
   proper names (Hyrule, Sheikah, Link…).
+- Content may name the game the homage is based on, nominatively and only as a reference
+  (e.g. the portfolio's own project description, owner's decision): "The Legend of Zelda:
+  Breath of the Wild". Never as branding, a logo or a title-like treatment.
 
 ## Git-ignored, never committed
 

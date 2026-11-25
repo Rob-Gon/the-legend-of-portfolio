@@ -1,6 +1,7 @@
 import './styles/main.scss';
 import { el } from './core/dom.js';
 import { bus } from './core/bus.js';
+import { load } from './core/data.js';
 import { DEFAULT_LANG, SUPPORTED_LANGS, detectLang, loadLanguage } from './core/i18n.js';
 import { startInput } from './core/input.js';
 import { readPrefs, writePrefs } from './core/prefs.js';
@@ -11,6 +12,10 @@ import * as guide from './screens/guide.js';
 import * as hub from './screens/hub.js';
 
 const root = document.querySelector('#app');
+// Content preloaded with each language so screens render synchronously (no request waterfalls).
+// A file that fails stays unloaded and its screen shows the error state.
+const CONTENT_FILES = ['profile', 'quests', 'sidequests', 'projects'];
+const loadContent = (lang) => Promise.all(CONTENT_FILES.map((file) => load(lang, file)));
 let active = null;
 
 const screenFor = (section) => (section === null ? title : section === 'guide' ? guide : hub);
@@ -25,7 +30,7 @@ function show({ animate }) {
 
 async function switchLanguage() {
   const next = SUPPORTED_LANGS[(SUPPORTED_LANGS.indexOf(state.lang) + 1) % SUPPORTED_LANGS.length];
-  const result = await loadLanguage(next);
+  const [result] = await Promise.all([loadLanguage(next), loadContent(next)]);
   if (!result.ok) {
     // shortcut: failure is only logged; the toast component arrives in M9.
     console.error(result.error);
@@ -77,11 +82,11 @@ function onStateChange({ detail: { keys } }) {
 
 const prefs = readPrefs();
 let lang = detectLang(prefs.lang, navigator.languages);
-let ui = await loadLanguage(lang);
+let [ui] = await Promise.all([loadLanguage(lang), loadContent(lang)]);
 if (!ui.ok && lang !== DEFAULT_LANG) {
   console.error(ui.error);
   lang = DEFAULT_LANG;
-  ui = await loadLanguage(lang);
+  [ui] = await Promise.all([loadLanguage(lang), loadContent(lang)]);
 }
 
 if (ui.ok) {
