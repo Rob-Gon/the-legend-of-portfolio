@@ -51,7 +51,7 @@ document.querySelector('#journal').append(
       keys: { prev: 'Z', next: 'C' },
       items: [
         { id: 'quests', iconName: 'quest', label: 'Misiones principales' },
-        { id: 'side-quests', iconName: 'side-quest', label: 'Side Quests' },
+        { id: 'side-quests', iconName: 'side-quest', label: 'Misiones secundarias' },
         { id: 'memories', iconName: 'memories', label: 'Recuerdos' },
       ],
     }),

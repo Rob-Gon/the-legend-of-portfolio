@@ -26,7 +26,7 @@ compile-time things (breakpoints, `u()`). Values: `docs/PROJECT_BRIEF.md` §6. K
   (effects) · blue `#3CD3FC` (focus, glow) · equipped gradient `#1F8BFF → #0B5FD0`
 - Surfaces: panel `rgb(0 0 0 / .6)` · row/cell `rgb(0 0 0 / .78)` · border
   `rgb(226 222 211 / .35)` · strong border `#E2DED3`
-- Radii: 0 (rows, cells) · 2 px (chips) · 4 px max
+- Radii: 0 (rows, cells) · 2 px (chips) · 4 px · 12 px (`c-panel--round`, Guide panel)
 - Fonts: **Cinzel** 600 (title screen only) · **Roboto** italic 500/700 (all UI)
 - Motion: `--t-fast 120ms` (cursor, slight overshoot) · `--t-base 180ms` ·
   `--t-section 280ms` · `--t-sheet 240ms` · `--t-intro 600ms` · `--t-pulse 1200ms`

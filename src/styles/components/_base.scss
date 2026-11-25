@@ -72,6 +72,17 @@
   --cut: 0;
 }
 
+// Rounded corners instead of notches; the inner frame follows the same curve.
+.c-panel--round {
+  overflow: hidden;
+  clip-path: none;
+  border-radius: var(--r-3);
+
+  &::after {
+    border-radius: calc(var(--r-3) - #{u(4)});
+  }
+}
+
 .c-button {
   position: relative;
   width: u(220);
