@@ -38,6 +38,20 @@ test.describe('Spanish browser', () => {
     await expect(page.getByRole('button', { name: 'Language: English' })).toBeVisible();
   });
 
+  test('only the inner tabpanel scrolls, so the panel frame stays in place', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.goto('./#/guia');
+    const overflow = await page.locator('.s-guide__panel').evaluate((panel) => {
+      const scroll = panel.querySelector('[role="tabpanel"]');
+      return {
+        panel: panel.scrollHeight - panel.clientHeight,
+        scroll: scroll.scrollHeight - scroll.clientHeight,
+      };
+    });
+    expect(overflow.panel).toBe(0);
+    expect(overflow.scroll).toBeGreaterThan(0);
+  });
+
   test('the fairy stays still with reduced motion', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('./#/guia');

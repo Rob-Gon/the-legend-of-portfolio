@@ -123,17 +123,20 @@ export function mount(target) {
     ]),
     el('div', { class: 's-guide__tabs' }, tabRow()),
     el('div', { class: 's-guide__fairy' }, fairy({ message: t(`guide.fairy.${state.tab}`) })),
-    el(
-      'div',
-      {
-        class: 'c-panel s-guide__panel',
-        id: PANEL_ID,
-        role: 'tabpanel',
-        'aria-labelledby': `tab-${state.tab}`,
-        tabindex: '0',
-      },
-      panelContent(),
-    ),
+    // The framed panel stays still; only the inner tabpanel scrolls, so the frame never moves.
+    el('div', { class: 'c-panel c-panel--round s-guide__panel' }, [
+      el(
+        'div',
+        {
+          class: 's-guide__scroll',
+          id: PANEL_ID,
+          role: 'tabpanel',
+          'aria-labelledby': `tab-${state.tab}`,
+          tabindex: '0',
+        },
+        panelContent(),
+      ),
+    ]),
     el('footer', { class: 's-guide__footer' }, [
       hints({
         label: t('a11y.actions'),
@@ -147,7 +150,7 @@ export function mount(target) {
 export function update(keys) {
   if (!keys.includes('tab')) return;
   root.querySelector('.s-guide__tabs').replaceChildren(tabRow());
-  const panel = root.querySelector('.s-guide__panel');
+  const panel = root.querySelector(`#${PANEL_ID}`);
   panel.setAttribute('aria-labelledby', `tab-${state.tab}`);
   panel.replaceChildren(...panelContent());
   panel.scrollTop = 0;

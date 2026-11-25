@@ -28,8 +28,10 @@
 
   &__panel {
     margin: 0 u(16);
+  }
+
+  &__scroll {
     padding: u(20);
-    background: var(--c-panel);
   }
 
   &__table {
@@ -148,6 +150,12 @@
       left: u(60);
       width: u(760);
       margin: 0;
+    }
+
+    // Inside the frame (inset 4) so the scrollbar never crosses it.
+    &__scroll {
+      position: absolute;
+      inset: u(5);
       overflow-y: auto;
     }
 
