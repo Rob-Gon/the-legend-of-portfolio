@@ -3,7 +3,7 @@
     "lang": "es",
     "langName": "Español",
     "siteTitle": "The Legend Of Roberto - Portfolio Of The Wild",
-    "description": "Portfolio de Roberto Báez González, desarrollador full-stack (Laravel, PHP, JavaScript, React).",
+    "description": "Portfolio de Roberto Báez González - Desarrollador Full-stack (Laravel, PHP, JavaScript, React).",
     "disclaimer": "Proyecto de fan no oficial. Sin relación con Nintendo."
   },
   "title": {
@@ -12,7 +12,7 @@
     "language": "Idioma",
     "languageCurrent": "Idioma: {name}",
     "quickMode": "Modo rápido",
-    "tagline": "Portfolio de Roberto Báez González, desarrollador full-stack"
+    "tagline": "Portfolio de Roberto Báez González - Desarrollador Full-stack"
   },
   "sections": {
     "journal": "Diario de Aventura",
@@ -63,7 +63,14 @@
     "language": "Idioma",
     "backToTitle": "Volver a la pantalla de inicio",
     "quickMode": "Modo rápido",
-    "guide": "Guía"
+    "guide": "Guía",
+    "on": "Sí",
+    "off": "No",
+    "motion": {
+      "system": "Según el sistema",
+      "reduced": "Sí",
+      "full": "No"
+    }
   },
   "detail": {
     "level": "Nivel",
@@ -106,7 +113,8 @@
       "nextTab": "Pestaña siguiente",
       "move": "Mover el cursor",
       "select": "Seleccionar",
-      "back": "Atrás"
+      "back": "Atrás",
+      "toggleMute": "Silenciar o activar el sonido"
     },
     "pointer": {
       "prevSection": "Pulsa el nombre de la sección de la izquierda",
@@ -115,7 +123,8 @@
       "nextTab": "Pulsa la pestaña",
       "move": "Pasa el ratón por encima",
       "select": "Haz clic o toca",
-      "back": "Pulsa «Atrás»"
+      "back": "Pulsa «Atrás»",
+      "toggleMute": "En Sistema → Silenciar"
     },
     "keys": {
       "Space": "Espacio",
@@ -146,7 +155,8 @@
   "a11y": {
     "titleMenu": "Menú principal",
     "systemMenu": "Opciones",
-    "actions": "Acciones"
+    "actions": "Acciones",
+    "settings": "Ajustes"
   },
   "journal": {
     "goal": "Meta actual",
@@ -163,5 +173,14 @@
     "month": "1 mes",
     "months": "{n} meses",
     "and": "{a} y {b}"
+  },
+  "music": {
+    "label": "Música",
+    "prev": "Tema anterior",
+    "next": "Tema siguiente",
+    "nowPlaying": "{title} · {author}",
+    "pause": "Pausar la música",
+    "play": "Reanudar la música",
+    "volume": "Volumen general"
   }
 }

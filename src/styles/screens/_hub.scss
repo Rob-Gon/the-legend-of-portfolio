@@ -88,3 +88,22 @@
     transform: translateX(var(--enter-from, 0));
   }
 }
+
+// System: menu on the left, settings on the right.
+.s-system {
+  display: flex;
+  flex-direction: column;
+  gap: u(24);
+
+  &__settings {
+    display: flex;
+    flex-direction: column;
+    gap: u(12);
+  }
+
+  @include from($bp-desktop) {
+    flex-direction: row;
+    gap: u(48);
+    padding-left: u(44);
+  }
+}

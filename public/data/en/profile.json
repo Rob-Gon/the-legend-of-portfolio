@@ -35,8 +35,9 @@
     {
       "id": "location",
       "icon": "pin",
+      "color": "#ea4335",
       "name": "Location",
-      "value": ["Gran Canaria (Spain)"],
+      "value": ["Agüimes, Gran Canaria (Spain)"],
       "_source": "linkedin"
     },
     {

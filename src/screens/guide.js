@@ -1,4 +1,5 @@
 import { el } from '../core/dom.js';
+import { emit } from '../core/bus.js';
 import { t } from '../core/i18n.js';
 import { CONTROLS, KEY_HINTS, TRANSLATED_KEYS } from '../core/input.js';
 import { GUIDE, SECTIONS } from '../core/sections.js';
@@ -48,7 +49,7 @@ function controlsTable() {
           el('tr', {}, [
             el('th', { scope: 'row', text: t(`guide.actions.${action}`) }),
             el('td', {}, keycaps(keyboard, 'c-key--kb')),
-            el('td', {}, keycaps(gamepad, 's-guide__pad')),
+            el('td', {}, gamepad.length ? keycaps(gamepad, 's-guide__pad') : '—'),
             el('td', { text: t(`guide.pointer.${action}`) }),
           ]),
         ),
@@ -117,6 +118,8 @@ function panelContent() {
 export function mount(target) {
   root = target;
   root.classList.add('s-guide');
+  // The fairy's chime: only when the Guide opens, never on tab changes (no stacking).
+  emit('ui:sfx', 'guide');
   root.replaceChildren(
     el('header', { class: 's-guide__header' }, [
       el('h1', { class: 's-guide__title', text: t('guide.title') }),
@@ -173,6 +176,7 @@ function stepTab(step) {
 export function handle(action) {
   switch (action.type) {
     case 'back':
+      emit('ui:sfx', 'back');
       set(returnTo);
       return true;
     case 'prevTab':

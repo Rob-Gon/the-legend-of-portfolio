@@ -181,7 +181,7 @@ Common rules for every file:
     "lang": "es",
     "langName": "Español",
     "siteTitle": "The Legend Of Roberto - Portfolio Of The Wild",
-    "description": "Portfolio de Roberto Báez González, desarrollador full-stack (Laravel, PHP, JavaScript, React).",
+    "description": "Portfolio de Roberto Báez González - Desarrollador Full-stack (Laravel, PHP, JavaScript, React).",
     "disclaimer": "Proyecto de fan no oficial. Sin relación con Nintendo."
   },
   "title": { "start": "Iniciar", "language": "Idioma", "quickMode": "Modo rápido" },

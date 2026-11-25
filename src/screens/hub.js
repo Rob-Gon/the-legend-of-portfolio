@@ -120,7 +120,8 @@ export function update(keys) {
   // Leaving the hub (title, Guide) is handled by main.js swapping screens.
   if (sectionIndex() === -1) return;
   if (keys.includes('section') || keys.includes('tab')) render({ focus: true });
-  else if (keys.includes('selection')) PANELS[state.section]?.update?.(keys);
+  else if (keys.includes('selection') || keys.includes('prefs'))
+    PANELS[state.section]?.update?.(keys);
 }
 
 function goSection(step) {
@@ -167,6 +168,7 @@ export function handle(action) {
     case 'tab':
       return goTab(action.id);
     case 'back':
+      emit('ui:sfx', 'back');
       set(HOME);
       return true;
     default:

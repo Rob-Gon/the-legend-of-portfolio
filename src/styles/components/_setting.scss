@@ -1,0 +1,49 @@
+@use '../tokens' as *;
+@use 'selection' as *;
+
+// One System setting: label on the left, its control on the right.
+.c-setting {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: u(16);
+  align-items: center;
+  width: min(100%, #{u(560)});
+  min-height: u(56);
+  padding: u(8) u(16);
+  background: var(--c-row);
+  border: 1px solid var(--c-border);
+
+  &__label {
+    font-size: u(19);
+    font-weight: var(--fw-bold);
+  }
+
+  &__toggle {
+    position: relative;
+    min-width: u(170);
+    min-height: max(#{u(36)}, var(--tap-min));
+    padding: 0 u(14);
+    font-size: u(17);
+    font-weight: var(--fw-bold);
+    font-style: italic;
+    background: none;
+    border: 1px solid var(--c-border);
+
+    &[aria-pressed='true'] {
+      color: var(--c-accent-green);
+      border-color: var(--c-accent-green);
+    }
+
+    &:focus-visible {
+      @include selected-surface;
+
+      &::before {
+        @include brackets;
+      }
+    }
+  }
+
+  &__range {
+    width: u(220);
+  }
+}

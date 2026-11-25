@@ -44,6 +44,7 @@ describe('CONTROLS (Guide table)', () => {
       'prevSection',
       'prevTab',
       'select',
+      'toggleMute',
     ]);
     expect(KEY_HINTS.back).toEqual({ keyboard: 'Esc', gamepad: 'B' });
   });
