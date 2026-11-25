@@ -5,6 +5,8 @@
   --t-sheet: 240ms cubic-bezier(0, 0, 0.2, 1);
   --t-intro: 600ms ease-in-out;
   --t-pulse: 1200ms ease-in-out;
+  --t-float: 2400ms ease-in-out;
+  --t-flap: 160ms ease-in-out;
 }
 
 // OS preference applies unless the System toggle forces full motion; the toggle can also force it on.
@@ -16,6 +18,8 @@
     --t-sheet: 0ms linear;
     --t-intro: 0ms linear;
     --t-pulse: 0ms linear;
+    --t-float: 0ms linear;
+    --t-flap: 0ms linear;
   }
 }
 
@@ -26,4 +30,6 @@
   --t-sheet: 0ms linear;
   --t-intro: 0ms linear;
   --t-pulse: 0ms linear;
+  --t-float: 0ms linear;
+  --t-flap: 0ms linear;
 }

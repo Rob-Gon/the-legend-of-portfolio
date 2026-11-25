@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "lang": "en",
+    "langName": "English",
+    "siteTitle": "The Legend Of Portfolio - Roberto Of The Wild",
+    "description": "Portfolio of Roberto Báez González, full-stack developer (Laravel, PHP, JavaScript, React).",
+    "disclaimer": "Unofficial fan project. Not affiliated with Nintendo."
+  },
+  "title": {
+    "start": "Start",
+    "guide": "Guide",
+    "language": "Language",
+    "languageCurrent": "Language: {name}",
+    "quickMode": "Quick mode",
+    "tagline": "Portfolio of Roberto Báez González, full-stack developer"
+  },
+  "sections": {
+    "journal": "Adventure Log",
+    "inventory": "Inventory",
+    "system": "System"
+  },
+  "tabs": {
+    "quests": "Main Quests",
+    "sideQuests": "Side Quests",
+    "memories": "Memories",
+    "weapons": "Weapons",
+    "armor": "Armour",
+    "keyItems": "Key Items"
+  },
+  "tabHints": {
+    "weapons": "Technologies",
+    "armor": "Skills",
+    "keyItems": "About me"
+  },
+  "weaponPages": {
+    "core": "Core",
+    "secondary": "Secondary",
+    "tools": "Tools",
+    "office": "Office and design"
+  },
+  "availability": "Available for work",
+  "hints": {
+    "back": "Back",
+    "select": "Select",
+    "rotate": "Rotate",
+    "open": "Open"
+  },
+  "status": {
+    "completed": "Completed",
+    "active": "In progress",
+    "current": "Present"
+  },
+  "hud": {
+    "hearts": "{years} years and {months} months of professional experience",
+    "gems": "{count} projects"
+  },
+  "system": {
+    "musicVolume": "Music volume",
+    "sfxVolume": "Sound effects volume",
+    "mute": "Mute",
+    "reduceMotion": "Reduce motion",
+    "shortcuts": "Single-key shortcuts",
+    "language": "Language",
+    "backToTitle": "Back to the title screen",
+    "quickMode": "Quick mode",
+    "guide": "Guide"
+  },
+  "detail": {
+    "level": "Level",
+    "years": "{value} of professional use",
+    "studied": "Training",
+    "stack": "Stack",
+    "role": "My role",
+    "demo": "Demo",
+    "repo": "Code"
+  },
+  "errors": {
+    "data": "This section could not be loaded. Try reloading the page.",
+    "audio": "Audio is not available.",
+    "model": "The 3D model is not available."
+  },
+  "guide": {
+    "title": "Guide",
+    "tabs": {
+      "controls": "Controls",
+      "legend": "Legend"
+    },
+    "fairy": {
+      "controls": "Hey! This is how you get around the portfolio. Use whatever you have at hand: keyboard, gamepad, mouse or your finger.",
+      "legend": "Not sure where to look? Here is what each section holds."
+    },
+    "columns": {
+      "action": "Action",
+      "keyboard": "Keyboard",
+      "gamepad": "Gamepad",
+      "pointer": "Mouse and touch"
+    },
+    "actions": {
+      "prevSection": "Previous section",
+      "nextSection": "Next section",
+      "prevTab": "Previous tab",
+      "nextTab": "Next tab",
+      "move": "Move the cursor",
+      "select": "Select",
+      "back": "Back"
+    },
+    "pointer": {
+      "prevSection": "Click the section name on the left",
+      "nextSection": "Click the section name on the right",
+      "prevTab": "Click the tab",
+      "nextTab": "Click the tab",
+      "move": "Hover with the mouse",
+      "select": "Click or tap",
+      "back": "Press “Back”"
+    },
+    "keys": {
+      "Space": "Space",
+      "Backspace": "Backspace",
+      "DPad": "D-pad",
+      "Stick": "Left stick"
+    },
+    "shortcutsNote": "Single-letter keys (L, R, Q, E, Z, C, W, A, S, D) can be turned off in System. Tab works as usual.",
+    "legend": {
+      "journal": "My career, told as an adventure.",
+      "quests": "Work experience, education and certifications. Current goals come first.",
+      "sideQuests": "Hobbies and what I do outside work.",
+      "memories": "Professional and personal projects, with their stack and links when they are public.",
+      "inventory": "Everything I carry for each quest.",
+      "weapons": "Technologies, with a level from 1 to 5 and years of professional use.",
+      "armor": "Soft skills, each with a real example.",
+      "keyItems": "About me: contact, languages and a downloadable CV.",
+      "system": "Music, sound effects, motion, shortcuts, language and this guide.",
+      "hud": "Status bar",
+      "heartsTerm": "Hearts",
+      "hearts": "My professional experience.",
+      "gemsTerm": "Gems",
+      "gems": "The number of projects.",
+      "availableTerm": "Available for work",
+      "available": "I am open to new opportunities."
+    }
+  },
+  "a11y": {
+    "titleMenu": "Main menu",
+    "systemMenu": "Options",
+    "actions": "Actions"
+  }
+}

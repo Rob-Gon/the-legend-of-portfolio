@@ -1,0 +1,174 @@
+@use '../tokens' as *;
+
+.s-guide {
+  display: flex;
+  flex-direction: column;
+  gap: u(16);
+  padding-bottom: u(24);
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    padding: u(30) u(16) u(16);
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  &__title {
+    font-size: u(30);
+    font-weight: var(--fw-bold);
+  }
+
+  &__tabs {
+    align-self: center;
+  }
+
+  &__fairy {
+    align-self: center;
+  }
+
+  &__panel {
+    margin: 0 u(16);
+    padding: u(20);
+    background: var(--c-panel);
+  }
+
+  &__table {
+    width: 100%;
+    font-size: u(16);
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: u(10) u(8);
+      text-align: left;
+      vertical-align: middle;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    thead th {
+      font-size: u(14);
+      color: var(--c-accent-yellow);
+    }
+
+    td {
+      color: var(--c-text-muted);
+    }
+
+    .c-key {
+      margin: u(2) u(4) u(2) 0;
+    }
+  }
+
+  // Gamepad glyphs always visible here (unlike hints, which follow the last input device).
+  &__pad {
+    display: inline-grid;
+    place-items: center;
+    min-width: u(24);
+    height: u(24);
+    padding: 0 u(6);
+    font-size: u(13);
+    font-style: normal;
+    font-weight: var(--fw-bold);
+    color: var(--c-ink);
+    background: var(--c-text);
+    border-radius: u(12);
+  }
+
+  &__note {
+    margin-top: u(14);
+    font-size: u(15);
+    color: var(--c-text-muted);
+  }
+
+  &__group + &__group {
+    margin-top: u(20);
+  }
+
+  &__group-title {
+    font-size: u(20);
+    font-weight: var(--fw-bold);
+  }
+
+  &__group-text {
+    margin: u(4) 0 u(8);
+    color: var(--c-text-muted);
+  }
+
+  &__entry {
+    display: grid;
+    grid-template-columns: minmax(0, 12rem) 1fr;
+    gap: u(4) u(16);
+    padding: u(6) 0;
+    border-bottom: 1px solid var(--c-border);
+
+    dt {
+      display: flex;
+      align-items: center;
+      gap: u(8);
+      font-weight: var(--fw-bold);
+    }
+
+    dd {
+      color: var(--c-text-muted);
+    }
+  }
+
+  &__entry-icon {
+    flex: none;
+    font-size: u(22);
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 u(16);
+  }
+
+  @include from($bp-desktop) {
+    position: relative;
+    display: block;
+    height: 100%;
+    padding: 0;
+
+    &__header {
+      height: u(107);
+      padding: u(30) u(60) 0;
+    }
+
+    &__tabs {
+      position: absolute;
+      top: u(110);
+      left: u(197);
+    }
+
+    &__panel {
+      position: absolute;
+      top: u(222);
+      bottom: u(70);
+      left: u(60);
+      width: u(760);
+      margin: 0;
+      overflow-y: auto;
+    }
+
+    &__fairy {
+      position: absolute;
+      top: u(200);
+      left: u(860);
+      width: u(360);
+    }
+
+    &__footer {
+      position: absolute;
+      right: u(80);
+      bottom: u(20);
+      padding: 0;
+    }
+  }
+}
+
+.s-system__disclaimer {
+  margin-top: u(24);
+  font-size: u(14);
+  color: var(--c-text-muted);
+}

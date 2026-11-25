@@ -1,6 +1,13 @@
 // @vitest-environment jsdom
 import { describe, expect, it, vi } from 'vitest';
-import { REPEAT_MS, eventToAction, pollGamepad, startInput } from '../../src/core/input.js';
+import {
+  CONTROLS,
+  KEY_HINTS,
+  REPEAT_MS,
+  eventToAction,
+  pollGamepad,
+  startInput,
+} from '../../src/core/input.js';
 
 const target = document.createElement('div');
 const key = (value, extra = {}) => ({ key: value, target, ...extra });
@@ -9,6 +16,38 @@ const on = (tag, attrs = {}) => {
   for (const [name, value] of Object.entries(attrs)) node.setAttribute(name, value);
   return node;
 };
+
+// Display ids used in CONTROLS → KeyboardEvent.key.
+const EVENT_KEYS = {
+  '↑': 'ArrowUp',
+  '↓': 'ArrowDown',
+  '←': 'ArrowLeft',
+  '→': 'ArrowRight',
+  Space: ' ',
+  Esc: 'Escape',
+};
+
+describe('CONTROLS (Guide table)', () => {
+  it.each(CONTROLS.flatMap(({ action, keyboard }) => keyboard.map((id) => [id, action])))(
+    'key %j really triggers %s',
+    (id, action) => {
+      expect(eventToAction(key(EVENT_KEYS[id] ?? id))?.type).toBe(action);
+    },
+  );
+
+  it('documents every action and feeds the button hints', () => {
+    expect(CONTROLS.map((control) => control.action).sort()).toEqual([
+      'back',
+      'move',
+      'nextSection',
+      'nextTab',
+      'prevSection',
+      'prevTab',
+      'select',
+    ]);
+    expect(KEY_HINTS.back).toEqual({ keyboard: 'Esc', gamepad: 'B' });
+  });
+});
 
 describe('eventToAction', () => {
   it.each([

@@ -1,14 +1,17 @@
 // @vitest-environment jsdom
 import { describe, expect, it, vi } from 'vitest';
-import ui from '../../public/data/es/ui.json';
 import { bus } from '../../src/core/bus.js';
 import { set, state } from '../../src/core/store.js';
+import { HOME } from '../../src/core/router.js';
 import * as hub from '../../src/screens/hub.js';
+import { useLanguage } from './helpers/ui.js';
+
+await useLanguage('es');
 
 const root = document.createElement('main');
 document.body.append(root);
 set({ section: 'journal', tab: 'quests', selection: null });
-hub.mount(root, ui);
+hub.mount(root);
 bus.addEventListener('state:change', ({ detail }) => hub.update(detail.keys));
 
 const title = () => root.querySelector('h1').textContent;
@@ -68,9 +71,25 @@ describe('hub', () => {
     expect(document.activeElement.getAttribute('role')).toBe('region');
     expect(document.activeElement.getAttribute('aria-label')).toBe('Sistema');
     expect(root.querySelectorAll('button.c-hud__neighbor')).toHaveLength(1);
+    expect([...root.querySelectorAll('.c-menu__button')].map((b) => b.dataset.action)).toEqual([
+      'guide',
+      'language',
+      'title',
+    ]);
+  });
+
+  it('moves through the System menu with up/down', () => {
+    expect(hub.handle({ type: 'move', dx: 0, dy: 1 })).toBe(true);
+    expect(document.activeElement.dataset.action).toBe('guide');
+  });
+
+  it('goes back to the title with Back', () => {
+    expect(hub.handle({ type: 'back' })).toBe(true);
+    expect(state).toMatchObject(HOME);
   });
 
   it('leaves other actions to the screens', () => {
+    set({ section: 'journal', tab: 'quests', selection: null });
     expect(hub.handle({ type: 'move', dx: 0, dy: 1 })).toBe(false);
     expect(hub.handle({ type: 'select' })).toBe(false);
   });

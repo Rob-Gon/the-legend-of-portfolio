@@ -12,6 +12,8 @@ describe('router parse', () => {
     ['#/inventario/habilidades', { section: 'inventory', tab: 'armor', selection: null }],
     ['#/inventario/objetos-clave', { section: 'inventory', tab: 'key-items', selection: null }],
     ['#/sistema', { section: 'system', tab: null, selection: null }],
+    ['#/guia', { section: 'guide', tab: 'controls', selection: null }],
+    ['#/guia/leyenda', { section: 'guide', tab: 'legend', selection: null }],
     ['#/diario/misiones/', { section: 'journal', tab: 'quests', selection: null }],
   ])('%s', (hash, expected) => {
     expect(parse(hash)).toEqual(expected);

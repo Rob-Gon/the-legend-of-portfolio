@@ -6,8 +6,19 @@
     "description": "Portfolio de Roberto Báez González, desarrollador full-stack (Laravel, PHP, JavaScript, React).",
     "disclaimer": "Proyecto de fan no oficial. Sin relación con Nintendo."
   },
-  "title": { "start": "Iniciar", "language": "Idioma", "quickMode": "Modo rápido" },
-  "sections": { "journal": "Diario de Aventura", "inventory": "Inventario", "system": "Sistema" },
+  "title": {
+    "start": "Iniciar",
+    "guide": "Guía",
+    "language": "Idioma",
+    "languageCurrent": "Idioma: {name}",
+    "quickMode": "Modo rápido",
+    "tagline": "Portfolio de Roberto Báez González, desarrollador full-stack"
+  },
+  "sections": {
+    "journal": "Diario de Aventura",
+    "inventory": "Inventario",
+    "system": "Sistema"
+  },
   "tabs": {
     "quests": "Misiones principales",
     "sideQuests": "Side Quests",
@@ -16,7 +27,11 @@
     "armor": "Armaduras",
     "keyItems": "Objetos clave"
   },
-  "tabHints": { "weapons": "Tecnologías", "armor": "Habilidades", "keyItems": "Sobre mí" },
+  "tabHints": {
+    "weapons": "Tecnologías",
+    "armor": "Habilidades",
+    "keyItems": "Sobre mí"
+  },
   "weaponPages": {
     "core": "Principales",
     "secondary": "Secundarias",
@@ -24,8 +39,17 @@
     "office": "Ofimática y diseño"
   },
   "availability": "Disponible para trabajar",
-  "hints": { "back": "Atrás", "select": "Seleccionar", "rotate": "Girar", "open": "Abrir" },
-  "status": { "completed": "Completada", "active": "En curso", "current": "Actualidad" },
+  "hints": {
+    "back": "Atrás",
+    "select": "Seleccionar",
+    "rotate": "Girar",
+    "open": "Abrir"
+  },
+  "status": {
+    "completed": "Completada",
+    "active": "En curso",
+    "current": "Actualidad"
+  },
   "hud": {
     "hearts": "{years} años y {months} meses de experiencia profesional",
     "gems": "{count} proyectos"
@@ -38,7 +62,8 @@
     "shortcuts": "Atajos de una tecla",
     "language": "Idioma",
     "backToTitle": "Volver a la pantalla de inicio",
-    "quickMode": "Modo rápido"
+    "quickMode": "Modo rápido",
+    "guide": "Guía"
   },
   "detail": {
     "level": "Nivel",
@@ -53,5 +78,70 @@
     "data": "No se ha podido cargar esta sección. Prueba a recargar la página.",
     "audio": "El audio no está disponible.",
     "model": "El modelo 3D no está disponible."
+  },
+  "guide": {
+    "title": "Guía",
+    "tabs": {
+      "controls": "Controles",
+      "legend": "Leyenda"
+    },
+    "fairy": {
+      "controls": "¡Oye! Así te mueves por el portfolio. Usa lo que tengas a mano: teclado, mando, ratón o el dedo.",
+      "legend": "¿No sabes dónde mirar? Aquí tienes lo que guarda cada sección."
+    },
+    "columns": {
+      "action": "Acción",
+      "keyboard": "Teclado",
+      "gamepad": "Mando",
+      "pointer": "Ratón y táctil"
+    },
+    "actions": {
+      "prevSection": "Sección anterior",
+      "nextSection": "Sección siguiente",
+      "prevTab": "Pestaña anterior",
+      "nextTab": "Pestaña siguiente",
+      "move": "Mover el cursor",
+      "select": "Seleccionar",
+      "back": "Atrás"
+    },
+    "pointer": {
+      "prevSection": "Pulsa el nombre de la sección de la izquierda",
+      "nextSection": "Pulsa el nombre de la sección de la derecha",
+      "prevTab": "Pulsa la pestaña",
+      "nextTab": "Pulsa la pestaña",
+      "move": "Pasa el ratón por encima",
+      "select": "Haz clic o toca",
+      "back": "Pulsa «Atrás»"
+    },
+    "keys": {
+      "Space": "Espacio",
+      "Backspace": "Retroceso",
+      "DPad": "Cruceta",
+      "Stick": "Stick izquierdo"
+    },
+    "shortcutsNote": "Las teclas de una sola letra (L, R, Q, E, Z, C, W, A, S, D) se pueden desactivar en Sistema. Tab funciona como siempre.",
+    "legend": {
+      "journal": "Mi trayectoria, contada como una aventura.",
+      "quests": "Experiencia laboral, formación y certificaciones. Las metas actuales aparecen primero.",
+      "sideQuests": "Aficiones y lo que hago fuera del trabajo.",
+      "memories": "Proyectos profesionales y personales, con su stack y enlaces cuando son públicos.",
+      "inventory": "Todo lo que llevo encima para cada misión.",
+      "weapons": "Tecnologías, con su nivel del 1 al 5 y los años de uso profesional.",
+      "armor": "Habilidades blandas, cada una con un ejemplo real.",
+      "keyItems": "Sobre mí: contacto, idiomas y CV para descargar.",
+      "system": "Música, efectos, animaciones, atajos, idioma y esta guía.",
+      "hud": "Marcador",
+      "heartsTerm": "Corazones",
+      "hearts": "Mi experiencia profesional.",
+      "gemsTerm": "Gemas",
+      "gems": "El número de proyectos.",
+      "availableTerm": "Disponible para trabajar",
+      "available": "Estoy abierto a nuevas oportunidades."
+    }
+  },
+  "a11y": {
+    "titleMenu": "Menú principal",
+    "systemMenu": "Opciones",
+    "actions": "Acciones"
   }
 }

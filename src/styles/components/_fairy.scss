@@ -1,0 +1,97 @@
+@use '../tokens' as *;
+
+// Guide fairy. Every animation uses motion tokens, so reduced motion leaves it still.
+.c-fairy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: u(18);
+
+  &__flight {
+    animation: c-fairy-arrive var(--t-intro) both;
+  }
+
+  &__hover {
+    animation: c-fairy-hover var(--t-float) infinite alternate;
+  }
+
+  &__art {
+    display: block;
+    width: u(120);
+    height: u(120);
+    overflow: visible;
+  }
+
+  &__glow {
+    animation: c-fairy-glow var(--t-pulse) infinite alternate;
+  }
+
+  &__wing {
+    transform-box: fill-box;
+    animation: c-fairy-flap var(--t-flap) infinite alternate;
+  }
+
+  &__wing--left {
+    transform-origin: right center;
+  }
+
+  &__wing--right {
+    transform-origin: left center;
+  }
+
+  &__bubble {
+    position: relative;
+    max-width: u(320);
+    padding: u(14) u(18);
+    font-size: u(17);
+    line-height: 1.4;
+    background: var(--c-panel);
+    border: 1px solid var(--c-border-strong);
+    border-radius: var(--r-2);
+
+    // Tail pointing up to the fairy.
+    &::before {
+      content: '';
+      position: absolute;
+      top: u(-8);
+      left: 50%;
+      width: u(14);
+      height: u(14);
+      background: inherit;
+      border-top: 1px solid var(--c-border-strong);
+      border-left: 1px solid var(--c-border-strong);
+      translate: -50% 0;
+      rotate: 45deg;
+    }
+  }
+}
+
+@keyframes c-fairy-arrive {
+  0% {
+    opacity: 0;
+    transform: translate(#{u(160)}, #{u(-60)}) scale(0.4);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate(#{u(-12)}, #{u(8)}) scale(1.05);
+  }
+}
+
+@keyframes c-fairy-hover {
+  to {
+    transform: translateY(#{u(-12)});
+  }
+}
+
+@keyframes c-fairy-glow {
+  from {
+    opacity: 0.7;
+  }
+}
+
+@keyframes c-fairy-flap {
+  to {
+    transform: scaleX(0.55);
+  }
+}
