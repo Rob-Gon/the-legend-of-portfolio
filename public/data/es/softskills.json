@@ -23,7 +23,7 @@
       "id": "problem-solving",
       "name": "Resolución de problemas",
       "icon": "skill-problem-solving",
-      "level": 4,
+      "level": 5,
       "description": "Resuelvo problemas con pensamiento abstracto.",
       "example": "Soporte y corrección de otras aplicaciones del Grupo ARI, como la gestión de grúas y el servicio de campa.",
       "_source": "cv+linkedin+user"
@@ -32,7 +32,7 @@
       "id": "analytical-thinking",
       "name": "Pensamiento analítico",
       "icon": "skill-analytical-thinking",
-      "level": 4,
+      "level": 5,
       "description": "Descompongo los procesos complejos en piezas que se pueden automatizar.",
       "example": "Diseño de la ingestión por SFTP y del procesamiento con colas para la facturación y la contabilidad del ERP.",
       "_source": "cv+linkedin+user"
@@ -41,7 +41,7 @@
       "id": "emotional-intelligence",
       "name": "Inteligencia emocional",
       "icon": "skill-emotional-intelligence",
-      "level": 4,
+      "level": 5,
       "description": "Siempre se me ha dado bien {{entender a las personas}} y sus emociones, así que sé llevar con cabeza y cautela situaciones muy distintas entre compañeros.",
       "_source": "cv+linkedin+user"
     },
@@ -67,7 +67,7 @@
       "id": "versatility",
       "name": "Versatilidad",
       "icon": "skill-versatility",
-      "level": 4,
+      "level": 5,
       "description": "Me adapto a stacks y equipos distintos.",
       "example": "Laravel y JavaScript en Grupo ARI; React y TypeScript en Crealia IT.",
       "_source": "cv+linkedin+user"

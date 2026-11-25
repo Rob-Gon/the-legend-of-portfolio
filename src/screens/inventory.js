@@ -180,7 +180,15 @@ function showInViewer(item) {
   viewerLoading.then(() => {
     if (!viewer || !viewerSlot.isConnected || selected(items()) !== item) return;
     viewer.attach(viewerSlot);
-    viewer.show({ svg: iconSource(item.icon), color: item.color ?? ITEM_COLOR });
+    viewer.show({
+      svg: iconSource(item.icon),
+      color: item.color ?? ITEM_COLOR,
+      mode: state.tab,
+      level: item.level,
+    });
+    // At the desk the avatar types: a short burst of key clicks per selection, not with
+    // reduced motion (the arms stay still then).
+    if (state.tab === 'key-items' && !prefersReducedMotion()) emit('ui:sfx', 'typing');
     root.classList.add('has-3d');
   });
 }

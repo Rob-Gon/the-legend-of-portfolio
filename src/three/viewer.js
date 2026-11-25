@@ -1,6 +1,5 @@
 import {
   AdditiveBlending,
-  CanvasTexture,
   Color,
   DataTexture,
   DirectionalLight,
@@ -15,7 +14,9 @@ import {
   SRGBColorSpace,
   WebGLRenderer,
 } from 'three';
-import { loadAvatar } from './avatar.js';
+import { POSES, SEAT_DROP, loadAvatar, mixPose } from './avatar.js';
+import { createDesk } from './desk.js';
+import { createEffect, effectFor, glowTexture } from './effects.js';
 import { createItemMesh, disposeItem } from './items.js';
 
 const FRAME_MS = 1000 / 30; // idle animation never runs faster than 30 fps
@@ -26,23 +27,14 @@ const IDLE = { breath: 0.006, breathMs: 3200, sway: 0.015, swayMs: 5200, lift: 0
 const DRAG_SPEED = 0.01; // radians per pixel
 
 const HALO = { size: 0.42, opacity: 0.6, pulse: 0.08, periodMs: 2400 };
-
-/** Soft radial glow drawn once on a small canvas; tinted per item. */
-function haloTexture() {
-  const canvas = document.createElement('canvas');
-  canvas.width = 128;
-  canvas.height = 128;
-  const context = canvas.getContext('2d');
-  const gradient = context.createRadialGradient(64, 64, 0, 64, 64, 64);
-  gradient.addColorStop(0, 'rgba(255,255,255,1)');
-  gradient.addColorStop(0.35, 'rgba(255,255,255,0.45)');
-  gradient.addColorStop(1, 'rgba(255,255,255,0)');
-  context.fillStyle = gradient;
-  context.fillRect(0, 0, 128, 128);
-  const texture = new CanvasTexture(canvas);
-  texture.colorSpace = SRGBColorSpace;
-  return texture;
-}
+const GLOW_ORDER = 1; // render order of the halo and effect layers
+// Which pose each Inventory tab uses: weapons raised overhead, armour in one hand, key items
+// typed away at the desk (the icon shows on the monitor).
+const POSE_FOR_MODE = { weapons: 'raise', armor: 'raiseOne', 'key-items': 'type' };
+// Goofy typing: forearms bouncing over the keyboard, out of step with each other.
+const TYPE = { periodMs: 280, elbow: 0.25, shoulder: 0.06 };
+// Seated, the whole set rises so the desk stays clear of the detail card over the viewer.
+const SEATED_RISE = 0.3;
 
 /** Three-step ramp for the cel-shaded look. */
 function toonGradient() {
@@ -70,8 +62,9 @@ export async function createViewer({ reducedMotion = () => false } = {}) {
 
   const scene = new Scene();
   const camera = new PerspectiveCamera(24, 1, 0.1, 50);
-  camera.position.set(0, 1.15, 5.2);
-  camera.lookAt(0, 0.98, 0);
+  // Framed with headroom for the raised poses (item over the head).
+  camera.position.set(0, 1.25, 5.9);
+  camera.lookAt(0, 1.08, 0);
   scene.add(new HemisphereLight('#fff6e6', '#2a3a26', 1.1));
   const key = new DirectionalLight('#ffffff', 1.7);
   key.position.set(2, 4, 3);
@@ -83,13 +76,14 @@ export async function createViewer({ reducedMotion = () => false } = {}) {
   // The held item glows: a camera-facing sprite behind it, additive so it only adds light.
   const halo = new Sprite(
     new SpriteMaterial({
-      map: haloTexture(),
+      map: glowTexture(),
       blending: AdditiveBlending,
       depthWrite: false,
       transparent: true,
       opacity: HALO.opacity,
     }),
   );
+  halo.renderOrder = GLOW_ORDER;
   halo.scale.setScalar(HALO.size);
   halo.visible = false;
   const avatar = await loadAvatar({ url: AVATAR_URL, gradientMap }).catch((error) => {
@@ -98,42 +92,63 @@ export async function createViewer({ reducedMotion = () => false } = {}) {
     throw error;
   });
   const turntable = new Group();
-  turntable.add(avatar.root);
+  const desk = createDesk({ gradientMap });
+  desk.group.visible = false;
+  turntable.add(avatar.root, desk.group);
   scene.add(turntable);
 
   let host = null;
   let item = null;
+  let effect = null;
   let visible = false;
   let frame = 0;
   let lastFrame = 0;
   let rotation = 0;
   let drag = null;
-  const hold = { from: 0, to: 0, start: 0 };
-
-  const holdAmount = (now) => {
-    const progress = Math.min((now - hold.start) / HOLD_MS, 1);
-    return hold.from + (hold.to - hold.from) * progress;
-  };
+  // The arms blend from wherever they were (`from`) to the target pose over HOLD_MS.
+  const pose = { from: POSES.rest, to: POSES.rest, start: 0 };
+  const progress = (now) => Math.min((now - pose.start) / HOLD_MS, 1);
 
   function draw(now = performance.now()) {
     const still = reducedMotion();
-    const amount = still ? hold.to : holdAmount(now);
+    const amount = still ? 1 : progress(now);
     const wave = (periodMs) => (still ? 0 : Math.sin((now / periodMs) * Math.PI * 2));
-    avatar.setPose(amount, wave(BOB.periodMs) * IDLE.lift);
-    avatar.root.position.y = wave(IDLE.breathMs) * IDLE.breath;
+    const current = mixPose(pose.from, pose.to, amount, wave(BOB.periodMs) * IDLE.lift);
+    if (pose.to === POSES.type && !still) {
+      for (const [side, phase] of [
+        ['left', 0],
+        ['right', 0.5],
+      ]) {
+        const tap = Math.max(Math.sin((now / TYPE.periodMs + phase) * Math.PI * 2), 0) * amount;
+        current[side].elbowX -= tap * TYPE.elbow;
+        current[side].shoulderX -= tap * TYPE.shoulder;
+      }
+    }
+    avatar.setPose(current);
+    avatar.root.position.y = wave(IDLE.breathMs) * IDLE.breath - SEAT_DROP * current.seat;
     avatar.root.rotation.z = wave(IDLE.swayMs) * IDLE.sway;
     if (avatar.head) avatar.head.rotation.y = still ? 0 : Math.sin(now / 3200) * 0.06;
-    if (item) {
+    // The desk pops in once the avatar is mostly seated (and out as it stands up).
+    desk.group.visible = current.seat > 0.5;
+    if (item?.parent === desk.screen) {
+      item.visible = desk.group.visible;
+    } else if (item) {
       item.position.y = wave(BOB.periodMs) * BOB.amplitude;
       item.rotation.y = still ? -0.3 : Math.sin(now / 2400) * 0.35;
       // The item appears once the hands are nearly in place.
-      item.visible = amount > 0.6;
+      item.visible = pose.to !== POSES.rest && amount > 0.6;
       halo.visible = item.visible;
+      if (effect) {
+        effect.object.visible = item.visible;
+        effect.object.position.y = item.position.y;
+        effect.update(now, still);
+      }
       halo.position.set(0, item.position.y, -0.04);
       const pulse = still ? 1 : 1 + Math.sin((now / HALO.periodMs) * Math.PI * 2) * HALO.pulse;
       halo.scale.setScalar(HALO.size * pulse);
     }
-    turntable.rotation.y = rotation;
+    turntable.rotation.y = rotation + current.yaw;
+    turntable.position.y = SEATED_RISE * current.seat;
     renderer.render(scene, camera);
   }
 
@@ -204,25 +219,54 @@ export async function createViewer({ reducedMotion = () => false } = {}) {
       start();
     },
 
-    /** Holds a new item (its SVG icon, extruded) or empties the hands when `svg` is null. */
-    show({ svg, color }) {
+    /**
+     * Holds a new item (its SVG icon, extruded) or empties the hands when `svg` is null. `mode`
+     * is the Inventory tab (its pose); `level` (skill stars) picks the extra glow layers.
+     */
+    show({ svg, color, mode, level }) {
       if (item) {
-        avatar.hold.remove(item);
+        item.removeFromParent();
         disposeItem(item);
       }
-      item = svg ? createItemMesh(svg, { color, size: 0.26, gradientMap }) : null;
-      if (item) {
+      if (effect) {
+        effect.object.removeFromParent();
+        effect.dispose();
+        effect = null;
+      }
+      halo.removeFromParent();
+      halo.visible = false;
+      const target = svg ? POSES[POSE_FOR_MODE[mode] ?? 'hold'] : POSES.rest;
+      const atDesk = target === POSES.type;
+      item = svg ? createItemMesh(svg, { color, size: atDesk ? 0.22 : 0.26, gradientMap }) : null;
+      if (item && atDesk) {
+        // Flattened onto the monitor, like an app icon on the screen.
+        item.scale.z *= 0.3;
+        desk.screen.add(item);
+      } else if (item) {
         avatar.hold.add(item);
+        // Weapons: the item is over the head, so its glow draws without depth test, over the
+        // cap; the item draws after it (a later render order needs the transparent pass), so
+        // its logo stays crisp in front. Armour holds it to one side: there the head, when the
+        // view is rotated, must hide the glow, so normal depth testing stays.
+        const overlay = mode === 'weapons';
+        halo.material.depthTest = !overlay;
+        item.traverse((child) => {
+          if (!child.isMesh || !overlay) return;
+          child.material.transparent = true;
+          child.renderOrder = GLOW_ORDER + 1;
+        });
         // Halo in the item's colour, lifted towards white so dark logos still glow.
-        halo.material.color.set(color).lerp(new Color('#ffffff'), 0.45);
+        const glow = new Color(color ?? '#ffffff').lerp(new Color('#ffffff'), 0.45);
+        halo.material.color.copy(glow);
         avatar.hold.add(halo);
-      } else {
-        halo.visible = false;
+        effect = createEffect(effectFor(level), { color: glow, overlay });
+        if (effect) avatar.hold.add(effect.object);
       }
       const now = performance.now();
-      hold.from = holdAmount(now);
-      hold.to = item ? 1 : 0;
-      hold.start = now;
+      // Start from the current pose, so switching tab mid-move never jumps.
+      pose.from = mixPose(pose.from, pose.to, progress(now));
+      pose.to = target;
+      pose.start = now;
       draw(now);
     },
 
@@ -239,6 +283,8 @@ export async function createViewer({ reducedMotion = () => false } = {}) {
       intersection.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
       if (item) disposeItem(item);
+      effect?.dispose();
+      desk.dispose();
       avatar.dispose();
       gradientMap.dispose();
       halo.material.map.dispose();

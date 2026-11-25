@@ -23,7 +23,7 @@
       "id": "problem-solving",
       "name": "Problem solving",
       "icon": "skill-problem-solving",
-      "level": 4,
+      "level": 5,
       "description": "I solve problems with abstract thinking.",
       "example": "Support and fixes for other Grupo ARI applications, such as tow-truck management and the vehicle yard service.",
       "_source": "cv+linkedin+user"
@@ -32,7 +32,7 @@
       "id": "analytical-thinking",
       "name": "Analytical thinking",
       "icon": "skill-analytical-thinking",
-      "level": 4,
+      "level": 5,
       "description": "I break complex processes down into pieces that can be automated.",
       "example": "Designing the SFTP ingestion and queue processing for the ERP's invoicing and accounting.",
       "_source": "cv+linkedin+user"
@@ -41,7 +41,7 @@
       "id": "emotional-intelligence",
       "name": "Emotional intelligence",
       "icon": "skill-emotional-intelligence",
-      "level": 4,
+      "level": 5,
       "description": "I have always been good at {{understanding people}} and their emotions, so I handle a wide range of situations between colleagues with good judgement and care.",
       "_source": "cv+linkedin+user"
     },
@@ -67,7 +67,7 @@
       "id": "versatility",
       "name": "Versatility",
       "icon": "skill-versatility",
-      "level": 4,
+      "level": 5,
       "description": "I adapt to different stacks and teams.",
       "example": "Laravel and JavaScript at Grupo ARI; React and TypeScript at Crealia IT.",
       "_source": "cv+linkedin+user"

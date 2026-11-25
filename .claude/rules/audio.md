@@ -30,11 +30,16 @@ Read/write through `core/prefs.js` (try/catch; works without storage).
   "title · author" (credit). `M` toggles mute anywhere.
 - Effects never stack: one instance per effect (restart, not layer) plus a minimum gap
   (cursor 60 ms, Guide chime 400 ms). The Guide chime plays only when the Guide opens.
+- Typing (Key items, desktop 3D only): `ui:sfx` `typing` plays a ~1.5 s burst of key clicks
+  (`key1`–`key3`, every 70–150 ms, each at a random `rate` 0.85–1.25 so three clicks sound like
+  many keys; `typingPattern` in `src/audio/audio.js`). A new selection restarts the burst. No
+  burst with reduced motion.
 
 ## Files
 
 - `public/audio/music/` — `title.*`, `hub.*` (loop).
-- `public/audio/sfx/` — `cursor`, `select`, `back`, `tab`, `section` (Kenney, CC0) and `guide`
+- `public/audio/sfx/` — `cursor`, `select`, `back`, `tab`, `section`, `key-1`–`key-3` (Kenney UI
+  Audio `switch13`, `switch14`, `mouseclick1`; CC0) and `guide`
   (fairy sound provided by the owner; see the owner's risk decision in `assets-ip.md`).
 - Formats: `.mp3` (plays everywhere); `.webm` (Opus) first is optional once ffmpeg is available. SFX ≤ 30 KB each,
   music ≤ 2.5 MB per track (96 kbps, streamed), loudness-normalised.

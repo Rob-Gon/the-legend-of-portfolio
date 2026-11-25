@@ -48,6 +48,9 @@
     "back": ["sfx/back.mp3"],
     "tab": ["sfx/tab.mp3"],
     "section": ["sfx/section.mp3"],
-    "guide": ["sfx/guide.mp3"]
+    "guide": ["sfx/guide.mp3"],
+    "key1": ["sfx/key-1.mp3"],
+    "key2": ["sfx/key-2.mp3"],
+    "key3": ["sfx/key-3.mp3"]
   }
 }
